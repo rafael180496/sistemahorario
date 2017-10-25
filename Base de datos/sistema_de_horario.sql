@@ -1,4 +1,2 @@
     CREATE DATABASE shorario;
-
- 
     
