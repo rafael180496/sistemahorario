@@ -1,0 +1,7 @@
+
+---comandos 
+https://caronates.wordpress.com/2010/01/12/comandos-para-postgres/
+
+---seleccionar una base de datos deseada, aquí vamos a conectar con el testdb base de datos:
+
+postgres=# \c base_datos;
