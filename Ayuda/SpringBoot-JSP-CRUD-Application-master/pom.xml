@@ -14,11 +14,7 @@
         <relativePath/>
     </parent>
 
-    <properties>
-        <start-class>com.app.Application</start-class>
-        <main.basedir>${basedir}/../..</main.basedir>
-        <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
-    </properties>
+
 
     <dependencies>
         <dependency>
