@@ -1,4 +1,4 @@
-package com.horario.horario;
+package com.horario;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

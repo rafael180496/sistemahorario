@@ -5,3 +5,11 @@ https://caronates.wordpress.com/2010/01/12/comandos-para-postgres/
 ---seleccionar una base de datos deseada, aquí vamos a conectar con el testdb base de datos:
 
 postgres=# \c base_datos;
+postgres=# \c shorario;
+-----mostrar las  tablas
+SELECT * FROM pg_tables;
+
+----borrar tablas
+ DROP TABLE usuario;
+ ----borrar base de datos
+ drop database shorario;
