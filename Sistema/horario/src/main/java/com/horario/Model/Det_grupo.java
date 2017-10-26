@@ -3,11 +3,10 @@ package com.horario.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.sql.Date;
 @Entity
 @Table(name="det_grupo")
-public class Det_grupo implements Serializable {
+public class Det_grupo {
 
     @Column(name="carnet")
     private String carnet;
@@ -19,11 +18,11 @@ public class Det_grupo implements Serializable {
     private Date f_creacion;
 
     public Det_grupo() {
-        super();
+
     }
 
     public Det_grupo(String carnet, int id_grupo, Date f_creacion) {
-        super();
+
         this.carnet = carnet;
         this.id_grupo = id_grupo;
         this.f_creacion = f_creacion;

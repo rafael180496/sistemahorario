@@ -1,12 +1,11 @@
 package com.horario.Model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name="clase")
-public class Clase implements Serializable{
+public class Clase {
 
     @Id
     @Column(name="id_clase")
@@ -20,7 +19,7 @@ public class Clase implements Serializable{
     private Date f_creacion;
 
     public Clase() {
-        super();
+
     }
 
     public Clase(String nombre, Date f_creacion) {

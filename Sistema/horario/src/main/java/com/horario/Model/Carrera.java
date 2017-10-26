@@ -1,12 +1,11 @@
 package com.horario.Model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name="carrera")
-public class Carrera implements Serializable {
+public class Carrera  {
     @Id
     @Column(name="id_carrera")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,11 +18,11 @@ public class Carrera implements Serializable {
     private Date f_creacion;
 
     public Carrera() {
-        super();
+
     }
 
     public Carrera(String nombre, Date f_creacion) {
-        super();
+
         this.nombre = nombre;
         this.f_creacion = f_creacion;
     }
