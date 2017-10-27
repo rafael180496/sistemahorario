@@ -4,6 +4,8 @@ https://caronates.wordpress.com/2010/01/12/comandos-para-postgres/
 
 --diseños
 https://codepen.io/search/pens/?limit=all&page=2&q=horario
+--crud-
+http://www.heroesdelcodigo.com/crud-usando-spring-boot-spring-data-jpa-thymeleaf/
 
 ---seleccionar una base de datos deseada, aquí vamos a conectar con el testdb base de datos:
 
