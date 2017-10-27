@@ -69,4 +69,7 @@
         f_creacion    DATE  NOT NULL
     );
 
-
+/*insert*/
+INSERT INTO profesor
+VALUES
+    (1, 'Rafael','Hidalgo',sysdate);

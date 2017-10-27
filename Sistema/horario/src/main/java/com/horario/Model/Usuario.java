@@ -1,11 +1,12 @@
 package com.horario.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name="usuario")
-public class Usuario  {
+public class Usuario implements Serializable {
     @Id
     @Column(name="id_usuario")
     @GeneratedValue(strategy = GenerationType.AUTO)

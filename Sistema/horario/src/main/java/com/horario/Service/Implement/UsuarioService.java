@@ -21,6 +21,7 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Usuario getUsuarioById(long id) {
+
         return usuarioRepo.findOne(id);
     }
 
