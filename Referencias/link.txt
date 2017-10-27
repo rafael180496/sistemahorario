@@ -25,6 +25,10 @@ SELECT * FROM pg_tables;
  -----
  https://crudspringboot.herokuapp.com/
 
+-------bootstrap
+https://fezvrasta.github.io/bootstrap-material-design/docs/4.0/getting-started/download/
 
+plantillas---
+https://startbootstrap.com/template-categories/all/
  ------------------
  http://www.java4s.com/java-servlet-tutorials/example-of-request-getparameter-retrieve-parameters-from-html-form/
