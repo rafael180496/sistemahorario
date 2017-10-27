@@ -30,5 +30,6 @@ https://fezvrasta.github.io/bootstrap-material-design/docs/4.0/getting-started/d
 
 plantillas---
 https://startbootstrap.com/template-categories/all/
+https://templateflip.com/bootstrap-admin-templates/
  ------------------
  http://www.java4s.com/java-servlet-tutorials/example-of-request-getparameter-retrieve-parameters-from-html-form/
