@@ -72,4 +72,4 @@
 /*insert*/
 INSERT INTO profesor
 VALUES
-    (1, 'Rafael','Hidalgo',sysdate);
+    (1, 'Rafael','Hidalgo',to_date('20171027','YYYYMMDD'));
