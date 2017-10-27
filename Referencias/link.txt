@@ -18,3 +18,13 @@ SELECT * FROM pg_tables;
  DROP TABLE usuario;
  ----borrar base de datos
  drop database shorario;
+
+ ----
+ http://www.heroesdelcodigo.com/crud-usando-spring-boot-spring-data-jpa-thymeleaf/
+
+ -----
+ https://crudspringboot.herokuapp.com/
+
+
+ ------------------
+ http://www.java4s.com/java-servlet-tutorials/example-of-request-getparameter-retrieve-parameters-from-html-form/
