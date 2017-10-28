@@ -82,7 +82,7 @@ INSERT INTO Profesor
 VALUES
     (3, 'Kevin', 'Marquez', to_date('20171027','YYYYMMDD'));
 
-
+/*insert*/
 
 INSERT INTO Usuario
-VALUES  (1,'rhidalgo','upoliei',true,true,to_date('20171027','YYYYMMDD'));  
+VALUES  (1,1,'rhidalgo','upoliei',true,true,to_date('20171027','YYYYMMDD'));  
