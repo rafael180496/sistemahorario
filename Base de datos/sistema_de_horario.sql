@@ -23,9 +23,10 @@
 
     CREATE TABLE Usuario (
         id_usuario int PRIMARY KEY,
+        id_profesor INT NOT NULL,
         nom_usr  CHAR(50) NOT NULL, 
         clave CHAR(30) NOT NULL,
-        id_profesor INT NOT NULL,
+        ind_rest BOOLEAN NOT NULL,
         ind_adm BOOLEAN NOT NULL,
         f_creacion DATE NOT NULL
     );
@@ -51,6 +52,7 @@
         f_creacion    DATE  NOT NULL
     );
     CREATE TABLE Det_grupo (
+        id_det_grupo int PRIMARY KEY,
         carnet CHAR(15)  NOT NULL,
         id_grupo  INT NOT NULL, 
         f_creacion    DATE  NOT NULL
@@ -73,3 +75,14 @@
 INSERT INTO Profesor
 VALUES
     (1, 'Rafael','Hidalgo',to_date('20171027','YYYYMMDD'));
+INSERT INTO Profesor
+VALUES
+    (2, 'Marvin', 'Hidalgo', to_date('20171027','YYYYMMDD'));
+INSERT INTO Profesor
+VALUES
+    (3, 'Kevin', 'Marquez', to_date('20171027','YYYYMMDD'));
+
+
+
+INSERT INTO Usuario
+VALUES  (1,'rhidalgo','upoliei',true,true,to_date('20171027','YYYYMMDD'));  

@@ -1,0 +1,198 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDH</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/css%2Fmaterialize.css?alt=media&token=c1182d85-8ade-444f-a1ff-9b0ec66bcd15"
+        type="text/css" rel="stylesheet" media="screen,projection" />
+
+</head>
+
+<body>
+    <nav class="teal accent-4">
+        <div class="nav-wrapper ">
+            <a href="#!" class="brand-logo">SDH</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#">Profesores</a>
+                </li>
+                <li>
+                    <a href="#">Usuarios</a>
+                </li>
+
+                <li>
+                    <a href="#">Aulas</a>
+                </li>
+                <li>
+                    <a href="#">Carreras</a>
+                </li>
+                <li>
+                    <a href="#">Clases</a>
+                </li>
+                <li>
+                    <a href="#">Alumnos</a>
+                </li>
+                <li>
+                    <a href="file:///C:/Users/rafae/Sistema_Horario/Diseno/Login.html#">Salir</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+
+                <li>
+                    <a href="#">Profesores</a>
+                </li>
+                <li>
+                    <a href="#">Usuarios</a>
+                </li>
+                <li>
+                    <a href="#">Aulas</a>
+                </li>
+                <li>
+                    <a href="#">Carreras</a>
+                </li>
+                <li>
+                    <a href="#">Clases</a>
+                </li>
+                <li>
+                    <a href="#">Alumnos</a>
+                </li>
+                <li>
+                    <a href="file:///C:/Users/rafae/Sistema_Horario/Diseno/Login.html#">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 ">
+               
+                    
+                    <div class="card-panel  ">
+                        <h4>Administracion de Profesores</h4>
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">Filtrar</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <a class="waves-effect waves-light btn"><i class="material-icons">search</i></a>
+                           
+                        </div>
+                        
+                       
+                        <table class="highlight responsive-table  bordered centered">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Fecha</th>
+                                    <th><a class="btn-floating waves-effect waves-light">
+                                        <i class="material-icons">add</i>
+                                    </a></th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td>09/05/17</td>
+                                    <td>
+                                        <a class="btn-floating  waves-effect waves-light "><i class="material-icons">mode_edit</i></a>
+                                        <a class="btn-floating  waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alan</td>
+                                    <td>Jellybean</td>
+                                    <td>09/05/17</td>
+                                    <td>
+                                        <a class="btn-floating  waves-effect waves-light ">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                        <a class="btn-floating  waves-effect waves-light red">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jonathan</td>
+                                    <td>Lollipop</td>
+                                    <td>09/05/17</td>
+                                    <td>
+                                        <a class="btn-floating  waves-effect waves-light ">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                        <a class="btn-floating  waves-effect waves-light red">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="pagination center ">
+                            
+                            <li class="waves-effect active">
+                                <a href="#!">1</a>
+                            </li>
+                            <li class="waves-effect">
+                                <a href="#!">2</a>
+                            </li>
+                            <li class="waves-effect">
+                                <a href="#!">3</a>
+                            </li>
+                            <li class="waves-effect">
+                                <a href="#!">4</a>
+                            </li>
+                            <li class="waves-effect">
+                                <a href="#!">5</a>
+                            </li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Upoli</h5>
+                    <p class="grey-text text-lighten-4">Sistema creado para la administracion de Horarios de Clases.</p>
+
+
+                </div>
+
+
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Evaluacion de Sistema 2017
+                </div>
+            </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
+    <script>
+        $('.carousel.carousel-slider').carousel({ fullWidth: true });
+        $(".button-collapse").sideNav();
+    </script>
+
+</body>
+
+</html>
