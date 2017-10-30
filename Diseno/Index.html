@@ -31,7 +31,7 @@
                 <i class="material-icons">menu</i>
             </a>
         </div>
-    </nav>
+    </nav>  
 
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
@@ -41,11 +41,14 @@
                 <h1 class="header center teal-text text-lighten-2">Sistema  de Horario</h1>
                 
                 <div class="row center">
-                    <div class="input-field">
-                        <input value="" id="first_name2" type="text" class="validate">
-                        <label class="active" for="first_name2">Ingrese su carnet de estudiante para recibir su horario.</label>
-                    </div>
-                    <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Buscar</a>
+                   <form action="" method="dialog">
+                        <div class="input-field">
+                            <input value="" id="busq_horario" type="text" name="txt_horario">
+                            <label class="active" for="busq_horario">Ingrese su carnet de estudiante para recibir su horario.</label>
+                        </div>
+                        <input type="submit" value="Buscar" class="btn-large waves-effect waves-light teal lighten-1">
+                    </form>  
+                    
                 </div>
                 <br>
                 <br>
@@ -64,11 +67,7 @@
                 <div class="col l6 s12">
                     <h5 class="white-text">Upoli</h5>
                     <p class="grey-text text-lighten-4">Sistema creado para la administracion de Horarios de Clases.</p>
-
-
-                </div>
-               
-                
+                </div>  
         </div>
         <div class="footer-copyright">
             <div class="container">
@@ -79,7 +78,7 @@
 
 
     <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Finit.js?alt=media&token=fb8a441d-908b-405d-ae1a-9286edc7d8b2"></script>
 

@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view;
+package com.horario.upoli.horario.view.componentes;
 
 import java.util.ArrayList;
 
@@ -60,7 +60,7 @@ public class Html  {
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        this.titulo = "<title>"+titulo+"</title>";;
     }
 
     public ArrayList<String> getEstilos() {

@@ -1,8 +1,8 @@
-package com.horario.upoli.horario.view;
+package com.horario.upoli.horario.view.componentes;
 
 import java.util.ArrayList;
 
-public class Formulario extends Html{
+public class Formulario  {
     private ArrayList<String> Cuerpo_formulario=new ArrayList();
     private String Accion ="";
     private String  metodo="";
