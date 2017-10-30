@@ -66,4 +66,14 @@ public class Profesor {
     public void setF_creacion(Date f_creacion) {
         this.f_creacion = f_creacion;
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" +
+                "id_profesor=" + id_profesor +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", f_creacion=" + f_creacion +
+                '}';
+    }
 }

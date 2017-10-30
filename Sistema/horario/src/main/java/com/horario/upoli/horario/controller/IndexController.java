@@ -1,5 +1,6 @@
 package com.horario.upoli.horario.controller;
 
+import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.view.Index;
 import com.horario.upoli.horario.view.componentes.Formulario;
 import com.horario.upoli.horario.view.componentes.Html;
@@ -22,6 +23,7 @@ private Html nuevo= new Html();
     @RequestMapping(value = "",method = RequestMethod.GET)
     String  index()
     {
+
         Index  index = new Index();
        return index.Generar_Index();
     }

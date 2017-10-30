@@ -6,11 +6,11 @@ public class Formulario  {
     private ArrayList<String> Cuerpo_formulario=new ArrayList();
     private String Accion ="";
     private String  metodo="";
-
+    private String id_f="Sin";
 
     public  String Generar_formulario(){
         String Resultado ="";
-        String inicio="<form action=\""+Accion+"\" method=\""+metodo+"\">\n" ;
+        String inicio="<form action=\""+Accion+"\" method=\""+metodo+"\" id=\""+id_f+"\">" ;
         String Fin ="</form>";
 
         Resultado+=inicio;
@@ -44,5 +44,13 @@ public class Formulario  {
 
     public void setMetodo(String metodo) {
         this.metodo = metodo;
+    }
+
+    public String getId_f() {
+        return id_f;
+    }
+
+    public void setId_f(String id_f) {
+        this.id_f = id_f;
     }
 }

@@ -13,10 +13,13 @@ public class Login {
     private Html html = new Html();
 
 
-    public String Generar_login(){
+    public String Generar_login(boolean Error){
+
+
         html.setTitulo("SDH");
         html.setEstilos(Enviar_Estilo());
         html.setScrip(Enviar_scrip());
+        html.setScrip_manual(Enviar_scripManual());
         ArrayList <String> cuerpo_l = new ArrayList<>();
 //------------------------------------------------------------------------------------
         cuerpo_l.add("<div class=\"section\"></div>\n" +
@@ -30,7 +33,7 @@ public class Login {
                 "                    <div  class=\"col s12\">");
 
         //------------------------------------------------------------------------------------
-        cuerpo_l.add(Enviar_Formulario());
+        cuerpo_l.add(Enviar_Formulario(Error));
         //------------------------------------------------------------------------------------
         cuerpo_l.add("</div>\n" +
                 "                </div>\n" +
@@ -62,21 +65,29 @@ public class Login {
         return  est;
     }
 
-    private String Enviar_Formulario(){
+    private String Enviar_Formulario(boolean Error){
+        String MensajeError="<h6 class=\"red-text\">Usuario o Clavé Incorrecta</h6>";
         Link regresar=new Link("Regresar","/");
         Formulario formulario= new Formulario();
-        formulario.setMetodo(Metodos.dialog.mostrar());
-        formulario.setAccion("");
+        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setId_f("");
+        formulario.setAccion("/login/ingresar");
         ArrayList <String> cuerpo_f= new ArrayList<>();
 //--------------------------------------------------------------------
         cuerpo_f.add("<div class='row'>\n" +
                 "                                <div class='col s12'>\n" +
-                "                                    <img src=\"https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Fstudent.png?alt=media&token=66c0b9b7-1369-4d8d-bb75-96497fdb37ca\"\n" +
-                "                                        alt=\"\" class=\"circle responsive-img valign profile-image-login\">\n" +
-                "                                    \n" +
-                "                                </div>\n" +
-                "                            </div>");
+                "                                    <img src=\"https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Fstudent.png?alt=media&token=66c0b9b7-1369-4d8d-bb75-96497fdb37ca\" alt=\"\" class=\"circle responsive-img valign profile-image-login\">\n" +
+                "                                    ");
 //--------------------------------------------------------------------
+        if (Error)
+        {
+            cuerpo_f.add(MensajeError);
+        }
+
+        //--------------------------------------------------------------------
+        cuerpo_f.add("</div>\n" +
+                "                            </div>");
+        //--------------------------------------------------------------------
         cuerpo_f.add("<div class='row'>\n" +
                 "                                <div class='input-field col s12'>\n" +
                 "                                    <input class='validate' type=\"text\" name='txt_usuario' id='usuario' />\n" +
@@ -92,6 +103,8 @@ public class Login {
                 "                            \n" +
                 "                            </div>");
         //--------------------------------------------------------------------
+
+
         cuerpo_f.add("<br />\n" +
                 "                            <center>\n" +
                 "                                <div class='row'>");
@@ -105,7 +118,17 @@ public class Login {
 
         formulario.setCuerpo_formulario(cuerpo_f);
 
+
+
+
+
+
         return formulario.Generar_formulario();
 
+    }
+
+    public  String Enviar_scripManual()
+    {
+        return "";
     }
 }

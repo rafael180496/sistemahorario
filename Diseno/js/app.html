@@ -1,0 +1,46 @@
+<script>
+    $(document).ready(function() {
+
+
+        $("#Ingresar_login").submit(function(event) {
+            event.preventDefault();
+            console.log("nepo")
+            console.log($("#txt_usuario").val())
+            console.log($("#txt_clave").val())
+            ajaxPost();
+        });
+
+
+        function ajaxPost() {
+            var formData = {
+                usuarios: $("#txt_usuario").val(),
+                claves: $("#txt_clave").val()
+            }
+
+
+            // DO POST
+            $.ajax({
+                type: "POST",
+                ContentType: "application/json",
+                url: window.location + "/ingresar",
+                data: "hola",
+                dataType: "json",
+                success: function(result) {
+                    if (result == false) {
+                        console.log(result)
+                        alert("Usuario o Clave  Incorrecto")
+                    } else {
+                        console.log(result)
+                        url = "http://localhost:8080/login/pudo";
+                        $(location).attr('href', url);
+                    }
+                }
+
+            });
+
+
+        }
+
+
+    })
+</script>
