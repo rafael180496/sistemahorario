@@ -7,4 +7,5 @@ import java.util.ArrayList;
 public interface ProfesorService {
     Iterable<Profesor> listarProfesores();
     ArrayList<Profesor> listaProfesores();
+    ArrayList<Profesor> listaProfesores(String name);
 }

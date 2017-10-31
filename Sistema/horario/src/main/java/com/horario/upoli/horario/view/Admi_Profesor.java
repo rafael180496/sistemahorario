@@ -1,5 +1,6 @@
 package com.horario.upoli.horario.view;
 
+import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.ProfesorService;
@@ -18,6 +19,8 @@ public class Admi_Profesor  {
     private Navbar navbar= new Navbar("SDH");
     private Usuario usuario= new Usuario();
     private Formulario  formulario= new Formulario();
+    private String Filtrar= "";
+
     @Autowired
     private ProfesorService profesorService;
 
@@ -85,6 +88,10 @@ public class Admi_Profesor  {
 
         return "";
     }
+
+
+
+
 
 
 }

@@ -26,4 +26,24 @@ public class ProfesorServiceImp implements ProfesorService{
 
         return Listado;
     }
+
+    @Override
+    public ArrayList<Profesor> listaProfesores(String name) {
+        Iterable<Profesor> source=profesorRepo.findAll();
+        ArrayList<Profesor> Listado= new ArrayList<>();
+        ArrayList<Profesor> Listadoaux= new ArrayList<>();
+        source.forEach(Listadoaux::add);
+
+        name=name.replace(" ","");
+
+        for (Profesor n:Listadoaux
+             ) {
+            if((n.getNombre().compareToIgnoreCase(name)<=4) &&(n.getNombre().compareToIgnoreCase(name)>=-4))
+            {
+                Listado.add(n);
+            }
+        }
+
+        return Listado;
+    }
 }
