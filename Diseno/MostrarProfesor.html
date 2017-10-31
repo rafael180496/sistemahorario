@@ -79,14 +79,16 @@
                     
                     <div class="card-panel  ">
                         <h4>Administracion de Profesores</h4>
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">Filtrar</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <a class="waves-effect waves-light btn"><i class="material-icons">search</i></a>
-                           
-                        </div>
+                        <form action="" method="dialog">
+                            <div class="input-field col s6">
+                                <input id="buscar" type="text" class="validate" name="txt_buscar">
+                                <label for="buscar">Filtrar</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input type="submit" value="Buscar" class="waves-effect waves-light btn">
+                            </div>
+                        </form>
+                        
                         
                        
                         <table class="highlight responsive-table  bordered centered">
@@ -95,7 +97,7 @@
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Fecha</th>
-                                    <th><a class="btn-floating waves-effect waves-light">
+                                    <th><a class="btn-floating waves-effect waves-light" href="#">
                                         <i class="material-icons">add</i>
                                     </a></th>
                                 </tr>
@@ -139,26 +141,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <ul class="pagination center ">
-                            
-                            <li class="waves-effect active">
-                                <a href="#!">1</a>
-                            </li>
-                            <li class="waves-effect">
-                                <a href="#!">2</a>
-                            </li>
-                            <li class="waves-effect">
-                                <a href="#!">3</a>
-                            </li>
-                            <li class="waves-effect">
-                                <a href="#!">4</a>
-                            </li>
-                            <li class="waves-effect">
-                                <a href="#!">5</a>
-                            </li>
-                            
-                        </ul>
-                    
+                       
                 </div>
             </div>
         </div>

@@ -5,6 +5,8 @@ import com.horario.upoli.horario.repo.ProfesorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class ProfesorServiceImp implements ProfesorService{
 
@@ -14,5 +16,14 @@ public class ProfesorServiceImp implements ProfesorService{
     @Override
     public Iterable<Profesor> listarProfesores() {
         return profesorRepo.findAll();
+    }
+
+    @Override
+    public ArrayList<Profesor> listaProfesores() {
+        Iterable<Profesor> source=profesorRepo.findAll();
+        ArrayList<Profesor> Listado= new ArrayList<>();
+        source.forEach(Listado::add);
+
+        return Listado;
     }
 }
