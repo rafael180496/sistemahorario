@@ -10,7 +10,7 @@ public  class  Permisos {
     public static  ArrayList<Permiso> PermisosAdmin()
     {
          ArrayList<Permiso> permisos = new ArrayList<>();
-        permisos.add(new Permiso("#","Profesores"));
+        permisos.add(new Permiso("/Profesor","Profesores"));
          permisos.add(new Permiso("#","Usuarios"));
         permisos.add(new Permiso("#","Aulas"));
         permisos.add(new Permiso("#","Carreras"));

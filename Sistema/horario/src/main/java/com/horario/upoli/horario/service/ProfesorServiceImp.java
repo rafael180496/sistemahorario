@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class ProfesorServiceImp implements ProfesorService{
 
     @Autowired
-    ProfesorRepo  profesorRepo;
+    private ProfesorRepo  profesorRepo;
 
     @Override
     public Iterable<Profesor> listarProfesores() {
@@ -28,7 +28,7 @@ public class ProfesorServiceImp implements ProfesorService{
     }
 
     @Override
-    public ArrayList<Profesor> listaProfesores(String name) {
+    public ArrayList<Profesor> filtrarProfesores(String name) {
         Iterable<Profesor> source=profesorRepo.findAll();
         ArrayList<Profesor> Listado= new ArrayList<>();
         ArrayList<Profesor> Listadoaux= new ArrayList<>();
@@ -38,12 +38,25 @@ public class ProfesorServiceImp implements ProfesorService{
 
         for (Profesor n:Listadoaux
              ) {
-            if((n.getNombre().compareToIgnoreCase(name)<=4) &&(n.getNombre().compareToIgnoreCase(name)>=-4))
+            n.setNombre(n.getNombre().replace(" ",""));
+            n.setApellido(n.getApellido().replace(" ",""));
+            if((n.getNombre().toLowerCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }
         }
 
         return Listado;
+    }
+
+    @Override
+    public Profesor BuscarUno(Long id) {
+        return profesorRepo.findOne(id);
+    }
+
+    @Override
+    public void EliminarProfesor(Long id) {
+        profesorRepo.delete(id);
+
     }
 }

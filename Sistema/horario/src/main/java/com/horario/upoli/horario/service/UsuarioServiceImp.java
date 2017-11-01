@@ -32,13 +32,15 @@ public class UsuarioServiceImp implements UsuarioService {
 
         for (Usuario n:Listado
              ) {
-            String Usuario_F=n.getNom_usr().replace(" ","");
-            String Clave_F=n.getClave().replace(" ","");
-            if((Usuario_F.equals(usuario))&&( Clave_F.equals(Clave)))
+            n.setNom_usr(n.getNom_usr().replace(" ",""));
+            n.setClave(n.getClave().replace(" ",""));
+
+            if((n.getNom_usr().equals(usuario))&&( n.getClave().equals(Clave)))
             {
                 return n;
             }
         }
+
 
 
         return null;

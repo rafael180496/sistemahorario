@@ -24,7 +24,7 @@ public class Navbar {
         String Resultado= "";
         String inicio="<nav class=\"teal accent-4\">\n" +
                 "        <div class=\"nav-wrapper \">\n" +
-                "            <a href=\"#!\" class=\"brand-logo\">"+proyecto+"</a>\n" +
+                "            <a href=\"/inicio\" class=\"brand-logo\">"+proyecto+"</a>\n" +
                 "            <a href=\"#\" data-activates=\"mobile-demo\" class=\"button-collapse\">\n" +
                 "                <i class=\"material-icons\">menu</i>\n" +
                 "            </a>\n" +

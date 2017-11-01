@@ -7,5 +7,7 @@ import java.util.ArrayList;
 public interface ProfesorService {
     Iterable<Profesor> listarProfesores();
     ArrayList<Profesor> listaProfesores();
-    ArrayList<Profesor> listaProfesores(String name);
+    ArrayList<Profesor> filtrarProfesores(String name);
+    Profesor BuscarUno(Long  id);
+    void  EliminarProfesor(Long id);
 }

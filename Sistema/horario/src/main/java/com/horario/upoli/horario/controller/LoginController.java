@@ -19,34 +19,49 @@ public class LoginController {
     UsuarioService usuarioService;
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
-    String Mostrar(HttpServletRequest req, HttpServletResponse res){
+    String Inicio(HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario prueba = (Usuario) session.getAttribute("usuario");
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
         session.setAttribute("usuario",null);
         Login nuevo = new Login();
         return nuevo.Generar_login(false);
     }
 
+    @RequestMapping(value = "/inicio",method = RequestMethod.GET)
+    String Index(HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera =(Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+
+            return  new Home(recupera).Generar_Home();
+
+
+
+    }
 
     @RequestMapping(value = "/login/ingresar",method = RequestMethod.POST)
     String  Ingresar(HttpServletRequest req, HttpServletResponse res)
     {
         String usuario=req.getParameter("txt_usuario");
         String clave=req.getParameter("txt_clave");
-        Usuario nuevo=usuarioService.Ingresar(usuario,clave);
+        Usuario recupera=usuarioService.Ingresar(usuario,clave);
 
-        if(nuevo==null)
+        if(recupera==null)
         {
 
             return  new Login().Generar_login(true);
         }
-        else
-        {
-            HttpSession session = req.getSession(true);
-            session.setAttribute("usuario",nuevo);
 
-            return  new Home(nuevo).Generar_Home();
-        }
+            HttpSession session = req.getSession(true);
+            session.setAttribute("usuario",recupera);
+
+            return  new Home(recupera).Generar_Home();
+
 
     }
 
