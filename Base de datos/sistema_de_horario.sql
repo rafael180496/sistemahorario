@@ -1,7 +1,7 @@
     CREATE DATABASE shorario;
     
     CREATE TABLE Aula (
-        id_aula INT PRIMARY KEY,
+        id_aula SERIAL  PRIMARY KEY,
         desc_aula TEXT NOT NULL,
         ind_mant BOOLEAN NOT NULL,
         f_creacion DATE NOT NULL
@@ -9,20 +9,20 @@
 
 
     CREATE TABLE Profesor (
-        id_profesor int PRIMARY KEY ,
+        id_profesor SERIAL  PRIMARY KEY ,
         nombre  TEXT NOT NULL, 
         apellido TEXT NOT NULL, 
         f_creacion DATE NOT NULL
     );
 
     CREATE TABLE Carrera (
-        id_carrera int PRIMARY KEY ,
+        id_carrera SERIAL  PRIMARY KEY ,
         nombre  TEXT NOT NULL, 
         f_creacion DATE  NOT NULL
     );
 
     CREATE TABLE Usuario (
-        id_usuario int PRIMARY KEY,
+        id_usuario SERIAL  PRIMARY KEY,
         id_profesor INT NOT NULL,
         nom_usr  CHAR(50) NOT NULL, 
         clave CHAR(30) NOT NULL,
@@ -32,7 +32,7 @@
     );
 
      CREATE TABLE Clase  (
-        id_clase int PRIMARY KEY ,
+        id_clase SERIAL  PRIMARY KEY ,
         nombre  TEXT NOT NULL, 
         f_creacion DATE  NOT NULL
     );
@@ -45,21 +45,21 @@
         f_creacion    DATE  NOT NULL
     );
     CREATE TABLE Grupo (
-        id_grupo int PRIMARY KEY,
+        id_grupo SERIAL  PRIMARY KEY,
         id_profesor  INT NOT NULL, 
         id_clase INT NOT NULL,
         nombre TEXT NOT NULL,
         f_creacion    DATE  NOT NULL
     );
     CREATE TABLE Det_grupo (
-        id_det_grupo int PRIMARY KEY,
+        id_det_grupo SERIAL  PRIMARY KEY,
         carnet CHAR(15)  NOT NULL,
         id_grupo  INT NOT NULL, 
         f_creacion    DATE  NOT NULL
     );
 
      CREATE TABLE Horario (
-        id_horario int PRIMARY KEY ,
+        id_horario SERIAL  PRIMARY KEY ,
         id_clase INT  NOT NULL,
         id_grupo INT  NOT NULL,
         id_aula INT  NOT NULL,
@@ -72,17 +72,17 @@
     );
 
 /*insert*/
-INSERT INTO Profesor
+INSERT INTO Profesor(nombre,apellido,f_creacion)
 VALUES
-    (1, 'Rafael','Hidalgo',to_date('20171027','YYYYMMDD'));
-INSERT INTO Profesor
+    ( 'Rafael','Hidalgo',to_date('20171027','YYYYMMDD'));
+INSERT INTO Profesor(nombre,apellido,f_creacion)
 VALUES
-    (2, 'Marvin', 'Hidalgo', to_date('20171027','YYYYMMDD'));
-INSERT INTO Profesor
+    ( 'Marvin', 'Hidalgo', to_date('20171027','YYYYMMDD'));
+INSERT INTO Profesor(nombre,apellido,f_creacion)
 VALUES
-    (3, 'Kevin', 'Marquez', to_date('20171027','YYYYMMDD'));
+    ( 'Kevin', 'Marquez', to_date('20171027','YYYYMMDD'));
 
 /*insert*/
 
-INSERT INTO Usuario
-VALUES  (1,1,'rhidalgo','upoliei',true,true,to_date('20171027','YYYYMMDD'));  
+INSERT INTO Usuario(id_profesor,nom_usr,clave ,ind_rest,ind_adm ,f_creacion )
+VALUES  (1,'rhidalgo','upoliei',true,true,to_date('20171027','YYYYMMDD'));  

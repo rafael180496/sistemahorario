@@ -8,7 +8,6 @@ import java.sql.Date;
 @Table(name = "Profesor")
 public class Profesor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_profesor")
     private Long id_profesor;
 

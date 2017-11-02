@@ -80,28 +80,24 @@
             <div class="col s6 offset-s3">
 
                 <div class="card hoverable  grey lighten-4">
-
-                    <div class="card-content ">
-                        <p class="card-title">Editar Profesor</p>
-
-                        <p>Nombre:</p>
-                        <div class="input-field ">
-
-                            <input id="nombre" name="txt_nombre" type="text" data-length="50" value="Rafael">
-                            <label for="nombre"></label>
+                    <form action="">
+                        <div class="card-content ">
+                            <p class="card-title">Editar Profesor</p>
+                           
+                            <div class="input-field ">
+                                <input id="txt_nombre" type="text"  data-length="50"  value="" name="txt_nombre" class="validate">
+                                <label for="txt_nombre">Nombre:</label>
+                            </div>
+                            <div class="input-field ">
+                                <input id="txt_apellido" type="text" data-length="50" value="" name="txt_apellido" class="validate">
+                                <label for="txt_apellido">Apellido:</label>
+                            </div>
                         </div>
-                        <p>Apellido:</p>
-                        <div class="input-field ">
-
-                            <input id="apellido" name="txt_apellido" type="text" data-length="50" value="Hidalgo">
-                            <label for="apellido"></label>
+                        <div class="card-action ">
+                                <input type="submit" class="waves-effect waves-light btn" value="Actualizar" >
+                                <a class="waves-effect waves-light btn red" href="#">Cancelar</a>
                         </div>
-                    </div>
-                    <div class="card-action ">
-                        <a class="waves-effect waves-light btn" href="#">Actualizar</a>
-                        <a class="waves-effect waves-light btn red" href="#">Cancelar</a>
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </div>

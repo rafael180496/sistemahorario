@@ -59,4 +59,16 @@ public class ProfesorServiceImp implements ProfesorService{
         profesorRepo.delete(id);
 
     }
+
+    @Override
+    public void GuardarProfesor(Profesor profesor) {
+        profesorRepo.save(profesor);
+    }
+
+    @Override
+    public Long Secuencia() {
+
+
+        return profesorRepo.count()+1;
+    }
 }

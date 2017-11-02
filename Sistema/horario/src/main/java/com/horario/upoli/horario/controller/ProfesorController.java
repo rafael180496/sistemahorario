@@ -5,6 +5,7 @@ import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.ProfesorService;
 import com.horario.upoli.horario.view.Admi_Profesor;
+import com.horario.upoli.horario.view.EditProfesor;
 import com.horario.upoli.horario.view.Login;
 import com.horario.upoli.horario.view.componentes.Mensaje;
 import com.horario.upoli.horario.view.constante.MensajeIco;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
 import java.util.ArrayList;
 
 @RestController
@@ -97,5 +99,67 @@ public class ProfesorController {
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
+
+
+    @RequestMapping(value = "/Profesor/Editar/{id}")
+    public  String Editar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        EditProfesor  nuevo = new EditProfesor();
+        if (id==0){
+            nuevo.setUsuario(recupera);
+            nuevo.setNuevo(true);
+            return nuevo.GenerarEditar();
+
+        }
+
+
+        Profesor muestra= profesorService.BuscarUno(id);
+        nuevo.setUsuario(recupera);
+        nuevo.setNuevo(false);
+        nuevo.setProfesor(muestra);
+        return nuevo.GenerarEditar();
+    }
+
+
+
+    @RequestMapping(value = "/Profesor/Guardar/{id}")
+    public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        Profesor muestra= new Profesor();
+        if(id==0){
+           muestra.setNombre((String) req.getParameter("txt_nombre"));
+            muestra.setApellido((String) req.getParameter("txt_apellido"));
+            java.util.Date  fecha = new java.util.Date();
+            muestra.setF_creacion(new Date(fecha.getTime()));
+            muestra.setId_profesor(profesorService.Secuencia());
+        }
+        else {
+            muestra= profesorService.BuscarUno(id);
+            muestra.setNombre((String) req.getParameter("txt_nombre"));
+            muestra.setApellido((String) req.getParameter("txt_apellido"));
+        }
+
+        profesorService.GuardarProfesor(muestra);
+
+
+        Mensaje Respuesta= new Mensaje();
+        Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
+        Respuesta.setBtn_cancelar(false);
+        Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
+        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        return  Respuesta.Generar_Mensaje(recupera);
+    }
 
 }

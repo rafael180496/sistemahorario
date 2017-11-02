@@ -71,7 +71,7 @@ public class Admi_Profesor  {
 
     private String  Generar_table(){
         String Resultado ="";
-        String Add="#";
+        String Add="/Profesor/Editar/0";
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
@@ -107,7 +107,7 @@ public class Admi_Profesor  {
 
         ArrayList<String> Resultado= new ArrayList<>();
         Filtrar=Filtrar.replace(" ","");
-        String Edit="#",Delete="/Profesor/PreEliminar";
+        String Edit="/Profesor/Editar",Delete="/Profesor/PreEliminar";
 
         //inicio
         Resultado.add("  <tbody>");

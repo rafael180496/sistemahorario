@@ -10,4 +10,6 @@ public interface ProfesorService {
     ArrayList<Profesor> filtrarProfesores(String name);
     Profesor BuscarUno(Long  id);
     void  EliminarProfesor(Long id);
+    void  GuardarProfesor(Profesor profesor);
+    Long  Secuencia();
 }

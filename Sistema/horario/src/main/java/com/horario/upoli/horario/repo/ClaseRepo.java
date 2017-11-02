@@ -1,4 +1,7 @@
 package com.horario.upoli.horario.repo;
 
-public interface ClaseRepo {
+import com.horario.upoli.horario.model.Clase;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ClaseRepo  extends CrudRepository<Clase,Long> {
 }
