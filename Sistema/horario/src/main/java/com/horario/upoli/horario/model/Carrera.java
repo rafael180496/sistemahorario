@@ -1,6 +1,5 @@
 package com.horario.upoli.horario.model;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,35 +7,38 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
+
 @Entity
-@Table(name = "Clase")
-public class Clase {
+@Table(name = "Carrera")
+public class Carrera {
+
     @Id
-    @Column(name = "id_clase")
-    private Long id_clase ;
+    @Column(name = "id_carrera")
+    private  Long id_carrera ;
 
     @NotNull
     @Column(name = "nombre")
-    private String nombre  ;
+    private String nombre;
+
 
     @NotNull
     @Column(name = "f_creacion")
     private Date f_creacion ;
 
-    public Clase(String nombre, Date f_creacion) {
+    public Carrera(String nombre, Date f_creacion) {
         this.nombre = nombre;
         this.f_creacion = f_creacion;
     }
 
-    public Clase() {
+    public Carrera() {
     }
 
-    public Long getId_clase() {
-        return id_clase;
+    public Long getId_carrera() {
+        return id_carrera;
     }
 
-    public void setId_clase(Long id_clase) {
-        this.id_clase = id_clase;
+    public void setId_carrera(Long id_carrera) {
+        this.id_carrera = id_carrera;
     }
 
     public String getNombre() {

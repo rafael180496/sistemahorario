@@ -7,13 +7,14 @@
         f_creacion DATE NOT NULL
     );
 
-
+------------------ya----------------------
     CREATE TABLE Profesor (
         id_profesor SERIAL  PRIMARY KEY ,
         nombre  TEXT NOT NULL, 
         apellido TEXT NOT NULL, 
         f_creacion DATE NOT NULL
     );
+----------------------------------------
 
     CREATE TABLE Carrera (
         id_carrera SERIAL  PRIMARY KEY ,
@@ -31,11 +32,13 @@
         f_creacion DATE NOT NULL
     );
 
+------------------ya----------------------
      CREATE TABLE Clase  (
         id_clase SERIAL  PRIMARY KEY ,
         nombre  TEXT NOT NULL, 
         f_creacion DATE  NOT NULL
     );
+----------------------------------------
 
     CREATE TABLE Alumno (
         carnet CHAR(15) PRIMARY KEY ,
@@ -60,7 +63,6 @@
 
      CREATE TABLE Horario (
         id_horario SERIAL  PRIMARY KEY ,
-        id_clase INT  NOT NULL,
         id_grupo INT  NOT NULL,
         id_aula INT  NOT NULL,
         dia  TEXT NOT NULL, 

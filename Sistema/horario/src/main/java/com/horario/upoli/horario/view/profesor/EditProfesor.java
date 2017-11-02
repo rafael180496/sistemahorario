@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view;
+package com.horario.upoli.horario.view.profesor;
 
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;

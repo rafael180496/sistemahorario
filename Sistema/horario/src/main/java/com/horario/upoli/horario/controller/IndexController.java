@@ -29,12 +29,4 @@ private Html nuevo= new Html();
     }
 
 
-
-    @RequestMapping(value = "/nuevo")
-    String  index2(HttpServletRequest req, HttpServletResponse res)
-    {
-        System.out.println(req);
-        return  req.getParameter("edad");
-    }
-
 }

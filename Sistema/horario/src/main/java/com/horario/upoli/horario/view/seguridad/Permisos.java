@@ -14,7 +14,7 @@ public  class  Permisos {
          permisos.add(new Permiso("#","Usuarios"));
         permisos.add(new Permiso("#","Aulas"));
         permisos.add(new Permiso("#","Carreras"));
-        permisos.add(new Permiso("#","Clases"));
+        permisos.add(new Permiso("/Clase","Clases"));
         permisos.add(new Permiso("#","Alumnos"));
         permisos.add(new Permiso("/login","Salir"));
 

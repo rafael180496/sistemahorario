@@ -1,12 +1,12 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.model.Profesor;
+import com.horario.upoli.horario.model.Clase;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
-import com.horario.upoli.horario.service.ProfesorService;
-import com.horario.upoli.horario.view.profesor.Admi_Profesor;
-import com.horario.upoli.horario.view.profesor.EditProfesor;
+import com.horario.upoli.horario.service.ClaseService;
 import com.horario.upoli.horario.view.Login;
+import com.horario.upoli.horario.view.clase.Admin_clase;
+import com.horario.upoli.horario.view.clase.EditClase;
 import com.horario.upoli.horario.view.componentes.Mensaje;
 import com.horario.upoli.horario.view.constante.MensajeIco;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +21,14 @@ import javax.servlet.http.HttpSession;
 import java.sql.Date;
 
 @RestController
-public class ProfesorController {
+public class ClaseController {
+
 
     @Autowired
-    private ProfesorService  profesorService;
+    private  ClaseService claseService;
 
-
-
-    @RequestMapping(value = "/Profesor",method = RequestMethod.GET)
-    public  String Index(HttpServletRequest req, HttpServletResponse res)
+    @RequestMapping(value = "/Clase",method = RequestMethod.GET)
+    public  String IndexClase(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
@@ -41,10 +40,10 @@ public class ProfesorController {
         }
 
 
-        return  new Admi_Profesor(recupera,profesorService.listaProfesores()).Generar_Admi_Profesor();
+        return  new Admin_clase(recupera,claseService.listaClase()).Generar_Admi_Clase();
     }
 
-    @RequestMapping(value = "/Profesor/filtrar")
+    @RequestMapping(value = "/Clase/filtrar")
     public  String Filtrar(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
@@ -57,10 +56,11 @@ public class ProfesorController {
             return  new Login().Generar_login(false);
         }
 
-        return  new Admi_Profesor(recupera,profesorService.filtrarProfesores(filtro)).Generar_Admi_Profesor();
+        return  new Admin_clase(recupera,claseService.filtrarClase(filtro)).Generar_Admi_Clase();
     }
-    @RequestMapping(value = "/Profesor/PreEliminar/{id}")
-    public  String PreEliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
+
+    @RequestMapping(value = "/Clase/PreEliminar/{id}")
+    public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
@@ -68,17 +68,17 @@ public class ProfesorController {
         {
             return  new Login().Generar_login(false);
         }
-        Profesor muestra= profesorService.BuscarUno(id);
+        Clase muestra= claseService.BuscarUno(id);
         Mensaje Respuesta= new Mensaje();
-        Respuesta.setCuerpo("¿Desea Eliminar el profesor?");
+        Respuesta.setCuerpo("¿Desea Eliminar esta Clase?");
         Respuesta.setBtn_cancelar(true);
-        Respuesta.setBtn_rojo(new Permiso("/Profesor","Cancelar"));
-        Respuesta.setBtn_verde(new Permiso("/Profesor/Eliminar/"+muestra.getId_profesor(),"Eliminar"));
+        Respuesta.setBtn_rojo(new Permiso("/Clase","Cancelar"));
+        Respuesta.setBtn_verde(new Permiso("/Clase/Eliminar/"+muestra.getId_clase(),"Eliminar"));
         Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
-    @RequestMapping(value = "/Profesor/Eliminar/{id}")
+    @RequestMapping(value = "/Clase/Eliminar/{id}")
     public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
@@ -87,19 +87,19 @@ public class ProfesorController {
         {
             return  new Login().Generar_login(false);
         }
-        Profesor muestra= profesorService.BuscarUno(id);
-        profesorService.EliminarProfesor(muestra.getId_profesor());
+        Clase muestra= claseService.BuscarUno(id);
+        claseService.EliminarClase(muestra.getId_clase());
         Mensaje Respuesta= new Mensaje();
-        Respuesta.setCuerpo("Eliminacion  de profesor exitosa");
+        Respuesta.setCuerpo("Eliminacion  de clase exitosa");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
+        Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
         Respuesta.setTipo(MensajeIco.Bien.mostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
 
 
-    @RequestMapping(value = "/Profesor/Editar/{id}")
+    @RequestMapping(value = "/Clase/Editar/{id}")
     public  String Editar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
@@ -108,7 +108,7 @@ public class ProfesorController {
         {
             return  new Login().Generar_login(false);
         }
-        EditProfesor  nuevo = new EditProfesor();
+        EditClase nuevo = new EditClase();
         if (id==0){
             nuevo.setUsuario(recupera);
             nuevo.setNuevo(true);
@@ -117,16 +117,14 @@ public class ProfesorController {
         }
 
 
-        Profesor muestra= profesorService.BuscarUno(id);
+        Clase muestra= claseService.BuscarUno(id);
         nuevo.setUsuario(recupera);
         nuevo.setNuevo(false);
-        nuevo.setProfesor(muestra);
+        nuevo.setClase(muestra);
         return nuevo.GenerarEditar();
     }
 
-
-
-    @RequestMapping(value = "/Profesor/Guardar/{id}")
+    @RequestMapping(value = "/Clase/Guardar/{id}")
     public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
@@ -135,29 +133,26 @@ public class ProfesorController {
         {
             return  new Login().Generar_login(false);
         }
-        Profesor muestra= new Profesor();
+        Clase muestra= new Clase();
         if(id==0){
-           muestra.setNombre((String) req.getParameter("txt_nombre"));
-            muestra.setApellido((String) req.getParameter("txt_apellido"));
+            muestra.setNombre((String) req.getParameter("txt_nombre"));
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
-            muestra.setId_profesor(profesorService.Secuencia());
+            muestra.setId_clase(claseService.Secuencia());
         }
         else {
-            muestra= profesorService.BuscarUno(id);
+            muestra= claseService.BuscarUno(id);
             muestra.setNombre((String) req.getParameter("txt_nombre"));
-            muestra.setApellido((String) req.getParameter("txt_apellido"));
         }
 
-        profesorService.GuardarProfesor(muestra);
+        claseService.GuardarClase(muestra);
 
 
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
+        Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
         Respuesta.setTipo(MensajeIco.Bien.mostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
-
 }
