@@ -11,12 +11,12 @@ public  class  Permisos {
     {
          ArrayList<Permiso> permisos = new ArrayList<>();
         permisos.add(new Permiso("/Profesor","Profesores"));
-         permisos.add(new Permiso("#","Usuarios"));
-        permisos.add(new Permiso("#","Aulas"));
-        permisos.add(new Permiso("#","Carreras"));
+        permisos.add(new Permiso("#","Usuarios"));
+        permisos.add(new Permiso("/Aula","Aulas"));
+        permisos.add(new Permiso("/Carrera","Carreras"));
         permisos.add(new Permiso("/Clase","Clases"));
         permisos.add(new Permiso("#","Alumnos"));
-        permisos.add(new Permiso("/login","Salir"));
+        permisos.add(new Permiso("/login","<i class=\"material-icons\">exit_to_app</i>"));
 
 
 
@@ -27,10 +27,10 @@ public  class  Permisos {
     {
         ArrayList<Permiso> permisos = new ArrayList<>();
 
-        permisos.add(new Permiso("/login","Salir"));
-
-
-
+        permisos.add(new Permiso("#","Alumnos"));
+        permisos.add(new Permiso("#","Grupos"));
+        permisos.add(new Permiso("#","Horarios"));
+        permisos.add(new Permiso("/login","<i class=\"material-icons\">exit_to_app</i>"));
 
         return permisos;
     }

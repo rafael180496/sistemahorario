@@ -14,14 +14,14 @@
         apellido TEXT NOT NULL, 
         f_creacion DATE NOT NULL
     );
-----------------------------------------
+---------------------ya-------------------
 
     CREATE TABLE Carrera (
         id_carrera SERIAL  PRIMARY KEY ,
         nombre  TEXT NOT NULL, 
         f_creacion DATE  NOT NULL
     );
-
+-----------------------------------------------
     CREATE TABLE Usuario (
         id_usuario SERIAL  PRIMARY KEY,
         id_profesor INT NOT NULL,

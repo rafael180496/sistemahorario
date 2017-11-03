@@ -111,7 +111,8 @@ public class Mensaje {
                     "                    </div>\n" +
                     "                </div>\n" +
                     "            </div>\n" +
-                    "        </div>");
+                    "        </div>"+
+            "</div>\"");
 
             cuerpo.add(Footer.getFooter());
             html.setCuerpo(cuerpo);

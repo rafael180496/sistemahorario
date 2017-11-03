@@ -28,7 +28,7 @@ public class Index  {
         scrip.add(Scrips.init.mostrar());
         ArrayList <String> cuerpoFormulario= new ArrayList<>();
         cuerpoFormulario.add("<div class=\"input-field\">\n" +
-                "                            <input value=\"\" id=\"busq_horario\" type=\"text\" name=\"txt_horario\">\n" +
+                "                            <input value=\"\" id=\"busq_horario\" required=\"\" aria-required=\"true\" class=\"validate\" type=\"text\" name=\"txt_horario\">\n" +
                 "                            <label class=\"active\" for=\"busq_horario\">Ingrese su carnet de estudiante para recibir su horario.</label>\n" +
                 "                        </div>\n" +
                 "                        <input type=\"submit\" value=\"Buscar\" class=\"btn-large waves-effect waves-light teal lighten-1\">");

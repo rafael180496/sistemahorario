@@ -2,71 +2,23 @@ package com.horario.upoli.horario.view.profesor;
 
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
-import com.horario.upoli.horario.view.componentes.Footer;
-import com.horario.upoli.horario.view.componentes.Formulario;
-import com.horario.upoli.horario.view.componentes.Html;
-import com.horario.upoli.horario.view.componentes.Navbar;
-import com.horario.upoli.horario.view.constante.Estilos;
+import com.horario.upoli.horario.view.componentes.*;
 import com.horario.upoli.horario.view.constante.Metodos;
-import com.horario.upoli.horario.view.constante.Scrips;
-import com.horario.upoli.horario.view.seguridad.Permisos;
 import java.util.ArrayList;
 
-public class Admi_Profesor  {
-    private Html html = new Html();
-    private Navbar navbar= new Navbar("SDH");
-    private Usuario usuario= new Usuario();
-    private Formulario  formulario= new Formulario();
+public class Admi_Profesor extends Editor {
+
     private String Filtrar= "";
     private ArrayList<Profesor> Aux= new ArrayList<>();
 
 
+   public  Admi_Profesor(Usuario usuario,ArrayList<Profesor> Aux)
+   {
+       super(usuario);
+       this.Aux=Aux;
+   }
 
 
-    public Admi_Profesor(Usuario usuario,ArrayList<Profesor> Aux) {
-        this.Aux=Aux;
-        this.usuario = usuario;
-    }
-
-    private ArrayList<String> Enviar_scrip(){
-        ArrayList <String> escr= new ArrayList<>();
-        escr.add(Scrips.jquery.mostrar());
-        escr.add(Scrips.materialize.mostrar());
-
-        return escr;
-    }
-
-    private ArrayList <String> Enviar_Estilo(){
-        ArrayList <String> est= new ArrayList<>();
-        est.add(Estilos.Material_Icons.mostrar());
-        est.add(Estilos.materialize.mostrar());
-
-        return  est;
-    }
-
-
-    private  String Generar_navBar()
-    {
-
-        if (usuario.getInd_adm())
-        {
-            for (Permiso n: Permisos.PermisosAdmin()
-                    ) {
-                navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
-            }
-        }
-        else
-        {
-            for (Permiso n: Permisos.PermisosProfesor()
-                    ) {
-                navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
-            }
-        }
-
-
-        return navbar.Generar_Navbar();
-    }
 
 
     private String  Generar_table(){
@@ -135,8 +87,10 @@ public class Admi_Profesor  {
         return  Resultado;
     }
 
-    private String Generar_formulario()
+    @Override
+    public String Enviar_Formulario()
     {
+        Formulario formulario = new Formulario();
         formulario.setAccion("/Profesor/filtrar");
         formulario.setMetodo(Metodos.POST.mostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
@@ -162,12 +116,12 @@ public class Admi_Profesor  {
         Cuerpo.add(Generar_navBar());
         Cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"row\">\n" +
-                "            <div class=\"col s12 \">\n" +
+                "            <div class=\"col s12  \">\n" +
                 "\n" +
                 "\n" +
-                "                <div class=\"card-panel  \">\n" +
+                "                <div class=\"card-panel hoverable  grey lighten-4\">\n" +
                 "                    <h4>Administracion de Profesores:</h4>");
-        Cuerpo.add(Generar_formulario());
+        Cuerpo.add(Enviar_Formulario());
         Cuerpo.add(Generar_table());
         Cuerpo.add("</table>\n" +
                 "\n" +

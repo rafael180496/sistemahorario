@@ -1,30 +1,26 @@
-package com.horario.upoli.horario.view.clase;
+package com.horario.upoli.horario.view.carrera;
 
-import com.horario.upoli.horario.model.Clase;
+import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.view.componentes.*;
 import com.horario.upoli.horario.view.constante.Metodos;
 
 import java.util.ArrayList;
 
-public class Admin_clase extends Editor {
-
+public class Admin_carrera extends Editor {
 
     private String Filtrar= "";
-    private ArrayList<Clase> Aux= new ArrayList<>();
+    private ArrayList<Carrera> Aux= new ArrayList<>();
 
-
-    public  Admin_clase(Usuario usuario,ArrayList<Clase> Aux)
+    public  Admin_carrera(Usuario usuario,ArrayList<Carrera> Aux)
     {
         super(usuario);
         this.Aux=Aux;
     }
 
-
-
     private String  Generar_table(){
         String Resultado ="";
-        String Add="/Clase/Editar/0";
+        String Add="/Carrera/Editar/0";
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
@@ -52,28 +48,26 @@ public class Admin_clase extends Editor {
     }
 
 
-
-
     private ArrayList<String> Generar_cuerpo()
     {
 
         ArrayList<String> Resultado= new ArrayList<>();
         Filtrar=Filtrar.replace(" ","");
-        String Edit="/Clase/Editar",Delete="/Clase/PreEliminar";
+        String Edit="/Carrera/Editar",Delete="/Carrera/PreEliminar";
 
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Clase n:Aux
+        for (Carrera n:Aux
                 ) {
             Resultado.add("<tr>\n" +
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +
                     "                                <td>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light \" href=\""+Edit+"/"+n.getId_clase()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light \" href=\""+Edit+"/"+n.getId_carrera()+"\">\n" +
                     "                                        <i class=\"material-icons\">mode_edit</i>\n" +
                     "                                    </a>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light red\" href=\""+Delete+"/"+n.getId_clase()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light red\" href=\""+Delete+"/"+n.getId_carrera()+"\">\n" +
                     "                                        <i class=\"material-icons\">delete</i>\n" +
                     "                                    </a>\n" +
                     "                                </td>\n" +
@@ -86,17 +80,17 @@ public class Admin_clase extends Editor {
         return  Resultado;
     }
 
-
     @Override
     public String Enviar_Formulario()
     {
+
         Formulario formulario = new Formulario();
-        formulario.setAccion("/Clase/filtrar");
+        formulario.setAccion("/Carrera/filtrar");
         formulario.setMetodo(Metodos.POST.mostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +
-                "                            <label for=\"buscar\">Filtrar Clase</label>\n" +
+                "                            <label for=\"buscar\">Filtrar Carrera</label>\n" +
                 "                        </div>\n" +
                 "                        <div class=\"input-field col s6\">\n" +
                 "                            <input type=\"submit\" value=\"Buscar\" class=\"waves-effect waves-light btn\">\n" +
@@ -108,7 +102,7 @@ public class Admin_clase extends Editor {
 
 
 
-    public  String Generar_Admi_Clase(){
+    public  String Generar_Admi_Carrera(){
         html.setTitulo("SDH");
         html.setScrip(Enviar_scrip());
         html.setEstilos(Enviar_Estilo());
@@ -122,7 +116,7 @@ public class Admin_clase extends Editor {
                 "\n" +
                 "\n" +
                 "                <div class=\"card-panel  hoverable  grey lighten-4\">\n" +
-                "                    <h4>Administracion de Clases:</h4>");
+                "                    <h4>Administracion de Carreras:</h4>");
         Cuerpo.add(Enviar_Formulario());
         Cuerpo.add(Generar_table());
         Cuerpo.add("</table>\n" +

@@ -83,19 +83,20 @@
                     <form action="">
                         <div class="card-content ">
                             <p class="card-title">Editar Profesor</p>
-                           
+
                             <div class="input-field ">
-                                <input id="txt_nombre" type="text"  data-length="50"  value="" name="txt_nombre" class="validate">
+                                <input id="txt_nombre" type="text" data-length="10" value="" name="txt_nombre" class="validate" required="" aria-required="true">
                                 <label for="txt_nombre">Nombre:</label>
                             </div>
-                            <div class="input-field ">
-                                <input id="txt_apellido" type="text" data-length="50" value="" name="txt_apellido" class="validate">
-                                <label for="txt_apellido">Apellido:</label>
-                            </div>
+                            <br>
+                            <p>
+                                <input type="checkbox" id="check_mant" checked name="check_mant" />
+                                <label for="check_mant">Mantenimiento</label>
+                            </p>
                         </div>
                         <div class="card-action ">
-                                <input type="submit" class="waves-effect waves-light btn" value="Actualizar" >
-                                <a class="waves-effect waves-light btn red" href="#">Cancelar</a>
+                            <input type="submit" class="waves-effect waves-light btn" value="Actualizar">
+                            <a class="waves-effect waves-light btn red" href="#">Cancelar</a>
                         </div>
                     </form>
                 </div>
@@ -117,7 +118,7 @@
                         <p>Nombre:</p>
                         <div class="input-field ">
 
-                            <input id="nombre" name="txt_nombre" type="text" data-length="50" value="Rafael">
+                            <input id="nombre" name="txt_nombre" type="text" data-length="10" value="Rafael">
                             <label for="nombre"></label>
                         </div>
                         <p>Apellido:</p>
@@ -160,7 +161,11 @@
     <!--  Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
-
+    <script>
+        $(document).ready(function() {
+            $('input#txt_nombre').characterCounter();
+        });
+    </script>
 
 </body>
 

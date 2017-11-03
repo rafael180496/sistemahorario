@@ -90,14 +90,14 @@ public class Login {
         //--------------------------------------------------------------------
         cuerpo_f.add("<div class='row'>\n" +
                 "                                <div class='input-field col s12'>\n" +
-                "                                    <input class='validate' type=\"text\" name='txt_usuario' id='usuario' />\n" +
+                "                                    <input class='validate' required=\"\" aria-required=\"true\" type=\"text\" name='txt_usuario' id='usuario' />\n" +
                 "                                    <label for='usuario'>Usuario</label>\n" +
                 "                                </div>\n" +
                 "                            </div>");
         //--------------------------------------------------------------------
         cuerpo_f.add(" <div class='row'>\n" +
                 "                                <div class='input-field col s12'>\n" +
-                "                                    <input class='validate' type='password' name='txt_clave' id='clave' />\n" +
+                "                                    <input class='validate' required=\"\" aria-required=\"true\" type='password' name='txt_clave' id='clave' />\n" +
                 "                                    <label for='clave'>Clave</label>\n" +
                 "                                </div>\n" +
                 "                            \n" +
