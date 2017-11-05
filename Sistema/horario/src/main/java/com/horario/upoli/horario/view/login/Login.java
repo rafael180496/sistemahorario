@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view;
+package com.horario.upoli.horario.view.login;
 
 import com.horario.upoli.horario.recursos.Link;
 import com.horario.upoli.horario.view.componentes.Formulario;

@@ -3,9 +3,7 @@ package com.horario.upoli.horario.controller;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.service.UsuarioService;
 import com.horario.upoli.horario.view.Home;
-import com.horario.upoli.horario.view.Login;
-import com.horario.upoli.horario.view.componentes.Usuario_Env;
-import com.sun.org.apache.regexp.internal.RE;
+import com.horario.upoli.horario.view.login.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

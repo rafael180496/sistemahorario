@@ -27,6 +27,7 @@
         id_profesor INT NOT NULL,
         nom_usr  CHAR(50) NOT NULL, 
         clave CHAR(30) NOT NULL,
+        correo TEXT not null,
         ind_rest BOOLEAN NOT NULL,
         ind_adm BOOLEAN NOT NULL,
         f_creacion DATE NOT NULL
@@ -86,5 +87,5 @@ VALUES
 
 /*insert*/
 
-INSERT INTO Usuario(id_profesor,nom_usr,clave ,ind_rest,ind_adm ,f_creacion )
-VALUES  (1,'rhidalgo','upoliei',true,true,to_date('20171027','YYYYMMDD'));  
+INSERT INTO Usuario(id_profesor,nom_usr,clave,correo ,ind_rest,ind_adm ,f_creacion )
+VALUES  (1,'rhidalgo','upoliei','rafael180496@gmail.com',true,true,to_date('20171027','YYYYMMDD'));  

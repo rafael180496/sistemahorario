@@ -24,6 +24,10 @@ public class Usuario {
     private String clave;
 
     @NotNull
+    @Column(name = "correo")
+    private String correo;
+
+    @NotNull
     @Column(name = "ind_rest")
     private Boolean ind_rest;
 
@@ -35,16 +39,25 @@ public class Usuario {
     @Column(name = "f_creacion")
     private Date f_creacion;
 
-    public Usuario(Long id_profesor, String nom_usr, String clave, Boolean ind_rest, Boolean ind_adm, Date f_creacion) {
+    public Usuario(Long id_profesor, String nom_usr, String clave, String correo, Boolean ind_rest, Boolean ind_adm, Date f_creacion) {
         this.id_profesor = id_profesor;
         this.nom_usr = nom_usr;
         this.clave = clave;
+        this.correo = correo;
         this.ind_rest = ind_rest;
         this.ind_adm = ind_adm;
         this.f_creacion = f_creacion;
     }
 
     public Usuario() {
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public Long getId_usuario() {

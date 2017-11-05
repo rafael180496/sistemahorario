@@ -4,7 +4,7 @@ import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.CarreraService;
-import com.horario.upoli.horario.view.Login;
+import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.carrera.Admin_carrera;
 import com.horario.upoli.horario.view.carrera.EditCarrera;
 import com.horario.upoli.horario.view.componentes.Mensaje;

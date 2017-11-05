@@ -4,7 +4,7 @@ import com.horario.upoli.horario.model.Aula;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.AulaService;
-import com.horario.upoli.horario.view.Login;
+import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.aula.Admin_aula;
 import com.horario.upoli.horario.view.aula.EditAula;
 import com.horario.upoli.horario.view.componentes.Mensaje;

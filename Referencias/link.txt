@@ -9,6 +9,10 @@ http://www.heroesdelcodigo.com/crud-usando-spring-boot-spring-data-jpa-thymeleaf
 
 ---seleccionar una base de datos deseada, aquí vamos a conectar con el testdb base de datos:
 
+
+--sistemahorarioSDH@gmail.com
+--upoli123
+
 postgres=# \c base_datos;
 postgres=# \c shorario;
 -----mostrar las  tablas

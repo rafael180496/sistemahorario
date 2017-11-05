@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.view.seguridad;
 
-public enum Correo {
+public enum CorreoUser {
     Usuario("sistemahorarioSDH@gmail.com"),
     Clave("upoli123");
 
@@ -8,7 +8,7 @@ public enum Correo {
     private String mostrar;
 
 
-    Correo(String mostrar){
+    CorreoUser(String mostrar){
         this.mostrar=mostrar;
     }
     public String mostrar() {
