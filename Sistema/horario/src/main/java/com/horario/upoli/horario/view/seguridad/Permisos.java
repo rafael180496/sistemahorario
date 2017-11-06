@@ -11,7 +11,7 @@ public  class  Permisos {
     {
          ArrayList<Permiso> permisos = new ArrayList<>();
         permisos.add(new Permiso("/Profesor","Profesores"));
-        permisos.add(new Permiso("#","Usuarios"));
+        permisos.add(new Permiso("/Usuario","Usuarios"));
         permisos.add(new Permiso("/Aula","Aulas"));
         permisos.add(new Permiso("/Carrera","Carreras"));
         permisos.add(new Permiso("/Clase","Clases"));

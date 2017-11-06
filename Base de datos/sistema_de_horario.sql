@@ -88,4 +88,12 @@ VALUES
 /*insert*/
 
 INSERT INTO Usuario(id_profesor,nom_usr,clave,correo ,ind_rest,ind_adm ,f_creacion )
-VALUES  (1,'rhidalgo','upoliei','rafael180496@gmail.com',true,true,to_date('20171027','YYYYMMDD'));  
+VALUES  (1,'rhidalgo','upoliei','rafael180496@gmail.com',false,true,to_date('20171027','YYYYMMDD'));  
+
+
+DELETE FROM Usuario
+where id_usuario =2;
+
+
+INSERT INTO Usuario(id_profesor,nom_usr,clave,correo ,ind_rest,ind_adm ,f_creacion )
+VALUES  (3,'kmarquez','upoliei','kmarquez@thedataage.com',false,true,to_date('20171027','YYYYMMDD'));  

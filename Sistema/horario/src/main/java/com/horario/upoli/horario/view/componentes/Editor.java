@@ -12,13 +12,14 @@ public abstract class Editor {
     protected Html html = new Html();
     private Usuario usuario = new Usuario();
     private boolean nuevo=false;
-
+    private String scrip_m="";
 
     public abstract String Enviar_Formulario();
     public String GenerarEditar(){
         ArrayList<String> cuerpo= new ArrayList<>();
         html.setTitulo("SDH");
         html.setScrip(Enviar_scrip());
+
         html.setEstilos(Enviar_Estilo());
         cuerpo.add(Generar_navBar());
         cuerpo.add("<div class=\"container\">\n" +
@@ -35,6 +36,7 @@ public abstract class Editor {
                 "    </div>");
         cuerpo.add(Footer.getFooter());
         html.setCuerpo(cuerpo);
+        html.setScrip_manual(scrip_m);
         return html.Generar_Html();
     }
 
@@ -102,5 +104,13 @@ public abstract class Editor {
     }
     public void setNuevo(boolean nuevo) {
         this.nuevo = nuevo;
+    }
+
+    public String getScrip_m() {
+        return scrip_m;
+    }
+
+    public void setScrip_m(String scrip_m) {
+        this.scrip_m = scrip_m;
     }
 }

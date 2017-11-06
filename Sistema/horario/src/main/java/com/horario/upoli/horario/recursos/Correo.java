@@ -22,6 +22,9 @@ private  String Para="";
         Para = para;
     }
 
+    public Correo() {
+    }
+
     public Correo(String asunto, String mensage, String para) {
         Asunto = asunto;
         Mensage = mensage;

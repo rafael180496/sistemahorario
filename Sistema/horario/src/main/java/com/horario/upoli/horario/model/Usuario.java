@@ -10,10 +10,14 @@ public class Usuario {
     @Id
     @Column(name = "id_usuario")
     private Long id_usuario;
-
+/*
     @NotNull
     @Column(name = "id_profesor")
-    private  Long id_profesor;
+    private  Long id_profesor;*/
+
+    @OneToOne
+    @JoinColumn(name="id_profesor")
+    private Profesor profesor;
 
     @NotNull
     @Column(name = "nom_usr")
@@ -39,8 +43,8 @@ public class Usuario {
     @Column(name = "f_creacion")
     private Date f_creacion;
 
-    public Usuario(Long id_profesor, String nom_usr, String clave, String correo, Boolean ind_rest, Boolean ind_adm, Date f_creacion) {
-        this.id_profesor = id_profesor;
+    public Usuario(Profesor profesor, String nom_usr, String clave, String correo, Boolean ind_rest, Boolean ind_adm, Date f_creacion) {
+        this.profesor = profesor;
         this.nom_usr = nom_usr;
         this.clave = clave;
         this.correo = correo;
@@ -67,13 +71,21 @@ public class Usuario {
     public void setId_usuario(Long id_usuario) {
         this.id_usuario = id_usuario;
     }
-
+/*
     public Long getId_profesor() {
         return id_profesor;
     }
 
     public void setId_profesor(Long id_profesor) {
         this.id_profesor = id_profesor;
+    }*/
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 
     public String getNom_usr() {

@@ -73,12 +73,12 @@ public class LoginResta {
         Formulario formulario= new Formulario();
         formulario.setMetodo(Metodos.POST.mostrar());
         formulario.setId_f("");
-        formulario.setAccion("/login/recuperar/cambiar");
+        formulario.setAccion("/login/cambiar/guardar");
         ArrayList <String> cuerpo_f= new ArrayList<>();
 //--------------------------------------------------------------------
         cuerpo_f.add("<div class='row'>\n" +
                 "                                <div class='col s12'>\n" +
-                "                                    <img src=\"https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Fkey.png?alt=media&token=bc2c87fa-454e-4a35-91f8-240370ff474d\" alt=\"\" class=\"circle responsive-img valign profile-image-login\">\n" +
+                "                                    <img src=\"https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Fkey.png?alt=media&token=bc2c87fa-454e-4a35-91f8-240370ff474d\" alt=\"\" class=\" responsive-img valign profile-image-login\">\n" +
                 "                                    ");
 //--------------------------------------------------------------------
 
@@ -91,15 +91,15 @@ public class LoginResta {
         //--------------------------------------------------------------------
         cuerpo_f.add("<div class='row'>\n" +
                 "                                <div class='input-field col s12'>\n" +
-                "                                    <input class='validate' type=\"text\" required=\"\" aria-required=\"true\" name='txt_clave_r' id='txt_clave_r' value='' />\n" +
-                "                                    <label for='txt_clave_r'>Clave de recuperacion</label>\n" +
+                "                                    <input class='validate' type=\"password\" required=\"\" aria-required=\"true\" name='txt_clave_n' id='txt_clave_n' value='' />\n" +
+                "                                    <label for='txt_clave_n'>Nueva Clave</label>\n" +
                 "                                </div>\n" +
                 "                            </div>");
 
         cuerpo_f.add("<div class='row'>\n" +
                 "                                <div class='input-field col s12'>\n" +
-                "                                    <input class='validate' type=\"text\" required=\"\" aria-required=\"true\" name='txt_clave' id='txt_clave' value='' />\n" +
-                "                                    <label for='txt_clave'>Nueva clave</label>\n" +
+                "                                    <input class='validate' type=\"password\" required=\"\" aria-required=\"true\" name='txt_clave_c' id='txt_clave_c' value='' />\n" +
+                "                                    <label for='txt_clave_c'>Confirmar Clave</label>\n" +
                 "                                </div>\n" +
                 "                            </div>");
 

@@ -82,17 +82,39 @@
                 <div class="card hoverable  grey lighten-4">
                     <form action="">
                         <div class="card-content ">
-                            <p class="card-title">Editar Profesor</p>
+                            <p class="card-title">Editar Usuario</p>
 
                             <div class="input-field ">
-                                <input id="txt_nombre" type="text" data-length="10" value="" name="txt_nombre" class="validate" required="" aria-required="true">
-                                <label for="txt_nombre">Nombre:</label>
+                                <input id="txt_nombre" type="text" required="" aria-required="true" data-length="25" value="" name="txt_nombre" class="validate" required="" aria-required="true">
+                                <label for="txt_nombre">Nombre de usuario:</label>
                             </div>
+                            <div class="input-field ">
+                                <input id="txt_correo" type="email" required="" aria-required="true" data-length="70" value="" name="txt_correo" class="validate" required="" aria-required="true">
+                                <label for="txt_correo">Correo:</label>
+                            </div>
+                            <div class="input-field ">
+                                <select required="" aria-required="true" name="dp_profesor">
+                                            <option value="" disabled >Seleccione</option>
+                                            <option value="1" selected>Rafael Hidalgo</option>
+                                            <option value="2">Kevin marquez</option>
+                                            <option value="3">Marvin Hidalgo</option>
+                                            </select>
+                                <label>Profesor por vincular:</label>
+                            </div>
+
                             <br>
                             <p>
-                                <input type="checkbox" id="check_mant" checked name="check_mant" />
-                                <label for="check_mant">Mantenimiento</label>
+                                <input type="checkbox" id="check_admin" checked name="check_admin" />
+                                <label for="check_admin">Administrador</label>
                             </p>
+
+                            <br>
+                            <p>
+                                <input type="checkbox" id="check_rest" checked name="check_rest" />
+                                <label for="check_rest">Restablecer</label>
+                            </p>
+
+
                         </div>
                         <div class="card-action ">
                             <input type="submit" class="waves-effect waves-light btn" value="Actualizar">
@@ -104,39 +126,7 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="section"></div>
-        <div class="row">
 
-            <div class="col s6 offset-s3">
-
-                <div class="card hoverable  grey lighten-4">
-
-                    <div class="card-content ">
-                        <p class="card-title">Agregar Profesor</p>
-
-                        <p>Nombre:</p>
-                        <div class="input-field ">
-
-                            <input id="nombre" name="txt_nombre" required="" aria-required="true" type="text" data-length="10" value="Rafael">
-                            <label for="nombre"></label>
-                        </div>
-                        <p>Apellido:</p>
-                        <div class="input-field ">
-
-                            <input id="apellido" name="txt_apellido" required="" aria-required="true" type="text" data-length="50" value="Hidalgo">
-                            <label for="apellido"></label>
-                        </div>
-                    </div>
-                    <div class="card-action ">
-                        <a class="waves-effect waves-light btn" href="#">Guardar</a>
-                        <a class="waves-effect waves-light btn red" href="#">Cancelar</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer class="page-footer teal">
         <div class="container">
@@ -163,7 +153,15 @@
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
     <script>
         $(document).ready(function() {
-            $('input#txt_nombre').characterCounter();
+            $('select').material_select();
+
+            // for HTML5 "required" attribute
+            $("select[required]").css({
+                display: "inline",
+                height: 0,
+                padding: 0,
+                width: 0
+            });
         });
     </script>
 

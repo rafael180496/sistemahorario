@@ -67,6 +67,8 @@ public class Login {
 
     private String Enviar_Formulario(boolean Error){
         String MensajeError="<h6 class=\"red-text\">Usuario o Clavé Incorrecta</h6>";
+
+        Link recupera=new Link("Olvidaste tu contraseña?","/login/recuperar");
         Link regresar=new Link("Regresar","/");
         Formulario formulario= new Formulario();
         formulario.setMetodo(Metodos.POST.mostrar());
@@ -112,9 +114,12 @@ public class Login {
         cuerpo_f.add(regresar.Generar_a());
         //--------------------------------------------------------------------
         cuerpo_f.add("<br>\n" +
-                "                                    <input type=\"submit\" value=\"Ingresar\" class='col s12 btn btn-large waves-effect '>\n" +
-                "                                </div>\n" +
-                "                            </center>");
+                "                                    <input type=\"submit\" value=\"Ingresar\" class='col s12 btn btn-large waves-effect '>\n" );
+        cuerpo_f.add(recupera.Generar_a());
+
+         cuerpo_f.add("                                </div>" +
+                 "                        </center>");
+
 
         formulario.setCuerpo_formulario(cuerpo_f);
 
