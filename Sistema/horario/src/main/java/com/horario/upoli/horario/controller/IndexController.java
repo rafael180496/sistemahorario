@@ -1,12 +1,6 @@
 package com.horario.upoli.horario.controller;
-
-import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.view.Index;
-import com.horario.upoli.horario.view.componentes.Formulario;
 import com.horario.upoli.horario.view.componentes.Html;
-import com.horario.upoli.horario.view.componentes.NavbarIndex;
-import com.horario.upoli.horario.view.constante.Metodos;
-import javafx.scene.control.Alert;
 import org.springframework.web.bind.annotation.*;
 
 

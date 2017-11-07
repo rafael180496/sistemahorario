@@ -32,22 +32,22 @@ public class ValidacionServiceImp implements ValidacionService {
 
         for (Profesor p:ListadoP
              ) {
-            boolean esta= false;
+          //  boolean esta= false;
 
-            for (Usuario u:ListadoU
-                 ) {
-                if (u.getProfesor().getId_profesor()==p.getId_profesor())
+           /* for (Usuario u:ListadoU
+                 ) {*/
+              /*  if (u.getProfesor().getId_profesor()==p.getId_profesor())
                 {
                     esta=true;
                     break;
 
-                }
+                }*/
 
-            }
-            if(!esta)
-            {
+         //   }
+      /*      if(!esta)
+            {*/
                 Resultado.add(p);
-            }
+          //  }
 
         }
 

@@ -38,6 +38,7 @@ public class EditUsuario extends Editor {
         String titulo= "";
         String check="";
         String check2="";
+        String Disable="";
         if(super.isNuevo()){
             usuario2.setNom_usr("");
             usuario2.setCorreo("");
@@ -51,6 +52,7 @@ public class EditUsuario extends Editor {
         else {
             btm_verde= new Permiso("/Usuario/Guardar/"+usuario2.getId_usuario(),"Actualizar");
             titulo= "Editar Usuario";
+
             if (usuario2.getInd_adm())
             {
                 check="checked";
@@ -62,6 +64,7 @@ public class EditUsuario extends Editor {
             if (usuario2.getInd_rest())
             {
                 check2="checked";
+                Disable="disabled=\"disabled\"";
             }
             else {
                 check2="";
@@ -97,7 +100,7 @@ public class EditUsuario extends Editor {
         {
             cuerpo.add("<br>\n" +
                     "                            <p>\n" +
-                    "                                <input type=\"checkbox\" id=\"check_rest\" "+check2+" name=\"check_rest\" />\n" +
+                    "                                <input type=\"checkbox\" id=\"check_rest\" "+check2+"  "+Disable+"  name=\"check_rest\" />\n" +
                     "                                <label for=\"check_rest\">Restablecer</label>\n" +
                     "                            </p>");
         }
