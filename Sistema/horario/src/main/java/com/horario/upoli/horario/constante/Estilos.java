@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view.constante;
+package com.horario.upoli.horario.constante;
 
 public enum Estilos {
     Material_Icons("<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">"),

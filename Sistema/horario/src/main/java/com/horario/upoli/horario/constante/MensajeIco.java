@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view.constante;
+package com.horario.upoli.horario.constante;
 
 public enum MensajeIco {
     Bien("https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Fsuccess.png?alt=media&token=14404dc6-de50-493e-8aca-8105bef019a9"),

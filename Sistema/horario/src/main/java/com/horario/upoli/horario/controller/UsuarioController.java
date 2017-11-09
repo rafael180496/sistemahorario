@@ -184,5 +184,42 @@ public class UsuarioController {
         Respuesta.setTipo(MensajeIco.Bien.mostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
+    @RequestMapping(value = "/Usuario/PreEliminar/{id}")
+    public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        Usuario muestra= usuarioService.getUsuarioById(id);
+        Mensaje Respuesta= new Mensaje();
+        Respuesta.setCuerpo("¿Desea Eliminar esta Usuario?");
+        Respuesta.setBtn_cancelar(true);
+        Respuesta.setBtn_rojo(new Permiso("/Usuario","Cancelar"));
+        Respuesta.setBtn_verde(new Permiso("/Usuario/Eliminar/"+muestra.getId_usuario(),"Eliminar"));
+        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        return  Respuesta.Generar_Mensaje(recupera);
 
+    }
+
+    @RequestMapping(value = "/Usuario/Eliminar/{id}")
+    public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        Usuario muestra= usuarioService.getUsuarioById(id);
+        usuarioService.EliminarUsuario(muestra.getId_usuario());
+        Mensaje Respuesta= new Mensaje();
+        Respuesta.setCuerpo("Eliminacion  de Usuario exitosa");
+        Respuesta.setBtn_cancelar(false);
+        Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
+        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        return  Respuesta.Generar_Mensaje(recupera);
+    }
 }

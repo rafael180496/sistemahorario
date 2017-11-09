@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view.constante;
+package com.horario.upoli.horario.constante;
 
 public enum Metodos {
     dialog("dialog"),

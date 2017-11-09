@@ -56,7 +56,7 @@ public abstract class Editor {
         ArrayList <String> est= new ArrayList<>();
         est.add(Estilos.Material_Icons.mostrar());
         est.add(Estilos.materialize.mostrar());
-
+        est.add(Estilos.fonts.mostrar());
         return  est;
     }
 

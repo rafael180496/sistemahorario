@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view.seguridad;
+package com.horario.upoli.horario.seguridad;
 
 import com.horario.upoli.horario.recursos.Permiso;
 

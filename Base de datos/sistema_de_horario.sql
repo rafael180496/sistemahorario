@@ -1,5 +1,5 @@
     CREATE DATABASE shorario;
-    
+  ------------------ya----------------------  
     CREATE TABLE Aula (
         id_aula SERIAL  PRIMARY KEY,
         desc_aula TEXT NOT NULL,
@@ -42,7 +42,9 @@
 ----------------------------------------
 
     CREATE TABLE Alumno (
-        carnet CHAR(15) PRIMARY KEY ,
+        
+        id_alumno SERIAL PRIMARY KEY ,
+        carnet CHAR(15) not null ,
         nombre  TEXT NOT NULL, 
         apellido TEXT NOT NULL,
         id_carrera INT NOT NULL,
@@ -91,9 +93,8 @@ INSERT INTO Usuario(id_profesor,nom_usr,clave,correo ,ind_rest,ind_adm ,f_creaci
 VALUES  (1,'rhidalgo','upoliei','rafael180496@gmail.com',false,true,to_date('20171027','YYYYMMDD'));  
 
 
-DELETE FROM Usuario
-where id_usuario =2;
-
-
 INSERT INTO Usuario(id_profesor,nom_usr,clave,correo ,ind_rest,ind_adm ,f_creacion )
 VALUES  (3,'kmarquez','upoliei','kmarquez@thedataage.com',false,true,to_date('20171027','YYYYMMDD'));  
+
+DELETE FROM Usuario
+where id_usuario =2;

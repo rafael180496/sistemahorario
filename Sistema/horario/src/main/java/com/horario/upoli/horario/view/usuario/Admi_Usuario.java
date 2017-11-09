@@ -65,7 +65,7 @@ public class Admi_Usuario extends Editor {
 
         ArrayList<String> Resultado= new ArrayList<>();
         Filtrar=Filtrar.replace(" ","");
-        String Edit="/Usuario/Editar",Delete="#";
+        String Edit="/Usuario/Editar",Delete="/Usuario/PreEliminar";
 
         //inicio
         Resultado.add("  <tbody>");

@@ -1,4 +1,4 @@
-package com.horario.upoli.horario.view.seguridad;
+package com.horario.upoli.horario.seguridad;
 
 public enum CorreoUser {
     Usuario("sistemahorarioSDH@gmail.com"),

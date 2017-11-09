@@ -10,10 +10,7 @@ public class Usuario {
     @Id
     @Column(name = "id_usuario")
     private Long id_usuario;
-/*
-    @NotNull
-    @Column(name = "id_profesor")
-    private  Long id_profesor;*/
+
 
     @OneToOne
     @JoinColumn(name="id_profesor")
