@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.profesor;
 
+import com.horario.upoli.horario.constante.Metodos;
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.view.componentes.*;
-import com.horario.upoli.horario.view.constante.Metodos;
 import java.util.ArrayList;
 
 public class Admi_Profesor extends Editor {

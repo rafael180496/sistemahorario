@@ -1,5 +1,6 @@
 package com.horario.upoli.horario.controller;
 
+import com.horario.upoli.horario.constante.MensajeIco;
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -8,7 +9,6 @@ import com.horario.upoli.horario.view.profesor.Admi_Profesor;
 import com.horario.upoli.horario.view.profesor.EditProfesor;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.componentes.Mensaje;
-import com.horario.upoli.horario.view.constante.MensajeIco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

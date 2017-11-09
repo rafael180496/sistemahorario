@@ -1,10 +1,10 @@
 package com.horario.upoli.horario.view.profesor;
 
+import com.horario.upoli.horario.constante.Metodos;
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.view.componentes.*;
-import com.horario.upoli.horario.view.constante.Metodos;
 
 import java.sql.Date;
 import java.util.ArrayList;

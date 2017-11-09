@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.clase;
 
+import com.horario.upoli.horario.constante.Metodos;
 import com.horario.upoli.horario.model.Clase;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.view.componentes.*;
-import com.horario.upoli.horario.view.constante.Metodos;
 
 import java.util.ArrayList;
 

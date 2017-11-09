@@ -1,11 +1,11 @@
 package com.horario.upoli.horario.view.login;
 
+import com.horario.upoli.horario.constante.Estilos;
+import com.horario.upoli.horario.constante.Metodos;
+import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.recursos.Link;
 import com.horario.upoli.horario.view.componentes.Formulario;
 import com.horario.upoli.horario.view.componentes.Html;
-import com.horario.upoli.horario.view.constante.Estilos;
-import com.horario.upoli.horario.view.constante.Metodos;
-import com.horario.upoli.horario.view.constante.Scrips;
 
 import java.util.ArrayList;
 

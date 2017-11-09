@@ -1,5 +1,6 @@
 package com.horario.upoli.horario.controller;
 
+import com.horario.upoli.horario.constante.MensajeIco;
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Clave;
@@ -9,7 +10,6 @@ import com.horario.upoli.horario.service.ProfesorService;
 import com.horario.upoli.horario.service.UsuarioService;
 import com.horario.upoli.horario.service.ValidacionService;
 import com.horario.upoli.horario.view.componentes.Mensaje;
-import com.horario.upoli.horario.view.constante.MensajeIco;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.usuario.Admi_Usuario;
 import com.horario.upoli.horario.view.usuario.EditUsuario;

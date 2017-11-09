@@ -1,11 +1,11 @@
 package com.horario.upoli.horario.controller;
 
+import com.horario.upoli.horario.constante.MensajeIco;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.UsuarioService;
 import com.horario.upoli.horario.view.Home;
 import com.horario.upoli.horario.view.componentes.MensajeLogin;
-import com.horario.upoli.horario.view.constante.MensajeIco;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.login.LoginRecuperar;
 import com.horario.upoli.horario.view.login.LoginResta;

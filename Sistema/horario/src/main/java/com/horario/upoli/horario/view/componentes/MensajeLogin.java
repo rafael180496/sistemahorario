@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.componentes;
 
+import com.horario.upoli.horario.constante.Estilos;
+import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.recursos.Permiso;
-import com.horario.upoli.horario.view.constante.Estilos;
-import com.horario.upoli.horario.view.constante.MensajeIco;
-import com.horario.upoli.horario.view.constante.Scrips;
 
 import java.util.ArrayList;
 

@@ -1,13 +1,13 @@
 package com.horario.upoli.horario.view;
 
+import com.horario.upoli.horario.constante.Estilos;
+import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.seguridad.Permisos;
 import com.horario.upoli.horario.view.componentes.Footer;
 import com.horario.upoli.horario.view.componentes.Html;
 import com.horario.upoli.horario.view.componentes.Navbar;
-import com.horario.upoli.horario.view.constante.Estilos;
-import com.horario.upoli.horario.view.constante.Scrips;
-import com.horario.upoli.horario.view.seguridad.Permisos;
 
 import java.util.ArrayList;
 
