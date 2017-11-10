@@ -8,6 +8,8 @@ https://codepen.io/search/pens/?limit=all&page=2&q=horario
 http://www.heroesdelcodigo.com/crud-usando-spring-boot-spring-data-jpa-thymeleaf/
 
 ---seleccionar una base de datos deseada, aquí vamos a conectar con el testdb base de datos:
+/*heroku*/
+https://devcenter.heroku.com/articles/heroku-cli#npm
 
 
 --sistemahorarioSDH@gmail.com
