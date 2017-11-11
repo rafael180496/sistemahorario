@@ -9,12 +9,12 @@ import com.horario.upoli.horario.view.componentes.Formulario;
 
 import java.util.ArrayList;
 
-public class Admi_Usuario extends Editor{
+public class Admi_Alumno extends Editor{
     private String Filtrar= "";
     private ArrayList<Alumno> Aux= new ArrayList<>();
 
 
-    public  Admi_Usuario(Usuario usuario, ArrayList<Alumno> Aux)
+    public Admi_Alumno(Usuario usuario, ArrayList<Alumno> Aux)
     {
         super(usuario);
         this.Aux=Aux;
@@ -69,12 +69,17 @@ public class Admi_Usuario extends Editor{
         //cuerpo
         for (Alumno n:Aux
                 ) {
+            String target="";
+            target="<div class=\"chip red\">\n" +
+                    "                                        <span class=\"white-text\">"+n.getCarrera().getNombre()+"</span>\n" +
+                    "                                    </div>";
+
 
             Resultado.add("<tr>\n" +
                     "                                <td>"+n.getCarnet()+"</td>\n" +
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getApellido()+"</td>\n" +
-                    "                                <td>"+n.getCarrera().getNombre()+"</td>\n" +
+                    "                                <td>"+target+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +
                     "                                <td>\n" +
                     "                                    <a class=\"btn-floating  waves-effect waves-light \" href=\""+Edit+"/"+n.getId_alumno()+"\">\n" +
@@ -93,7 +98,7 @@ public class Admi_Usuario extends Editor{
         return  Resultado;
     }
 
-    public  String Generar_Admi_Profesor(){
+    public  String Generar_Admi_Alumno(){
         html.setTitulo("SDH");
         html.setScrip(Enviar_scrip());
         html.setEstilos(Enviar_Estilo());
@@ -139,6 +144,6 @@ public class Admi_Usuario extends Editor{
 
         formulario.setCuerpo_formulario(cuerpo_f);
         return  formulario.Generar_formulario();
-        
+
     }
 }
