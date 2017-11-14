@@ -38,7 +38,7 @@ public class AulaServiceImp implements  AulaService{
                 ) {
             n.setDesc_aula(n.getDesc_aula().replace(" ",""));
 
-            if((n.getDesc_aula().toLowerCase().matches(name+"(.*)")))
+            if((n.getDesc_aula().toUpperCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }

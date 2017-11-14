@@ -126,7 +126,7 @@ public class UsuarioServiceImp implements UsuarioService {
                 ) {
             n.setNom_usr(n.getNom_usr().replace(" ",""));
 
-            if((n.getNom_usr().toLowerCase().matches(name+"(.*)")))
+            if((n.getNom_usr().toUpperCase().matches(name+"(.*)".toUpperCase())))
             {
                 Listado.add(n);
             }

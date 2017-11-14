@@ -1,7 +1,7 @@
 package com.horario.upoli.horario.view.componentes;
 
 public  class Footer extends  Html {
-    private static final String footer="<footer class=\"page-footer teal\">\n" +
+    private static final String footer="</main><footer class=\"page-footer teal\">\n" +
             "        <div class=\"container\">\n" +
             "            <div class=\"row\">\n" +
             "                <div class=\"col l6 s12\">\n" +

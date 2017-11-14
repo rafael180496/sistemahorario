@@ -21,7 +21,7 @@ public class LoginController {
     @Autowired
     UsuarioService usuarioService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+        @RequestMapping(value = "/login",method = RequestMethod.GET)
     String Inicio(HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
@@ -115,7 +115,7 @@ public class LoginController {
 
         String correo="";
         MensajeLogin mensaje= new MensajeLogin();
-        correo= (String)req.getParameter("txt_correo");
+        correo= (String)req.getParameter("txt_correo").replace(" ","");
         correo= correo.replace(" ","");
         if (usuarioService.Recuperacion(correo)){
             mensaje.setBtn_cancelar(false);
@@ -153,10 +153,8 @@ public class LoginController {
 
         String clave_n="",clave_c="";
         MensajeLogin mensaje= new MensajeLogin();
-        clave_c=(String)req.getParameter("txt_clave_c");
-        clave_n=(String)req.getParameter("txt_clave_n");
-        clave_c= clave_c.replace(" ","");
-        clave_n= clave_n.replace(" ","");
+        clave_c=(String)req.getParameter("txt_clave_c").replace(" ","");
+        clave_n=(String)req.getParameter("txt_clave_n").replace(" ","");
         if (clave_c.equals(clave_n)){
 
             usuarioService.Cambiar_clave(recupera.getId_usuario(),clave_n);

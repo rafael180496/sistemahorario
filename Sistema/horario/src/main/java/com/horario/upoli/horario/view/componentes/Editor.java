@@ -21,6 +21,9 @@ public abstract class Editor {
         html.setScrip(Enviar_scrip());
 
         html.setEstilos(Enviar_Estilo());
+
+
+
         cuerpo.add(Generar_navBar());
         cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"section\"></div>\n" +
@@ -34,6 +37,7 @@ public abstract class Editor {
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
+
         cuerpo.add(Footer.getFooter());
         html.setCuerpo(cuerpo);
         html.setScrip_manual(scrip_m);
@@ -48,7 +52,7 @@ public abstract class Editor {
         ArrayList <String> escr= new ArrayList<>();
         escr.add(Scrips.jquery.mostrar());
         escr.add(Scrips.materialize.mostrar());
-
+        escr.add(Scrips.app.mostrar());
         return escr;
     }
 
@@ -56,7 +60,9 @@ public abstract class Editor {
         ArrayList <String> est= new ArrayList<>();
         est.add(Estilos.Material_Icons.mostrar());
         est.add(Estilos.materialize.mostrar());
+        est.add(Estilos.general.mostrar());
         est.add(Estilos.fonts.mostrar());
+
         return  est;
     }
 

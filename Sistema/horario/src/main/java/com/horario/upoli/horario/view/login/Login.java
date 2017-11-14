@@ -114,7 +114,7 @@ public class Login {
         cuerpo_f.add(regresar.Generar_a());
         //--------------------------------------------------------------------
         cuerpo_f.add("<br>\n" +
-                "                                    <input type=\"submit\" value=\"Ingresar\" class='col s12 btn btn-large waves-effect '>\n" );
+                "                                    <input type=\"submit\" value=\"Ingresar\" name=\"btn_ingresar\"  class='col s12 btn btn-large waves-effect '>\n" );
         cuerpo_f.add(recupera.Generar_a());
 
          cuerpo_f.add("                                </div>" +

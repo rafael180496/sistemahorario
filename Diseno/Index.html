@@ -9,78 +9,93 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/css%2Fmaterialize.css?alt=media&token=c1182d85-8ade-444f-a1ff-9b0ec66bcd15" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/css%2Fstyle.css?alt=media&token=d0885422-4ed6-4d03-93c0-a3070be51101" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/css%2Findex.css?alt=media&token=6f0cbb6a-26ae-4d46-8f9d-e5c83aff28e0">
+    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/css%2Fgeneral.css?alt=media&token=bc534516-65ad-4004-8555-9fa43dc275a8">
+
+
 </head>
 
 <body>
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">SDH</a>
-            <ul class="right hide-on-med-and-down">
-                <li>
-                    <a href="file:///C:/Users/rafae/Sistema_Horario/Diseno/Login.html#">Ingrese</a>
-                </li>
-            </ul>
-            
-            <ul id="nav-mobile" class="side-nav">
-                <li>
-                    <a href="file:///C:/Users/rafae/Sistema_Horario/Diseno/Login.html#">Ingrese</a>
-                </li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse">
-                <i class="material-icons">menu</i>
-            </a>
-        </div>
-    </nav>  
+    <main>
 
-    <div id="index-banner" class="parallax-container">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <br>
-                <br>
-                <h1 class="header center teal-text text-lighten-2">Sistema  de Horario</h1>
-                
-                <div class="row center">
-                   <form action="" method="dialog">
-                        <div class="input-field">
-                            <input value="" id="busq_horario" type="text" name="txt_horario">
-                            <label class="active" for="busq_horario">Ingrese su carnet de estudiante para recibir su horario.</label>
-                        </div>
-                        <input type="submit" value="Buscar" class="btn-large waves-effect waves-light teal lighten-1">
-                    </form>  
-                    
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper white">
+                    <a href="#!" class=" color brand-logo ">
+                        <img class="responsive-img" id="logo" src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Flogo.png?alt=media&token=8b556b15-bb58-4f1c-9043-4983d559fe45" alt="">
+                    </a>
+
+                    <a href="#" data-activates="mobile-demo" class="button-collapse ">
+                        <i class="material-icons tealicon">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down ">
+                        <li>
+                            <a href="#"><i class="material-icons left">account_circle</i>Ingresar</a>
+                        </li>
+
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+
+                        <li>
+                            <a href="#">Ingresar</a>
+                        </li>
+                    </ul>
                 </div>
-                <br>
-                <br>
+            </nav>
+        </div>
 
+        <div class="parallax-container">
+            <div class="parallax ">
+                <img src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Ffondo.png?alt=media&token=a05a752a-c28b-4af5-b069-733866eb67ca">
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <center>
+                            <h1 class="header  teal-text ">Sistema de Horario</h1>
+                            <div class="input-field">
+                                <input value="" id="busq_horario" required="" aria-required="true" class="validate" type="text" name="txt_horario">
+                                <label class="active" for="busq_horario">Ingrese su carnet de estudiante para recibir su horario.</label>
+
+                            </div>
+                            <input type="submit" value="Buscar" class="btn-large waves-effect waves-light teal lighten-1 ">
+
+                        </center>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="parallax">
-            <img src="http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/10/background+pattern+design+37.jpg" alt="Unsplashed background img 1">
-        </div>
-    </div>
+    </main>
 
-
-    <footer class="page-footer teal">
+    <footer class="page-footer teal" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
                     <h5 class="white-text">Upoli</h5>
                     <p class="grey-text text-lighten-4">Sistema creado para la administracion de Horarios de Clases.</p>
-                </div>  
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                 Evaluacion de Sistema 2017
+                </div>
             </div>
-        </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Evaluacion de Sistema 2017
+                </div>
+            </div>
     </footer>
+
 
 
     <!--  Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
-    <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Finit.js?alt=media&token=fb8a441d-908b-405d-ae1a-9286edc7d8b2"></script>
+    <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fapp.js?alt=media&token=a19f8694-0df0-498a-97ae-4aec7a29e8ce"></script>
+    <script>
+        $(document).ready(function() {
+            $('.parallax').parallax();
+        });
+    </script>
+
+
 
 </body>
 

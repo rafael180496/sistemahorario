@@ -19,19 +19,28 @@ public class Index  {
 
         Html html= new Html();
         ArrayList <String> estilo= new ArrayList<>();
+        html.setScrip_manual("<script>\n" +
+                "        $(document).ready(function() {\n" +
+                "            $('.parallax').parallax();\n" +
+                "        });\n" +
+                "    </script>");
         estilo.add(Estilos.Material_Icons.mostrar());
         estilo.add(Estilos.materialize.mostrar());
-        estilo.add(Estilos.style.mostrar());
+        estilo.add(Estilos.index.mostrar());
+        estilo.add(Estilos.general.mostrar());
+
         ArrayList <String> scrip = new ArrayList<>();
         scrip.add(Scrips.jquery.mostrar());
         scrip.add(Scrips.materialize.mostrar());
-        scrip.add(Scrips.init.mostrar());
+        scrip.add(Scrips.app.mostrar());
         ArrayList <String> cuerpoFormulario= new ArrayList<>();
-        cuerpoFormulario.add("<div class=\"input-field\">\n" +
-                "                            <input value=\"\" id=\"busq_horario\" required=\"\" aria-required=\"true\" class=\"validate\" type=\"text\" name=\"txt_horario\">\n" +
-                "                            <label class=\"active\" for=\"busq_horario\">Ingrese su carnet de estudiante para recibir su horario.</label>\n" +
-                "                        </div>\n" +
-                "                        <input type=\"submit\" value=\"Buscar\" class=\"btn-large waves-effect waves-light teal lighten-1\">");
+        cuerpoFormulario.add("<h1 class=\"header  teal-text \">Sistema de Horario</h1>\n" +
+                "                            <div class=\"input-field\">\n" +
+                "                                <input value=\"\" id=\"busq_horario\" required=\"\" aria-required=\"true\" class=\"validate\" type=\"text\" name=\"txt_horario\">\n" +
+                "                                <label class=\"active\" for=\"busq_horario\">Ingrese su carnet de estudiante para recibir su horario.</label>\n" +
+                "\n" +
+                "                            </div>\n" +
+                "                            <input type=\"submit\" value=\"Buscar\" class=\"btn-large waves-effect waves-light teal lighten-1 \">");
         formulario.setAccion("");
         formulario.setMetodo(Metodos.dialog.mostrar());
         formulario.setCuerpo_formulario(cuerpoFormulario);
@@ -46,26 +55,25 @@ public class Index  {
         navbarIndex.setUl_nombre("Ingrese");
         navbarIndex.setTitulo("SDH");
 
+
+
         cuerpo_index.add(navbarIndex.Generar_navbar());
-        cuerpo_index.add("<div id=\"index-banner\" class=\"parallax-container\">\n" +
-                "        <div class=\"section no-pad-bot\">\n" +
-                "            <div class=\"container\">\n" +
-                "                <br>\n" +
-                "                <br>\n" +
-                "                <h1 class=\"header center teal-text text-lighten-2\">Sistema  de Horario</h1>\n" +
-                "                \n" +
-                "                <div class=\"row center\">");
-        cuerpo_index.add(formulario.Generar_formulario());
-        cuerpo_index.add(" </div>\n" +
-                "                <br>\n" +
-                "                <br>\n" +
-                "\n" +
+        cuerpo_index.add("<div class=\"parallax-container\">\n" +
+                "            <div class=\"parallax \">\n" +
+                "                <img src=\"https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Ffondo.png?alt=media&token=a05a752a-c28b-4af5-b069-733866eb67ca\">\n" +
                 "            </div>\n" +
-                "        </div>\n" +
-                "        <div class=\"parallax\">\n" +
-                "            <img src=\"http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/10/background+pattern+design+37.jpg\" alt=\"Unsplashed background img 1\">\n" +
-                "        </div>\n" +
-                "    </div>");
+                "\n" +
+                "            <div class=\"container\">\n" +
+                "                <div class=\"row\">\n" +
+                "                    <div class=\"col s12\">\n" +
+                "                        <center>");
+        cuerpo_index.add(formulario.Generar_formulario());
+        cuerpo_index.add(" </center>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "            </div>\n" +
+                "        </div>");
+
         cuerpo_index.add(Footer.getFooter());
 
         html.setCuerpo(cuerpo_index);

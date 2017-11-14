@@ -46,21 +46,41 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public boolean CarnetRepetido(String carnet) {
+    public boolean CarnetRepetido(String carnet,Long id) {
 
         Iterable<Alumno> source=alumnoRepo.findAll();
         ArrayList<Alumno> ListadoA= new ArrayList<>();
         source.forEach(ListadoA::add);
 
-        for (Alumno n:ListadoA
-             ) {
-            if (n.getCarnet().equals(carnet)) {
+        if(id==0)
+        {
+            for (Alumno n:ListadoA
+                    ) {
+                String carnetA=n.getCarnet().replace(" ","");
 
-                return true;
+                if (carnet.equals(carnet.replace(" ",""))) {
+
+                    return true;
+
+                }
 
             }
-
         }
+        else
+        {
+            for (Alumno n:ListadoA
+                    ) {
+                String carnetA=n.getCarnet().replace(" ","");
+
+                if ((carnet.equals(carnet.replace(" ","")) )&&(n.getId_alumno()!=id)) {
+
+                    return true;
+
+                }
+
+            }
+        }
+
 
 
         return false;

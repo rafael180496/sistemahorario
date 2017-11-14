@@ -24,7 +24,7 @@ public class Admi_Alumno extends Editor{
 
     private String  Generar_table(){
         String Resultado ="";
-        String Add="#/0";
+        String Add="/Alumno/Editar/0";
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
@@ -62,7 +62,7 @@ public class Admi_Alumno extends Editor{
 
         ArrayList<String> Resultado= new ArrayList<>();
         Filtrar=Filtrar.replace(" ","");
-        String Edit="#",Delete="#";
+        String Edit="/Alumno/Editar",Delete="/Alumno/PreEliminar";
 
         //inicio
         Resultado.add("  <tbody>");
@@ -70,7 +70,7 @@ public class Admi_Alumno extends Editor{
         for (Alumno n:Aux
                 ) {
             String target="";
-            target="<div class=\"chip red\">\n" +
+            target="<div class=\"chip green \">\n" +
                     "                                        <span class=\"white-text\">"+n.getCarrera().getNombre()+"</span>\n" +
                     "                                    </div>";
 

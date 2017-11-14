@@ -16,7 +16,7 @@ public class Html  {
     private ArrayList<String > cuerpo= new ArrayList<>();
     private String scrip_manual="";
     private String estilo_manual="";
-    private static final String body_ini="<body>";
+    private static final String body_ini="<body><main>";
     private static final String body_fin="</body>\n" +
             "</html>";
 

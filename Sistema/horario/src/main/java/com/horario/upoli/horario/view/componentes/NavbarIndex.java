@@ -7,25 +7,34 @@ public class NavbarIndex {
 
 
     public  String Generar_navbar(){
-        String resultado="<nav class=\"white\" role=\"navigation\">\n" +
-                "        <div class=\"nav-wrapper container\">\n" +
-                "            <a id=\"logo-container\" href=\"#\" class=\"brand-logo\">"+titulo+"</a>\n" +
-                "            <ul class=\"right hide-on-med-and-down\">\n" +
-                "                <li>\n" +
-                "                    <a href=\""+navegacion+"\">"+ul_nombre+"</a>\n" +
-                "                </li>\n" +
-                "            </ul>\n" +
-                "            \n" +
-                "            <ul id=\"nav-mobile\" class=\"side-nav\">\n" +
-                "                <li>\n" +
-                "                    <a href=\""+navegacion+"\">"+ul_nombre+"</a>\n" +
-                "                </li>\n" +
-                "            </ul>\n" +
-                "            <a href=\"#\" data-activates=\"nav-mobile\" class=\"button-collapse\">\n" +
-                "                <i class=\"material-icons\">menu</i>\n" +
-                "            </a>\n" +
-                "        </div>\n" +
-                "    </nav> ";
+
+        String resultado="<div class=\"navbar-fixed\">\n" +
+                "            <nav>\n" +
+                "                <div class=\"nav-wrapper white\">\n" +
+                "                    <a href=\"#!\" class=\" color brand-logo \">\n" +
+                "                        <img class=\"responsive-img\" id=\"logo\" src=\"https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/Img%2Flogo.png?alt=media&token=8b556b15-bb58-4f1c-9043-4983d559fe45\" alt=\"\">\n" +
+                "                    </a>\n" +
+                "\n" +
+                "                    <a href=\"#\" data-activates=\"mobile-demo\" class=\"button-collapse \">\n" +
+                "                        <i class=\"material-icons tealicon\">menu</i>\n" +
+                "                    </a>\n" +
+                "                    <ul class=\"right hide-on-med-and-down \">\n" +
+                "                        <li>\n" +
+                "                    <a href=\""+navegacion+"\"><i class=\"material-icons left\">account_circle</i>"+ul_nombre+"</a>\n" +
+                "                        </li>\n" +
+                "\n" +
+                "                    </ul>\n" +
+                "                    <ul class=\"side-nav\" id=\"mobile-demo\" >\n" +
+                "\n" +
+                "                        <li>\n" +
+                "                    <a href=\""+navegacion+"\" ><i class=\"material-icons left\">account_circle</i>"+ul_nombre+"</a>\n" +
+                "                        </li>\n" +
+                "                    </ul>\n" +
+                "                </div>\n" +
+                "            </nav>\n" +
+                "        </div>";
+
+
 
         return resultado;
     }

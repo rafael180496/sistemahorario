@@ -40,7 +40,7 @@ public class ProfesorServiceImp implements ProfesorService{
              ) {
             n.setNombre(n.getNombre().replace(" ",""));
             n.setApellido(n.getApellido().replace(" ",""));
-            if((n.getNombre().toLowerCase().matches(name+"(.*)")))
+            if((n.getNombre().toUpperCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }

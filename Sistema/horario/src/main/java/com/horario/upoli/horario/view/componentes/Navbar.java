@@ -6,7 +6,7 @@ import sun.java2d.loops.GeneralRenderer;
 
 import java.util.ArrayList;
 
-public class Navbar {
+public class    Navbar {
    private String proyecto = "";
    private ArrayList<Nav> ul= new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class Navbar {
 
     public String Generar_Navbar(){
         String Resultado= "";
-        String inicio="<nav class=\"teal accent-4\">\n" +
+        String inicio="<div class=\"navbar-fixed\"><nav class=\"teal accent-4\">\n" +
                 "        <div class=\"nav-wrapper \">\n" +
                 "            <a href=\"/inicio\" class=\"brand-logo\">"+proyecto+"</a>\n" +
                 "            <a href=\"#\" data-activates=\"mobile-demo\" class=\"button-collapse\">\n" +
@@ -37,7 +37,7 @@ public class Navbar {
         Resultado+=Generar_lista();
         Resultado+="</ul>\n" +
                 "        </div>\n" +
-                "    </nav>";
+                "    </nav></div>";
         return Resultado;
 
     }

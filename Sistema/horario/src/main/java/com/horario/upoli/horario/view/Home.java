@@ -26,6 +26,9 @@ public class Home {
         html.setScrip(Enviar_scrip());
         html.setEstilos(Enviar_Estilo());
         html.setScrip_manual(Enviar_scrip_manual());
+
+
+
         ArrayList<String >cuerpo = new ArrayList<>();
 
         /*=================================================*/
@@ -78,7 +81,8 @@ public class Home {
         ArrayList <String> est= new ArrayList<>();
         est.add(Estilos.Material_Icons.mostrar());
         est.add(Estilos.materialize.mostrar());
-
+        est.add(Estilos.fonts.mostrar());
+        est.add(Estilos.general.mostrar());
         return  est;
     }
 

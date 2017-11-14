@@ -134,7 +134,7 @@ public class AulaController {
         }
         Aula muestra= new Aula();
         if(id==0){
-            muestra.setDesc_aula((String) req.getParameter("txt_nombre"));
+            muestra.setDesc_aula((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
             muestra.setId_aula(aulaService.Secuencia());
@@ -149,7 +149,7 @@ public class AulaController {
         }
         else {
             muestra= aulaService.BuscarUno(id);
-            muestra.setDesc_aula((String) req.getParameter("txt_nombre"));
+            muestra.setDesc_aula((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
             String mant=(String) req.getParameter("check_mant");
             if (mant==null)
             {

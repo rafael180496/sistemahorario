@@ -39,7 +39,7 @@ public class ClaseServiceImp  implements  ClaseService{
         for (Clase n:Listadoaux
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
-            if((n.getNombre().toLowerCase().matches(name+"(.*)")))
+            if((n.getNombre().toUpperCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }

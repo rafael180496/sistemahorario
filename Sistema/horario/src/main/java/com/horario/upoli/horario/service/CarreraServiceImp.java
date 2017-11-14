@@ -42,7 +42,7 @@ public class CarreraServiceImp implements CarreraService{
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
 
-            if((n.getNombre().toLowerCase().matches(name+"(.*)")))
+            if((n.getNombre().toUpperCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }
@@ -53,7 +53,7 @@ public class CarreraServiceImp implements CarreraService{
 
     @Override
     public Carrera BuscarUno(Long id) {
-        return carreraRepo.findOne(id);
+            return carreraRepo.findOne(id);
     }
 
     @Override

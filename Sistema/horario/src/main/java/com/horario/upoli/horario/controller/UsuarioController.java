@@ -107,8 +107,8 @@ public class UsuarioController {
         }
         Usuario muestra= new Usuario();
         if(id==0){
-            muestra.setNom_usr((String) req.getParameter("txt_nombre"));
-            muestra.setCorreo((String) req.getParameter("txt_correo"));
+            muestra.setNom_usr((String) req.getParameter("txt_nombre").replace(" ",""));
+            muestra.setCorreo((String) req.getParameter("txt_correo").replace(" ",""));
             String admin=(String) req.getParameter("check_admin");
             if (admin==null)
             {
@@ -137,8 +137,8 @@ public class UsuarioController {
         }
         else {
             muestra=usuarioService.getUsuarioById(id);
-            muestra.setNom_usr((String) req.getParameter("txt_nombre"));
-            muestra.setCorreo((String) req.getParameter("txt_correo"));
+            muestra.setNom_usr((String) req.getParameter("txt_nombre").replace(" ",""));
+            muestra.setCorreo((String) req.getParameter("txt_correo").replace(" ",""));
             String admin=(String) req.getParameter("check_admin");
             if (admin==null)
             {

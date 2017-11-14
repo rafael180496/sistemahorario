@@ -10,10 +10,8 @@ import com.horario.upoli.horario.view.profesor.EditProfesor;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.componentes.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -137,16 +135,16 @@ public class ProfesorController {
         }
         Profesor muestra= new Profesor();
         if(id==0){
-           muestra.setNombre((String) req.getParameter("txt_nombre"));
-            muestra.setApellido((String) req.getParameter("txt_apellido"));
+           muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
+            muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
             muestra.setId_profesor(profesorService.Secuencia());
         }
         else {
             muestra= profesorService.BuscarUno(id);
-            muestra.setNombre((String) req.getParameter("txt_nombre"));
-            muestra.setApellido((String) req.getParameter("txt_apellido"));
+            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
+            muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
         }
 
         profesorService.GuardarProfesor(muestra);

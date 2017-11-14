@@ -15,7 +15,7 @@ public  class  Permisos {
         permisos.add(new Permiso("/Aula","Aulas"));
         permisos.add(new Permiso("/Carrera","Carreras"));
         permisos.add(new Permiso("/Clase","Clases"));
-        permisos.add(new Permiso("#","Alumnos"));
+        permisos.add(new Permiso("/Alumno","Alumnos"));
         permisos.add(new Permiso("/login","<i class=\"material-icons\">exit_to_app</i>"));
 
 

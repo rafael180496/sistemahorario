@@ -24,8 +24,8 @@ private  Long   id_alumno;
  private  String   apellido;
 
     @OneToOne
-    @JoinColumn(name="carrera")
- private  Carrera  carrera ;
+    @JoinColumn(name="id_carrera")
+    private  Carrera  carrera ;
 
     @NotNull
     @Column(name = "f_creacion")

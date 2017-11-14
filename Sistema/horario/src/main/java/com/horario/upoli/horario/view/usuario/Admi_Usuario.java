@@ -86,7 +86,7 @@ public class Admi_Usuario extends Editor {
             String target2="";
             if(n.getInd_adm())
             {
-                target2="<div class=\"chip red\">\n" +
+                target2="<div class=\"chip green darken-3\">\n" +
                         "                                        <span class=\"white-text\">Administrador</span>\n" +
                         "                                    </div>";
             }

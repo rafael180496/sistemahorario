@@ -7,6 +7,6 @@ import java.util.ArrayList;
 public interface ValidacionService {
 
     ArrayList<Profesor> ProfesoresSinUsuario();
-    boolean CarnetRepetido(String carnet);
+    boolean CarnetRepetido(String carnet,Long id);
 
 }
