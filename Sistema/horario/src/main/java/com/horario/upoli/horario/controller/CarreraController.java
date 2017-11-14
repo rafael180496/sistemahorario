@@ -5,6 +5,7 @@ import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.CarreraService;
+import com.horario.upoli.horario.service.ValidacionService;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.carrera.Admin_carrera;
 import com.horario.upoli.horario.view.carrera.EditCarrera;
@@ -26,6 +27,8 @@ public class CarreraController {
     @Autowired
     private CarreraService carreraService;
 
+    @Autowired
+    private ValidacionService validacionService;
 
 
     @RequestMapping(value = "/Carrera",method = RequestMethod.GET)
@@ -89,6 +92,17 @@ public class CarreraController {
             return  new Login().Generar_login(false);
         }
         Carrera muestra= carreraService.BuscarUno(id);
+
+        if(validacionService.ValidarCarrera(muestra))
+        {
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No se puede eliminar la carrera por que está vinculada con un alumno por favor desvincule la carrera.");
+            Respuesta.setBtn_cancelar(false);
+            Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
+            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
+
         carreraService.EliminarCarrera(muestra.getId_carrera());
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Eliminacion  de carrera exitosa");

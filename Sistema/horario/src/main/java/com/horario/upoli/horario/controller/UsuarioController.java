@@ -214,6 +214,17 @@ public class UsuarioController {
             return  new Login().Generar_login(false);
         }
         Usuario muestra= usuarioService.getUsuarioById(id);
+        if(recupera.getId_usuario()==muestra.getId_usuario())
+        {
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No puedes eliminar el mismo usuario que estas iniciado.");
+            Respuesta.setBtn_cancelar(false);
+            Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
+            Respuesta.setTipo(MensajeIco.Error.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
+
+
         usuarioService.EliminarUsuario(muestra.getId_usuario());
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Eliminacion  de Usuario exitosa");
