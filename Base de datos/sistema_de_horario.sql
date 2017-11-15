@@ -59,7 +59,7 @@
     );
     CREATE TABLE Det_grupo (
         id_det_grupo SERIAL  PRIMARY KEY,
-        carnet CHAR(15)  NOT NULL,
+        id_alumno INT NOT NULL,
         id_grupo  INT NOT NULL, 
         f_creacion    DATE  NOT NULL
     );

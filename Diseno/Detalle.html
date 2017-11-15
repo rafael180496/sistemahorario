@@ -71,12 +71,54 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col 12">
-                <div class="card panel">
-                    <ol>
-                        <li></li>
-                    </ol>
-                    <button id="butCallAjax">hola</button>
+            <div class="col s6 offset-s3">
+                <div class="card hoverable  grey lighten-4">
+
+                    <div class="card-content">
+                        <p class="card-title">Agregar Grupo</p>
+                        <div class="input-field">
+                            <input required="" aria-required="true" id="txt_nombre" type="text" class="validate">
+                            <label for="txt_nombre">Nombre del Grupo:</label>
+                        </div>
+                        <div class="input-field">
+                            <select>
+                                        <option value="" disabled selected>Seleccionar</option>
+                                        <option value="1">Rafael</option>
+                                        <option value="2">Hevin</option>
+                                        <option value="3">Idra </option>
+                                      </select>
+                            <label>Seleccionar Profesor:</label>
+                        </div>
+                        <div class="input-field">
+                            <select>
+                                            <option value="" disabled selected>Seleccionar</option>
+                                            <option value="1">Algoritmo</option>
+                                            <option value="2">Calculo</option>
+                                            <option value="3">Mate </option>
+                                          </select>
+                            <label>Seleccionar Clase:</label>
+                        </div>
+
+                        <div class="input-field">
+                            <select multiple>
+                                    <optgroup label="Defecto">
+                                        <option value="" disabled selected>Seleccionar</option>
+                                  </optgroup>
+                                  <optgroup label="Ing.sistema">
+                                    <option value="1">Rafa</option>
+                                    <option value="2">Pedro</option>
+                                  </optgroup>
+                                  <optgroup label="Ing.computacion">
+                                    <option value="3">Rodolfo</option>
+                                    <option value="4">Paco</option>
+                                  </optgroup>
+                                </select>
+                            <label>Alumnos:</label>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -91,7 +133,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
 
-
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
 </body>
 
 </html>
