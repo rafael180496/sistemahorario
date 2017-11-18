@@ -2,6 +2,7 @@ package com.horario.upoli.horario.service;
 
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.repo.ProfesorRepo;
+import com.horario.upoli.horario.seguridad.Permisos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,7 @@ public class ProfesorServiceImp implements ProfesorService{
              ) {
             n.setNombre(n.getNombre().replace(" ",""));
             n.setApellido(n.getApellido().replace(" ",""));
-            if((n.getNombre().toUpperCase().matches(name+"(.*)")))
+            if((n.getNombre().toLowerCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }
@@ -67,8 +68,16 @@ public class ProfesorServiceImp implements ProfesorService{
 
     @Override
     public Long Secuencia() {
+        Iterable<Profesor> source=profesorRepo.findAll();
+        ArrayList<Profesor> Listado= new ArrayList<>();
+        ArrayList<Long> Listadoid= new ArrayList<>();
+        source.forEach(Listado::add);
 
+        for (Profesor n:Listado
+                ) {
+            Listadoid.add(n.getId_profesor());
+        }
 
-        return profesorRepo.count()+1;
+        return Permisos.maximoSecuencial(Listadoid)+1;
     }
 }

@@ -29,9 +29,9 @@ import java.sql.Date;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    private UsuarioService usuarioService;
     @Autowired
-    ValidacionService validacionService;
+    private ValidacionService validacionService;
     @Autowired
     ProfesorService profesorService;
 

@@ -4,6 +4,7 @@ import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Clave;
 import com.horario.upoli.horario.recursos.Correo;
 import com.horario.upoli.horario.repo.UsuarioRepo;
+import com.horario.upoli.horario.seguridad.Permisos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 import org.springframework.stereotype.Service;
@@ -110,7 +111,17 @@ public class UsuarioServiceImp implements UsuarioService {
 
     @Override
     public Long Secuencia() {
-        return usuarioRepo.count()+1;
+        Iterable<Usuario> source=usuarioRepo.findAll();
+        ArrayList<Usuario> Listado= new ArrayList<>();
+        ArrayList<Long> Listadoid= new ArrayList<>();
+        source.forEach(Listado::add);
+
+        for (Usuario n:Listado
+                ) {
+            Listadoid.add(n.getId_usuario());
+        }
+
+        return Permisos.maximoSecuencial(Listadoid)+1;
     }
 
     @Override
@@ -126,7 +137,7 @@ public class UsuarioServiceImp implements UsuarioService {
                 ) {
             n.setNom_usr(n.getNom_usr().replace(" ",""));
 
-            if((n.getNom_usr().toUpperCase().matches(name+"(.*)".toUpperCase())))
+            if((n.getNom_usr().toLowerCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }

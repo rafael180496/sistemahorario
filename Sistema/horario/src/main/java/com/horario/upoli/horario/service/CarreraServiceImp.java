@@ -2,6 +2,7 @@ package com.horario.upoli.horario.service;
 
 import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.repo.CarreraRepo;
+import com.horario.upoli.horario.seguridad.Permisos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,7 @@ public class CarreraServiceImp implements CarreraService{
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
 
-            if((n.getNombre().toUpperCase().matches(name+"(.*)")))
+            if((n.getNombre().toLowerCase().matches(name+"(.*)")))
             {
                 Listado.add(n);
             }
@@ -68,6 +69,16 @@ public class CarreraServiceImp implements CarreraService{
 
     @Override
     public Long Secuencia() {
-        return carreraRepo.count()+1;
+        Iterable<Carrera> source=carreraRepo.findAll();
+        ArrayList<Carrera> Listado= new ArrayList<>();
+        ArrayList<Long> Listadoid= new ArrayList<>();
+        source.forEach(Listado::add);
+
+        for (Carrera n:Listado
+                ) {
+            Listadoid.add(n.getId_carrera());
+        }
+
+        return Permisos.maximoSecuencial(Listadoid)+1;
     }
 }

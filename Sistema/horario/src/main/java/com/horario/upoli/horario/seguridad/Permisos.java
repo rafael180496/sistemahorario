@@ -10,6 +10,7 @@ public  class  Permisos {
     public static  ArrayList<Permiso> PermisosAdmin()
     {
          ArrayList<Permiso> permisos = new ArrayList<>();
+        permisos.add(new Permiso("/Grupo","Grupos"));
         permisos.add(new Permiso("/Profesor","Profesores"));
         permisos.add(new Permiso("/Usuario","Usuarios"));
         permisos.add(new Permiso("/Aula","Aulas"));
@@ -27,12 +28,30 @@ public  class  Permisos {
     {
         ArrayList<Permiso> permisos = new ArrayList<>();
 
-        permisos.add(new Permiso("#","Alumnos"));
-        permisos.add(new Permiso("#","Grupos"));
+        permisos.add(new Permiso("/Alumno","Alumnos"));
+        permisos.add(new Permiso("/Grupo","Grupos"));
         permisos.add(new Permiso("#","Horarios"));
         permisos.add(new Permiso("/login","<i class=\"material-icons\">exit_to_app</i>"));
 
         return permisos;
     }
+
+    public  static Long maximoSecuencial(ArrayList<Long> ids)
+    {
+        Long maximo= Long.valueOf(0);
+
+        for (Long n:ids
+             ) {
+            if(maximo<n)
+            {
+                maximo=n;
+            }
+        }
+
+
+
+        return maximo;
+    }
+
 
 }

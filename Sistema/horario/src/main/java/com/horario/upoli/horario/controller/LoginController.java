@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class LoginController {
     @Autowired
-    UsuarioService usuarioService;
+   private UsuarioService usuarioService;
 
         @RequestMapping(value = "/login",method = RequestMethod.GET)
     String Inicio(HttpServletRequest req, HttpServletResponse res){

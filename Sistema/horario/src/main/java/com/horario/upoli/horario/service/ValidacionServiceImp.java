@@ -1,13 +1,7 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Alumno;
-import com.horario.upoli.horario.model.Carrera;
-import com.horario.upoli.horario.model.Profesor;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.repo.AlumnoRepo;
-import com.horario.upoli.horario.repo.CarreraRepo;
-import com.horario.upoli.horario.repo.ProfesorRepo;
-import com.horario.upoli.horario.repo.UsuarioRepo;
+import com.horario.upoli.horario.model.*;
+import com.horario.upoli.horario.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +15,10 @@ public class ValidacionServiceImp implements ValidacionService {
     private UsuarioRepo usuarioRepo;
     @Autowired
     private AlumnoRepo alumnoRepo;
-
     @Autowired
     private CarreraRepo carreraRepo;
+    @Autowired
+    private Det_grupoRepo det_grupoRepo;
 
 
     @Override
@@ -49,6 +44,53 @@ public class ValidacionServiceImp implements ValidacionService {
         }
 
         return  Resultado;
+    }
+
+    @Override
+    public ArrayList<Det_grupo> DetalleFiltrado(Grupo grupo) {
+        Iterable<Det_grupo> source=det_grupoRepo.findAll();
+        ArrayList<Det_grupo> ListadoA= new ArrayList<>();
+        ArrayList<Det_grupo> ListadoB= new ArrayList<>();
+        source.forEach(ListadoA::add);
+        for (Det_grupo n:ListadoA
+             ) {
+            if (n.getGrupo().getId_grupo()==grupo.getId_grupo())
+            {
+                ListadoB.add(n);
+            }
+        }
+
+
+
+        return ListadoB;
+    }
+
+    @Override
+    public ArrayList<Carrera> CarrerasConAlumnos() {
+        Iterable<Carrera> sourceC=carreraRepo.findAll();
+        Iterable<Alumno> sourceA=alumnoRepo.findAll();
+
+        ArrayList<Carrera> ListC= new ArrayList<>();
+        ArrayList<Carrera> ListCO= new ArrayList<>();
+        ArrayList<Alumno> ListAl= new ArrayList<>();
+
+        sourceC.forEach(ListC::add);
+        sourceA.forEach(ListAl::add);
+
+        for (Carrera carrera:ListC
+             ) {
+
+            for (Alumno alumno:ListAl
+                 ) {
+                if(alumno.getCarrera().getId_carrera()==carrera.getId_carrera())
+                {
+                    ListCO.add(carrera);
+                    break;
+                }
+            }
+
+        }
+        return ListCO;
     }
 
     @Override

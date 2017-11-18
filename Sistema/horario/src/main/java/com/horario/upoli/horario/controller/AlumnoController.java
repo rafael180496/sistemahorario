@@ -27,17 +27,17 @@ import java.sql.Date;
 @RestController
 public class AlumnoController {
     @Autowired
-    ValidacionService validacionService;
+    private ValidacionService validacionService;
 
     @Autowired
-    AlumnoService alumnoService;
+    private AlumnoService alumnoService;
 
     @Autowired
-    CarreraService carreraService;
+    private  CarreraService carreraService;
 
 
     @RequestMapping(value = "/Alumno",method = RequestMethod.GET)
-    public  String IndexClase(HttpServletRequest req, HttpServletResponse res)
+    public  String IndexAlumno(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");
