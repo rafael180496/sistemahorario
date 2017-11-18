@@ -20,8 +20,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
    private UsuarioService usuarioService;
-
-        @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
     String Inicio(HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
         Usuario recupera = (Usuario) session.getAttribute("usuario");

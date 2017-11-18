@@ -23,6 +23,7 @@ public class EditUsuario extends Editor {
                 "            $(\"select[required]\").css({\n" +
                 "                display: \"inline\",\n" +
                 "                height: 0,\n" +
+                "position: \"absolute\",\n"+
                 "                padding: 0,\n" +
                 "                width: 0\n" +
                 "            });\n" +

@@ -19,25 +19,54 @@ public class EditGrupo extends Editor {
 
     @Override
     public String Enviar_Formulario() {
-        super.setScrip_m("<script>\n" +
+        /*  super.setScrip_m("<script>\n" +
                 "        $(document).ready(function() {\n" +
                 "            $('select').material_select();\n" +
                 "\n" +
                 "            // for HTML5 \"required\" attribute\n" +
                 "            $(\"select[required]\").css({\n" +
                 "                display: \"inline\",\n" +
+                "position: \"absolute\",\n"+
                 "                height: 0,\n" +
                 "                padding: 0,\n" +
                 "                width: 0\n" +
                 "            });\n" +
                 "        });\n" +
-                "    </script>");
+                "    </script>");*/
 
+
+        super.setScrip_m("<script>\n" +
+                "        \n" +
+                "                            $(document).ready(function() {\n" +
+                "                                $('select').material_select();\n" +
+                "                \n" +
+                "                                // for HTML5 required attribute\n" +
+                "                                $(select[required]).css({\n" +
+                "                                    display: inline,\n" +
+                "                                    position: absolute,\n" +
+                "                                    height: 0,\n" +
+                "                                    padding: 0,\n" +
+                "                                    width: 0\n" +
+                "                                });\n" +
+                "        \n" +
+                "                            $(\"#f_grupos\").submit(function() {\n" +
+                "        \n" +
+                "                                $(\"#dp_grupos option\").each(function(){\n" +
+                "                                    if ($(this).val() == \"\" ){        \n" +
+                "                                        return false;\n" +
+                "                                    }\n" +
+                "                                });\n" +
+                "                            \n" +
+                "                            });\n" +
+                "                            });\n" +
+                "        </script>");
         /*----------------------------------------------*/
         Permiso btm_verde= new Permiso("","");
         Permiso btm_rojo= new Permiso("#","Cancelar");
         Formulario formulario= new Formulario();
+        formulario.setId_f("f_grupos");
         ArrayList<String> cuerpo= new ArrayList();
+
         String titulo= "";
         String check="";
         String check2="";
@@ -73,7 +102,7 @@ public class EditGrupo extends Editor {
 
         cuerpo.add("</div>\n" +
                 "                        <div class=\"card-action \">\n" +
-                "                            <input type=\"submit\" class=\"waves-effect waves-light btn\" value=\""+btm_verde.getNombre()+"\">\n" +
+                "                            <input type=\"submit\" class=\"waves-effect waves-light btn  btn_guardar\" value=\""+btm_verde.getNombre()+"\">\n" +
                 "                            <a class=\"waves-effect waves-light btn red\" href=\""+btm_rojo.getAccion()+"\">"+btm_rojo.getNombre()+"</a>\n" +
                 "                        </div>");
 
@@ -135,7 +164,7 @@ public class EditGrupo extends Editor {
     private String GenerarListaClase()
     {
         String resulatado="<div class=\"input-field  \">\n" +
-                "                                <select required=\"\" aria-required=\"true\" name=\"dp_clase\">";
+                "                                <select required=\"\" aria-required=\"true\"  name=\"dp_clase\">";
 
         if(isNuevo())
         {
@@ -214,13 +243,13 @@ public class EditGrupo extends Editor {
     private String GenerarListaAgrupada()
     {
         String resulatado="<div class=\"input-field  \">\n" +
-                "                                <select multiple required=\"\" aria-required=\"true\" name=\"dp_grupos\">";
+                "                                <select  required=\"\" aria-required=\"true\" name=\"dp_grupos\" id=\"dp_grupos\" multiple>";
 
         if(isNuevo())
         {
 
             resulatado+="<optgroup label=\"Defecto\">\n" +
-                    "                                        <option value=\"\" disabled selected>Seleccionar</option>\n" +
+                    "                                        <option value=\"\"  selected disabled>Seleccionar</option>\n" +
                     "                                  </optgroup>";
 
 

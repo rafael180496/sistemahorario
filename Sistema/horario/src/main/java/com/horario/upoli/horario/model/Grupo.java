@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Entity
-@Table(name = "Alumno")
+@Table(name = "Grupo")
 public class Grupo {
 
     @Id

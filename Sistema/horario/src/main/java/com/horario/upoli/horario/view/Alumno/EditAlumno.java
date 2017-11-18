@@ -24,6 +24,7 @@ public class EditAlumno extends Editor {
                 "            // for HTML5 \"required\" attribute\n" +
                 "            $(\"select[required]\").css({\n" +
                 "                display: \"inline\",\n" +
+                "position: \"absolute\",\n"+
                 "                height: 0,\n" +
                 "                padding: 0,\n" +
                 "                width: 0\n" +

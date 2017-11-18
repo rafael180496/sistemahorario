@@ -106,7 +106,7 @@ public class ValidacionServiceImp implements ValidacionService {
                     ) {
                 String carnetA=n.getCarnet().replace(" ","");
 
-                if (carnet.equals(carnet.replace(" ",""))) {
+                if (carnetA.equals(carnet.replace(" ",""))) {
 
                     return true;
 
@@ -120,7 +120,7 @@ public class ValidacionServiceImp implements ValidacionService {
                     ) {
                 String carnetA=n.getCarnet().replace(" ","");
 
-                if ((carnet.equals(carnet.replace(" ","")) )&&(n.getId_alumno()!=id)) {
+                if ((carnetA.equals(carnet.replace(" ","")) )&&(n.getId_alumno()!=id)) {
 
                     return true;
 
