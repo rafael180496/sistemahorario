@@ -19,7 +19,7 @@ public class EditGrupo extends Editor {
 
     @Override
     public String Enviar_Formulario() {
-        /*  super.setScrip_m("<script>\n" +
+          super.setScrip_m("<script>\n" +
                 "        $(document).ready(function() {\n" +
                 "            $('select').material_select();\n" +
                 "\n" +
@@ -32,34 +32,10 @@ public class EditGrupo extends Editor {
                 "                width: 0\n" +
                 "            });\n" +
                 "        });\n" +
-                "    </script>");*/
+                "    </script>");
 
 
-        super.setScrip_m("<script>\n" +
-                "        \n" +
-                "                            $(document).ready(function() {\n" +
-                "                                $('select').material_select();\n" +
-                "                \n" +
-                "                                // for HTML5 required attribute\n" +
-                "                                $(select[required]).css({\n" +
-                "                                    display: inline,\n" +
-                "                                    position: absolute,\n" +
-                "                                    height: 0,\n" +
-                "                                    padding: 0,\n" +
-                "                                    width: 0\n" +
-                "                                });\n" +
-                "        \n" +
-                "                            $(\"#f_grupos\").submit(function() {\n" +
-                "        \n" +
-                "                                $(\"#dp_grupos option\").each(function(){\n" +
-                "                                    if ($(this).val() == \"\" ){        \n" +
-                "                                        return false;\n" +
-                "                                    }\n" +
-                "                                });\n" +
-                "                            \n" +
-                "                            });\n" +
-                "                            });\n" +
-                "        </script>");
+
         /*----------------------------------------------*/
         Permiso btm_verde= new Permiso("","");
         Permiso btm_rojo= new Permiso("#","Cancelar");
@@ -248,9 +224,8 @@ public class EditGrupo extends Editor {
         if(isNuevo())
         {
 
-            resulatado+="<optgroup label=\"Defecto\">\n" +
-                    "                                        <option value=\"\"  selected disabled>Seleccionar</option>\n" +
-                    "                                  </optgroup>";
+            resulatado+=" <option value=\"\"   disabled>Seleccionar</option>\n";
+
 
 
             for (Carrera n:carreras

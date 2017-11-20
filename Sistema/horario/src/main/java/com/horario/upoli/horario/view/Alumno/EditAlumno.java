@@ -6,7 +6,6 @@ import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.view.componentes.Editor;
 import com.horario.upoli.horario.view.componentes.Formulario;
-
 import java.sql.Date;
 import java.util.ArrayList;
 

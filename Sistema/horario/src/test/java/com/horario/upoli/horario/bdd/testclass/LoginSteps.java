@@ -1,5 +1,6 @@
 package com.horario.upoli.horario.bdd.testclass;
 
+import com.horario.upoli.horario.bdd.page.CarreraPage;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -15,6 +16,7 @@ public class LoginSteps  extends Context {
     String urlbase;
     WebDriver driver;
     LoginPage login;
+    CarreraPage carrera;
 
     private SeleniumBaseDriver selenium;
 
@@ -29,6 +31,7 @@ public class LoginSteps  extends Context {
         driver = selenium.getDriver();
         driver.get(urlbase);
         login = new LoginPage(driver);
+        carrera=new CarreraPage(driver);
     }
 
     @Cuando("^yo lleno el campo nombre de usuario con \"(.+)\"$")
@@ -44,6 +47,11 @@ public class LoginSteps  extends Context {
     @Cuando("^yo hago click el boton Ingresar$")
     public void hago_click_en_boton_login() {
         login.hagoClickEnIngresar();
+    }
+
+    @Cuando("^yo hago click al link Carrera$")
+    public void hago_click_en_link_carrera() {
+        carrera.hagoClickEnIngresar();
     }
 
     @Entonces("^Me detengo por (\\d+) segundos$")

@@ -7,7 +7,7 @@
     <title>SDH</title>
 
     <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=MaterialIcons" rel="stylesheet">
     <link href="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/css%2Fmaterialize.css?alt=media&token=c1182d85-8ade-444f-a1ff-9b0ec66bcd15" type="text/css" rel="stylesheet" media="screen,projection" />
 
 </head>
@@ -74,52 +74,57 @@
             <div class="col s6 offset-s3">
                 <div class="card hoverable  grey lighten-4">
 
-                    <div class="card-content">
-                        <p class="card-title">Agregar Grupo</p>
-                        <div class="input-field">
-                            <input required="" aria-required="true" id="txt_nombre" type="text" class="validate">
-                            <label for="txt_nombre">Nombre del Grupo:</label>
-                        </div>
-                        <div class="input-field">
-                            <select>
-                                        <option value="" disabled selected>Seleccionar</option>
-                                        <option value="1">Rafael</option>
-                                        <option value="2">Hevin</option>
-                                        <option value="3">Idra </option>
-                                      </select>
-                            <label>Seleccionar Profesor:</label>
-                        </div>
-                        <div class="input-field">
-                            <select>
-                                            <option value="" disabled selected>Seleccionar</option>
-                                            <option value="1">Algoritmo</option>
-                                            <option value="2">Calculo</option>
-                                            <option value="3">Mate </option>
-                                          </select>
-                            <label>Seleccionar Clase:</label>
-                        </div>
+                    <form action="#">
+                        <div class="card-content">
+                            <p class="card-title">Agregar Grupo</p>
+                            <div class="input-field">
+                                <input required="" aria-required="true" id="txt_nombre" type="text" class="validate">
+                                <label for="txt_nombre">Nombre del Grupo:</label>
+                            </div>
 
-                        <div class="input-field" required="" aria-required="true" name="dp_alumnos">
-                            <select multiple>
-                                    <optgroup label="Defecto">
-                                        <option value="" disabled selected>Seleccionar</option>
-                                  </optgroup>
-                                  <optgroup label="Ing.sistema">
-                                    <option value="1">Rafa</option>
-                                    <option value="2">Pedro</option>
-                                  </optgroup>
-                                  <optgroup label="Ing.computacion">
-                                    <option value="3">Rodolfo</option>
-                                    <option value="4">Paco</option>
-                                  </optgroup>
+                            <div class="input-field">
+                                <select multiple required="" aria-required="true" name="dp_Alummos">
+                                    <option value="" disabled>Seleccionar</option>
+                                    <optgroup label="Ing.sistema">
+                                        <option value="1">Rafa</option>
+                                        <option value="2">Pedro</option>
+                                    </optgroup>
+                                    <optgroup label="Ing.computacion">
+                                        <option value="3">Rodolfo</option>
+                                        <option value="4">Paco</option>
+                                    </optgroup>
                                 </select>
-                            <label>Alumnos:</label>
+                                <label>Alumnos:</label>
+                            </div>
+                            <div class="input-field">
+                                <select required="" aria-required="true" name="dp_Profesor"> 
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="1">Rafael</option>
+                                    <option value="2">Hevin</option>
+                                    <option value="3">Idra </option>
+                                </select>
+                                <label>Seleccionar Profesor:</label>
+                            </div>
+                            <div class="input-field">
+                                <select required="" aria-required="true" name="dp_Clase">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="1">Algoritmo</option>
+                                    <option value="2">Calculo</option>
+                                    <option value="3">Mate </option>
+                                </select>
+                                <label>Seleccionar Clase:</label>
+                            </div>
+
+                          
                         </div>
-                    </div>
-                    <div class="card-action">
-                        <a class="waves-effect waves-light btn">Actualizar</a>
-                        <a class="waves-effect waves-light btn red">Cancelar</a>
-                    </div>
+                        <div class="card-action">
+                            <button type="submit" class="waves-effect waves-light btn btn_guardar">Actualizar</button>
+                           
+                            <a class="waves-effect waves-light btn red">Cancelar</a>
+                        </div>
+                    </form>
+
+                    
 
 
                 </div>
@@ -135,12 +140,9 @@
     <!--  Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://firebasestorage.googleapis.com/v0/b/horario-8c987.appspot.com/o/js%2Fmaterialize.js?alt=media&token=ea9cd3ec-9430-4bed-be1f-d560ad47d895"></script>
+    <script src="C:\Users\rafae\Sistema_Horario\Diseno\js\app.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('select').material_select();
-        });
-    </script>
+
 </body>
 
 </html>
