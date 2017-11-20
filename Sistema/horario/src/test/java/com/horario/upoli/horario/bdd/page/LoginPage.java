@@ -14,8 +14,11 @@ public class LoginPage extends  BasePage {
 
     @FindBy(tagName = "body")
     private WebElement body;
+
     @FindBy(name = "btn_ingresar")
     private WebElement btn_ingresar;
+
+
 
 
     public void llenarCampoUsuario(String texto){
@@ -25,6 +28,8 @@ public class LoginPage extends  BasePage {
     public void llenarCampoClave(String texto){
         sendKeys(txt_clave,texto);
     }
+
+
 
     public void hagoClickEnIngresar(){
         click(btn_ingresar);

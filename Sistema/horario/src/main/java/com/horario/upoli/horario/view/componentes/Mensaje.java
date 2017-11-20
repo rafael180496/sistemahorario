@@ -98,13 +98,13 @@ public class Mensaje {
                 "\n" +
                 "                        </div>\n" +
                 "                        <div class=\"card-action \">\n" +
-                "                            <a class=\"waves-effect waves-light btn\" href=\""+btn_verde.getAccion()+"\">"+btn_verde.getNombre()+"</a>");
+                "                            <a class=\"waves-effect waves-light btn verde\" href=\""+btn_verde.getAccion()+"\">"+btn_verde.getNombre()+"</a>");
 
 
 
             if(btn_cancelar)
             {
-                cuerpo.add("<a class=\"waves-effect waves-light btn red\" href=\""+btn_rojo.getAccion()+"\">"+btn_rojo.getNombre()+"</a>");
+                cuerpo.add("<a class=\"waves-effect waves-light btn red rojo\" href=\""+btn_rojo.getAccion()+"\">"+btn_rojo.getNombre()+"</a>");
             }
 
             cuerpo.add("</div>\n" +
@@ -160,7 +160,8 @@ public class Mensaje {
         ArrayList <String> est= new ArrayList<>();
         est.add(Estilos.Material_Icons.mostrar());
         est.add(Estilos.materialize.mostrar());
-
+        est.add(Estilos.general.mostrar());
+        est.add(Estilos.fonts.mostrar());
         return  est;
     }
 

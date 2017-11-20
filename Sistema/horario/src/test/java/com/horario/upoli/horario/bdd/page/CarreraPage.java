@@ -10,6 +10,45 @@ public class CarreraPage extends  BasePage  {
     @FindBy(linkText = "Carreras")
     private WebElement link_Carrera;
 
+    @FindBy(linkText = "add")
+    private WebElement link_agregar;
+
+    @FindBy(id = "txt_nombre")
+    private WebElement txt_carrera;
+
+    @FindBy(className = "grabar")
+    private WebElement btn_grabar;
+
+
+
+    public void llenarCampoCarrera(String texto){
+        sendKeys(txt_carrera,texto);
+    }
+
+
+    public  void  EditfilaCarrera(Long id)
+    {
+        WebElement btn_edit = driver.findElement(By.className("edit"+id));
+        click(btn_edit);
+    }
+
+    public  void  DeletefilaCarrera(Long id)
+    {
+        WebElement btn_edit = driver.findElement(By.className("delete"+id));
+        click(btn_edit);
+    }
+
+    public void hagoClickEnAgregar(){
+        click(link_agregar);
+    }
+
+    public void hagoClickEnGrabar(){
+        click(btn_grabar);
+
+    }
+
+
+
     public void hagoClickEnIngresar(){
        click(link_Carrera);
     }

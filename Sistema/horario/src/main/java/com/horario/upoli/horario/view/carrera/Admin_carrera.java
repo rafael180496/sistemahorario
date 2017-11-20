@@ -64,10 +64,10 @@ public class Admin_carrera extends Editor {
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +
                     "                                <td>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light \" href=\""+Edit+"/"+n.getId_carrera()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light  "+"edit"+n.getId_carrera()+" \"  href=\""+Edit+"/"+n.getId_carrera()+"\">\n" +
                     "                                        <i class=\"material-icons\">mode_edit</i>\n" +
                     "                                    </a>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light red\" href=\""+Delete+"/"+n.getId_carrera()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light red  "+"delete"+n.getId_carrera()+"\" href=\""+Delete+"/"+n.getId_carrera()+"\">\n" +
                     "                                        <i class=\"material-icons\">delete</i>\n" +
                     "                                    </a>\n" +
                     "                                </td>\n" +
