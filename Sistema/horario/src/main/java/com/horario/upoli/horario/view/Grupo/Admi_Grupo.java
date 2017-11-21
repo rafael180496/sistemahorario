@@ -47,6 +47,7 @@ public class Admi_Grupo  extends Editor{
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
+                "                                    <th>Cod.Reg</th>\n" +
                 "                                    <th>Nombre</th>\n" +
                 "                                    <th>Profesor</th>\n" +
                 "                                    <th>Clase</th>\n" +
@@ -92,6 +93,7 @@ public class Admi_Grupo  extends Editor{
 
 
             Resultado.add("<tr>\n" +
+                    "                                <td>"+n.getId_grupo()+"</td>\n" +
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getProfesor().getNombre()+" "+n.getProfesor().getApellido()+"</td>\n" +
                     "                                <td>"+n.getClase().getNombre()+"</td>\n" +

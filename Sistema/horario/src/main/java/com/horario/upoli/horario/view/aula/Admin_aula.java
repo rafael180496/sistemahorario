@@ -27,6 +27,7 @@ public class Admin_aula extends Editor {
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
+                "                                    <th>Cod.Reg</th>\n" +
                 "                                    <th>Nombre</th>\n" +
                 "                                    <th>Estado</th>\n" +
                 "                                    <th>Fecha</th>\n" +
@@ -78,6 +79,7 @@ public class Admin_aula extends Editor {
             }
 
             Resultado.add("<tr>\n" +
+                    "                                <td>"+n.getId_aula()+"</td>\n" +
                     "                                <td>"+n.getDesc_aula()+"</td>\n" +
                     "                                <td>"+target+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +

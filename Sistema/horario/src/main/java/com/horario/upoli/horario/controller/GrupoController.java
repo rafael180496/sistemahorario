@@ -1,9 +1,13 @@
 package com.horario.upoli.horario.controller;
 
+import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.model.Grupo;
 import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.*;
 import com.horario.upoli.horario.view.Grupo.Admi_Grupo;
 import com.horario.upoli.horario.view.Grupo.EditGrupo;
+import com.horario.upoli.horario.view.componentes.Mensaje;
 import com.horario.upoli.horario.view.login.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.util.ArrayList;
 
 @RestController
 public class GrupoController {
@@ -75,7 +81,7 @@ public class GrupoController {
             return  new Login().Generar_login(false);
         }
         EditGrupo nuevo = new EditGrupo();
-      //  if (id==0){
+        if (id==0){
             nuevo.setUsuario(recupera);
             nuevo.setNuevo(true);
             nuevo.setCarreras(validacionService.CarrerasConAlumnos());
@@ -83,14 +89,46 @@ public class GrupoController {
             nuevo.setClases(claseService.listaClase());
             nuevo.setProfesors(profesorService.listaProfesores());
             return nuevo.GenerarEditar();
-      //  }
-/*
-        Alumno muestra= alumnoService.BuscarUno(id);
+        }
+
         nuevo.setUsuario(recupera);
         nuevo.setNuevo(false);
-        nuevo.setCarreras(carreraService.listaCarrera());
-        nuevo.setAlumno(muestra);
-        return nuevo.GenerarEditar();*/
+        nuevo.setDet_grupos(validacionService.DetalleFiltrado(grupoService.BuscarUno(id)));
+        nuevo.setAlumnos(alumnoService.listaAlumno());
+        nuevo.setClases(claseService.listaClase());
+        nuevo.setProfesors(profesorService.listaProfesores());
+        return nuevo.GenerarEditar();
+    }
+
+
+
+
+    @RequestMapping(value = "/Grupo/Guardar/{id}")
+    public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        Grupo nuevo = new Grupo();
+        if(id==0){
+
+        }else {
+
+        }
+
+
+
+        ArrayList<String> prueba = new ArrayList<>();
+
+        for (String n:req.getParameterValues("dp_grupos")
+             ) {
+            prueba.add(n);
+        }
+
+
     }
 
 

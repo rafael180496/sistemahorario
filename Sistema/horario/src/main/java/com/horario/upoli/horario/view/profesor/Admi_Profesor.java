@@ -27,6 +27,7 @@ public class Admi_Profesor extends Editor {
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
+                "                                    <th>Cod.Reg</th>\n" +
                 "                                    <th>Nombre</th>\n" +
                 "                                    <th>Apellido</th>\n" +
                 "                                    <th>Fecha</th>\n" +
@@ -67,6 +68,7 @@ public class Admi_Profesor extends Editor {
         for (Profesor n:Aux
              ) {
             Resultado.add("<tr>\n" +
+                    "                                <td>"+n.getId_profesor()+"</td>\n" +
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getApellido()+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +

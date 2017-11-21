@@ -135,18 +135,16 @@ public class ClaseController {
         }
         Clase muestra= new Clase();
         if(id==0){
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
             muestra.setId_clase(claseService.Secuencia());
         }
         else {
             muestra= claseService.BuscarUno(id);
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         }
 
+        muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         claseService.GuardarClase(muestra);
-
 
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");

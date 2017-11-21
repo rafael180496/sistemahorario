@@ -142,31 +142,20 @@ public class AlumnoController {
         }
         Alumno muestra= new Alumno();
         if(id==0){
-            muestra.setCarnet((String) req.getParameter("txt_carnet").replace(" ","").toUpperCase());
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
-            muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
             muestra.setId_alumno(alumnoService.Secuencia());
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
-            Long idc=Long.parseLong((String)req.getParameter("dp_carrera"));
-
-            Carrera carrera =carreraService.BuscarUno(idc);
-            muestra.setCarrera(carrera);
-
         }
         else {
             muestra=alumnoService.BuscarUno(id);
-            muestra.setCarnet((String) req.getParameter("txt_carnet").replace(" ","").toUpperCase());
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
-            muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
-
-            String rest=(String) req.getParameter("check_rest");
-
-            Long idc=Long.parseLong((String)req.getParameter("dp_carrera"));
-            Carrera carrera =carreraService.BuscarUno(idc);
-            muestra.setCarrera(carrera);
-
         }
+
+        muestra.setCarnet((String) req.getParameter("txt_carnet").replace(" ","").toUpperCase());
+        muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
+        muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
+        Long idc=Long.parseLong((String)req.getParameter("dp_carrera"));
+        Carrera carrera =carreraService.BuscarUno(idc);
+        muestra.setCarrera(carrera);
 
         if((validacionService.CarnetRepetido(muestra.getCarnet(),id) ))
         {

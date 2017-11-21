@@ -7,6 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CarreraPage extends  BasePage  {
+
+
+
+
     @FindBy(linkText = "Carreras")
     private WebElement link_Carrera;
 
@@ -19,7 +23,8 @@ public class CarreraPage extends  BasePage  {
     @FindBy(className = "grabar")
     private WebElement btn_grabar;
 
-
+    @FindBy(tagName = "table")
+    private  WebElement tabla;
 
     public void llenarCampoCarrera(String texto){
         sendKeys(txt_carrera,texto);
@@ -47,7 +52,10 @@ public class CarreraPage extends  BasePage  {
 
     }
 
-
+    public  void  verificar(String verificar)
+    {
+        findTextInBody(tabla,verificar);
+    }
 
     public void hagoClickEnIngresar(){
        click(link_Carrera);
@@ -56,4 +64,5 @@ public class CarreraPage extends  BasePage  {
         super(driver);
         PageFactory.initElements(driver,this);
     }
+
 }

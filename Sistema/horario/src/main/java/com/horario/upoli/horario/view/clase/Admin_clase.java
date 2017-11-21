@@ -28,6 +28,7 @@ public class Admin_clase extends Editor {
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
+                "                                    <th>Cod.Reg</th>\n" +
                 "                                    <th>Nombre</th>\n" +
                 "                                    <th>Fecha</th>\n" +
                 "                                    <th><a class=\"btn-floating waves-effect waves-light\" href=\""+Add+"\">\n" +
@@ -67,6 +68,7 @@ public class Admin_clase extends Editor {
         for (Clase n:Aux
                 ) {
             Resultado.add("<tr>\n" +
+                    "                                <td>"+n.getId_clase()+"</td>\n" +
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +
                     "                                <td>\n" +

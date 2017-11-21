@@ -29,6 +29,7 @@ public class Admi_Usuario extends Editor {
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
+                "                                    <th>Cod.Reg</th>\n" +
                 "                                    <th>Usuario</th>\n" +
                 "                                    <th>Profesor</th>\n" +
                 "                                    <th>Correo</th>\n" +
@@ -98,6 +99,7 @@ public class Admi_Usuario extends Editor {
 
 
             Resultado.add("<tr>\n" +
+                    "                                <td>"+n.getId_usuario()+"</td>\n" +
                     "                                <td>"+n.getNom_usr()+"</td>\n" +
                     "                                <td>"+n.getProfesor().getNombre()+" "+n.getProfesor().getApellido()+"</td>\n" +
                     "                                <td>"+n.getCorreo()+"</td>\n" +

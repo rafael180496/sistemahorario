@@ -135,18 +135,15 @@ public class ProfesorController {
         }
         Profesor muestra= new Profesor();
         if(id==0){
-           muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
-            muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
             muestra.setId_profesor(profesorService.Secuencia());
         }
         else {
             muestra= profesorService.BuscarUno(id);
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
-            muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
         }
-
+        muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
+        muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
         profesorService.GuardarProfesor(muestra);
 
 

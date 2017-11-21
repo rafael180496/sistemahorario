@@ -51,12 +51,12 @@ public class EditGrupo extends Editor {
             grupo.setNombre("");
             java.util.Date  fecha = new java.util.Date();
             grupo.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("#/0","Guardar");
+            btm_verde= new Permiso("/Grupo/Guardar/0","Guardar");
             titulo= "Agregar Grupo";
 
         }
         else {
-            btm_verde= new Permiso("#/"+grupo.getId_grupo(),"Actualizar");
+            btm_verde= new Permiso("/Grupo/Guardar/"+grupo.getId_grupo(),"Actualizar");
             titulo= "Editar Grupo";
 
 

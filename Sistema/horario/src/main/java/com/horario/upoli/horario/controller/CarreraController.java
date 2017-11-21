@@ -150,16 +150,14 @@ public class CarreraController {
         }
         Carrera muestra= new Carrera();
         if(id==0){
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
             muestra.setId_carrera(carreraService.Secuencia());
         }
         else {
             muestra= carreraService.BuscarUno(id);
-            muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         }
-
+        muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         carreraService.GuardarCarrera(muestra);
 
 

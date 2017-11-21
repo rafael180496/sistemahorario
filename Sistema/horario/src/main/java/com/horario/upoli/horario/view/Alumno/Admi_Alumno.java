@@ -28,6 +28,7 @@ public class Admi_Alumno extends Editor{
         String Inicio=" <table class=\"highlight responsive-table  bordered centered\">\n" +
                 "                            <thead>\n" +
                 "                                <tr>\n" +
+                "                                    <th>Cod.Reg</th>\n" +
                 "                                    <th>Carnet</th>\n" +
                 "                                    <th>Nombre</th>\n" +
                 "                                    <th>Apellido</th>\n" +
@@ -76,6 +77,7 @@ public class Admi_Alumno extends Editor{
 
 
             Resultado.add("<tr>\n" +
+                    "                                <td>"+n.getId_alumno()+"</td>\n" +
                     "                                <td>"+n.getCarnet()+"</td>\n" +
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getApellido()+"</td>\n" +
