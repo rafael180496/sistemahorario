@@ -118,8 +118,8 @@ public class GrupoController {
         }else {
 
         }
-
-
+        return "";
+/*
 
         ArrayList<String> prueba = new ArrayList<>();
 
@@ -128,7 +128,7 @@ public class GrupoController {
             prueba.add(n);
         }
 
-
+*/
     }
 
 
