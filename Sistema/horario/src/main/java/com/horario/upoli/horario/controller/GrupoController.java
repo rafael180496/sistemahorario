@@ -113,11 +113,16 @@ public class GrupoController {
             return  new Login().Generar_login(false);
         }
         Grupo nuevo = new Grupo();
+
         if(id==0){
-
+            nuevo.setId_grupo(grupoService.Secuencia());
+            java.util.Date  fecha = new java.util.Date();
+            nuevo.setF_creacion(new Date(fecha.getTime()));
         }else {
-
+            nuevo= grupoService.BuscarUno(id);
         }
+
+
         return "";
 /*
 
