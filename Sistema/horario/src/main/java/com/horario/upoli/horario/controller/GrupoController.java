@@ -1,6 +1,8 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.model.Clase;
+import com.horario.upoli.horario.model.Det_grupo;
 import com.horario.upoli.horario.model.Grupo;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -35,7 +37,8 @@ public class GrupoController {
     private GrupoService grupoService;
     @Autowired
     private AlumnoService alumnoService;
-
+    @Autowired
+    private Det_grupoService det_grupoService;
 
     @RequestMapping(value = "/Grupo",method = RequestMethod.GET)
     public  String IndexGrupo(HttpServletRequest req, HttpServletResponse res)
@@ -113,14 +116,45 @@ public class GrupoController {
             return  new Login().Generar_login(false);
         }
         Grupo nuevo = new Grupo();
-
+        ArrayList<Det_grupo> nuevo2= new ArrayList<>();
         if(id==0){
             nuevo.setId_grupo(grupoService.Secuencia());
             java.util.Date  fecha = new java.util.Date();
             nuevo.setF_creacion(new Date(fecha.getTime()));
         }else {
             nuevo= grupoService.BuscarUno(id);
+            nuevo2=validacionService.DetalleFiltrado(nuevo);
         }
+        nuevo.setNombre(req.getParameter("txt_nombre").replace(" ","").toUpperCase());
+        nuevo.setClase(claseService.BuscarUno(Long.parseLong(req.getParameter("dp_clase"))));
+        nuevo.setProfesor(profesorService.BuscarUno(Long.parseLong(req.getParameter("dp_profesor"))));
+
+        try {
+            grupoService.GuardarGrupo(nuevo);
+            if(id!=0){
+                for (Det_grupo n:validacionService.DetalleFiltrado(nuevo)
+                     ) {
+                        det_grupoService.EliminarDet_grupo(n.getId_det_grupo());
+                    }
+            }
+
+            for (String n:req.getParameterValues("dp_grupos")
+                    ) {
+                Det_grupo aux= new Det_grupo();
+                java.util.Date  fecha = new java.util.Date();
+                aux.setF_creacion(new Date(fecha.getTime()));
+                aux.setGrupo(nuevo);
+                aux.setId_det_grupo(det_grupoService.Secuencia());
+                aux.setAlumno(alumnoService.BuscarUno(Long.parseLong(n)));
+                det_grupoService.GuardarDet_grupo(aux);
+            }
+
+
+        }
+        catch (Exception m){
+
+        }
+
 
 
         return "";
