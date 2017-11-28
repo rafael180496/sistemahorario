@@ -67,7 +67,7 @@ public class EditClase  extends Editor{
                 "                            </div>\n" +
                 "                        </div>\n" +
                 "                        <div class=\"card-action \">\n" +
-                "                                <input type=\"submit\" class=\"waves-effect waves-light btn\" value=\""+btm_verde.getNombre()+"\" >\n" +
+                "                                <input type=\"submit\" class=\"waves-effect waves-light btn grabar \" value=\"  "+btm_verde.getNombre()+"\" >\n" +
                 "                                <a class=\"waves-effect waves-light btn red\" href=\""+btm_rojo.getAccion()+"\">"+btm_rojo.getNombre()+"</a>\n" +
                 "                        </div>");
         formulario.setCuerpo_formulario(cuerpo);

@@ -8,17 +8,17 @@ Característica: Pagina de login
     Y yo hago click el boton Ingresar
     Y yo hago click al link Carrera
     Y yo hago click al link Agregar
-    Y yo lleno el campo carrera con "ALGORITMO"
-    Y yo hago click al Grabar
+    Y yo lleno el campo carrera con "DISEÑO.GRAFICO"
+    Y yo hago click al Grabar Carrera
     Y yo hago click en el boton Verde
-    Y yo deberia poder ver el texto "ALGORITMO"
+    Y yo deberia poder ver el texto "DISEÑO.GRAFICO"
     Y yo hago click  en el boton editar de la fila  con "1"
-    Y yo lleno el campo carrera con "Algoritmo2"
-    Y yo hago click al Grabar
+    Y yo lleno el campo carrera con "DISEÑO.PRODUCTO"
+    Y yo hago click al Grabar Carrera
     Y yo hago click en el boton Verde
-    Y yo deberia poder ver el texto "ALGORITMO2"
+    Y yo deberia poder ver el texto "DISEÑO.PRODUCTO"
     Y yo hago click  en el boton elimnar de la fila  con "1"
     Y yo hago click en el boton Verde
     Y yo hago click en el boton Verde
-    Y yo deberia poder ver el texto "ALGORITMO2"
+    Y yo deberia poder ver el texto "DISEÑO.PRODUCTO"
     Y Me detengo por 3 segundos

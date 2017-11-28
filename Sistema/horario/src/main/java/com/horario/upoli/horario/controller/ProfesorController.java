@@ -5,6 +5,7 @@ import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.ProfesorService;
+import com.horario.upoli.horario.service.ValidacionService;
 import com.horario.upoli.horario.view.profesor.Admi_Profesor;
 import com.horario.upoli.horario.view.profesor.EditProfesor;
 import com.horario.upoli.horario.view.login.Login;
@@ -23,7 +24,8 @@ public class ProfesorController {
 
     @Autowired
     private ProfesorService  profesorService;
-
+    @Autowired
+    private ValidacionService validacionService;
 
 
     @RequestMapping(value = "/Profesor",method = RequestMethod.GET)
@@ -86,6 +88,15 @@ public class ProfesorController {
             return  new Login().Generar_login(false);
         }
         Profesor muestra= profesorService.BuscarUno(id);
+        if(validacionService.ValidarProfesor(muestra))
+        {
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No se puede eliminar el Profesor por que está vinculada con un grupo por favor desvincule la Profesor.");
+            Respuesta.setBtn_cancelar(false);
+            Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
+            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
         profesorService.EliminarProfesor(muestra.getId_profesor());
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Eliminacion  de profesor exitosa");

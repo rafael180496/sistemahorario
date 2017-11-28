@@ -38,7 +38,7 @@ public class EditGrupo extends Editor {
 
         /*----------------------------------------------*/
         Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("#","Cancelar");
+        Permiso btm_rojo= new Permiso("/Grupo","Cancelar");
         Formulario formulario= new Formulario();
         formulario.setId_f("f_grupos");
         ArrayList<String> cuerpo= new ArrayList();
@@ -196,7 +196,7 @@ public class EditGrupo extends Editor {
             resulatado+="<option value=\"\" disabled  >Seleccione</option>";
             for (Profesor n:profesors
                     ) {
-                if(n.getId_profesor().equals(grupo.getProfesor().getId_profesor()))
+                if(n.getId_profesor()==grupo.getProfesor().getId_profesor())
                 {
                     resulatado+="<option value=\""+n.getId_profesor()+"\" selected>"+n.getNombre()+"</option>";
                 }

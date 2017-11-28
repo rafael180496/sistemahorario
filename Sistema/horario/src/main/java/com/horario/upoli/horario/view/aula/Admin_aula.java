@@ -84,10 +84,10 @@ public class Admin_aula extends Editor {
                     "                                <td>"+target+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +
                     "                                <td>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light \" href=\""+Edit+"/"+n.getId_aula()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light "+"edit"+n.getId_aula()+" \" href=\""+Edit+"/"+n.getId_aula()+"\">\n" +
                     "                                        <i class=\"material-icons\">mode_edit</i>\n" +
                     "                                    </a>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light red\" href=\""+Delete+"/"+n.getId_aula()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light red "+"delete"+n.getId_aula()+" \" href=\""+Delete+"/"+n.getId_aula()+"\">\n" +
                     "                                        <i class=\"material-icons\">delete</i>\n" +
                     "                                    </a>\n" +
                     "                                </td>\n" +

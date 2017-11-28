@@ -1,6 +1,7 @@
 package com.horario.upoli.horario.bdd.testclass;
 
 import com.horario.upoli.horario.bdd.page.CarreraPage;
+import com.horario.upoli.horario.bdd.page.ClasePage;
 import com.horario.upoli.horario.bdd.page.MensajePage;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -19,6 +20,7 @@ public class GeneralSteps  extends Context {
     LoginPage login;
     CarreraPage carrera;
     MensajePage mensaje;
+    ClasePage clasePage;
     int espera=1;
     private SeleniumBaseDriver selenium;
 
@@ -35,6 +37,7 @@ public class GeneralSteps  extends Context {
         login = new LoginPage(driver);
         carrera=new CarreraPage(driver);
         mensaje=new MensajePage(driver);
+        clasePage=new ClasePage(driver);
     }
     @Cuando("^yo espero por cada uno \"(\\d+)\"$")
     public void lleno_el_esperar(int valor) throws Throwable {
@@ -89,7 +92,7 @@ public class GeneralSteps  extends Context {
         carrera.hagoClickEnAgregar();
     }
 
-    @Cuando("^yo hago click al Grabar$")
+    @Cuando("^yo hago click al Grabar Carrera$")
     public void hago_click_en_grabar() {
         login.esperar(espera);
         carrera.hagoClickEnGrabar();
@@ -133,6 +136,58 @@ public class GeneralSteps  extends Context {
     public void verifico_el_campo(String valor) throws Throwable {
         login.esperar(espera);
         carrera.verificar(valor);
+    }
+
+    /*Clase*/
+
+
+    @Cuando("^yo hago click al link Clase$")
+    public void hago_click_en_link_Clase$() {
+        login.esperar(espera);
+        clasePage.hagoClickEnIngresarClase();
+    }
+
+    @Cuando("^yo hago click al link Agregar Clase$")
+    public void hago_click_en_link_Agregar_Clase() {
+        login.esperar(espera);
+        clasePage.hagoClickEnAgregar();
+    }
+
+    @Cuando("^yo hago click al Grabar la Clase$")
+    public void hago_click_en_grabar_Clase$() {
+        login.esperar(espera);
+        clasePage.hagoClickEnGrabar();
+    }
+
+
+
+
+
+
+    @Cuando("^yo lleno el campo clase con \"(.+)\"$")
+    public void lleno_el_campo_clase_con(String valor) throws Throwable {
+        login.esperar(espera);
+        clasePage.llenarCampoClase(valor);
+    }
+
+
+    @Cuando("^yo hago click  en el boton editar la fila de clase: \"(.+)\"$")
+    public void click_editar_clase(Long valor) throws Throwable {
+        login.esperar(espera);
+        clasePage.EditfilaClase(valor);
+    }
+
+
+    @Cuando("^yo hago click  en el boton eliminar  la fila  de la clase con codigo:\"(.+)\"$")
+    public void click_eliminar_clase(Long valor) throws Throwable {
+        login.esperar(espera);
+        clasePage.DeletefilaCarrera(valor);
+    }
+
+    @Cuando("^yo verifico si existe  en clase:\"(.+)\"$")
+    public void verifico_el_campo_clase(String valor) throws Throwable {
+        login.esperar(espera);
+        clasePage.verificar(valor);
     }
 
 }

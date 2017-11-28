@@ -122,6 +122,16 @@ public class AlumnoController {
             return  new Login().Generar_login(false);
         }
         Alumno muestra= alumnoService.BuscarUno(id);
+        if(validacionService.ValidarAlumno(muestra))
+        {
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No se puede eliminar el Alumno por que está vinculada con un grupo por favor desvincule la Alumno.");
+            Respuesta.setBtn_cancelar(false);
+            Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
+            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
+
         alumnoService.EliminarAlumno(muestra.getId_alumno());
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Eliminacion  de Alumno exitosa");

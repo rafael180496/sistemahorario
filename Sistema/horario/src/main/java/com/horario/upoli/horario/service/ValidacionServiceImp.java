@@ -19,6 +19,8 @@ public class ValidacionServiceImp implements ValidacionService {
     private CarreraRepo carreraRepo;
     @Autowired
     private Det_grupoRepo det_grupoRepo;
+    @Autowired
+    private GrupoRepo grupoRepo;
 
 
     @Override
@@ -169,6 +171,54 @@ public class ValidacionServiceImp implements ValidacionService {
 
 
 
+    }
+
+    @Override
+    public boolean ValidarAlumno(Alumno alumno) {
+        Iterable<Det_grupo> source=det_grupoRepo.findAll();
+        ArrayList<Det_grupo> ListadoA= new ArrayList<>();
+        source.forEach(ListadoA::add);
+
+        for (Det_grupo n:ListadoA
+                ) {
+            if(n.getAlumno().getId_alumno()==alumno.getId_alumno())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean ValidarClase(Clase clase) {
+        Iterable<Grupo> source=grupoRepo.findAll();
+        ArrayList<Grupo> ListadoA= new ArrayList<>();
+        source.forEach(ListadoA::add);
+
+        for (Grupo n:ListadoA
+                ) {
+            if(n.getClase().getId_clase()==clase.getId_clase())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean ValidarProfesor(Profesor profesor) {
+        Iterable<Grupo> source=grupoRepo.findAll();
+        ArrayList<Grupo> ListadoA= new ArrayList<>();
+        source.forEach(ListadoA::add);
+
+        for (Grupo n:ListadoA
+                ) {
+            if(n.getProfesor().getId_profesor()==profesor.getId_profesor())
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

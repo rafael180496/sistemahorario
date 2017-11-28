@@ -85,18 +85,16 @@ public class GrupoController {
         }
         EditGrupo nuevo = new EditGrupo();
         if (id==0){
-            nuevo.setUsuario(recupera);
             nuevo.setNuevo(true);
-            nuevo.setCarreras(validacionService.CarrerasConAlumnos());
-            nuevo.setAlumnos(alumnoService.listaAlumno());
-            nuevo.setClases(claseService.listaClase());
-            nuevo.setProfesors(profesorService.listaProfesores());
-            return nuevo.GenerarEditar();
+        }else
+        {
+            nuevo.setGrupo(grupoService.BuscarUno(id));
+            nuevo.setNuevo(false);
+            nuevo.setDet_grupos(validacionService.DetalleFiltrado(grupoService.BuscarUno(id)));
         }
 
         nuevo.setUsuario(recupera);
-        nuevo.setNuevo(false);
-        nuevo.setDet_grupos(validacionService.DetalleFiltrado(grupoService.BuscarUno(id)));
+        nuevo.setCarreras(validacionService.CarrerasConAlumnos());
         nuevo.setAlumnos(alumnoService.listaAlumno());
         nuevo.setClases(claseService.listaClase());
         nuevo.setProfesors(profesorService.listaProfesores());
@@ -157,18 +155,63 @@ public class GrupoController {
 
 
 
-        return "";
-/*
+        Mensaje Respuesta= new Mensaje();
+        Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
+        Respuesta.setBtn_cancelar(false);
+        Respuesta.setBtn_verde(new Permiso("/Grupo","Regresar"));
+        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        return  Respuesta.Generar_Mensaje(recupera);
+    }
 
-        ArrayList<String> prueba = new ArrayList<>();
 
-        for (String n:req.getParameterValues("dp_grupos")
-             ) {
-            prueba.add(n);
+    @RequestMapping(value = "/Grupo/PreEliminar/{id}")
+    public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        Grupo muestra= grupoService.BuscarUno(id);
+        Mensaje Respuesta= new Mensaje();
+        Respuesta.setCuerpo("¿Desea Eliminar este Grupo?");
+        Respuesta.setBtn_cancelar(true);
+        Respuesta.setBtn_rojo(new Permiso("/Grupo","Cancelar"));
+        Respuesta.setBtn_verde(new Permiso("/Grupo/Eliminar/"+muestra.getId_grupo(),"Eliminar"));
+        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        return  Respuesta.Generar_Mensaje(recupera);
+
+    }
+
+    @RequestMapping(value = "/Grupo/Eliminar/{id}")
+    public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
+        HttpSession session = req.getSession(true);
+        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        session.setAttribute("usuario",recupera);
+        if(recupera==null)
+        {
+            return  new Login().Generar_login(false);
+        }
+        Grupo muestra= grupoService.BuscarUno(id);
+
+
+
+        for (Det_grupo n:validacionService.DetalleFiltrado(muestra)
+                ) {
+            det_grupoService.EliminarDet_grupo(n.getId_det_grupo());
         }
 
-*/
+        grupoService.EliminarGrupo(muestra.getId_grupo());
+
+        Mensaje Respuesta= new Mensaje();
+        Respuesta.setCuerpo("Eliminacion  de Grupo exitosa");
+        Respuesta.setBtn_cancelar(false);
+        Respuesta.setBtn_verde(new Permiso("/Grupo","Regresar"));
+        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        return  Respuesta.Generar_Mensaje(recupera);
     }
+
 
 
 }

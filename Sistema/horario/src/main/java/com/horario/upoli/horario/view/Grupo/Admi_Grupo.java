@@ -81,7 +81,7 @@ public class Admi_Grupo  extends Editor{
 
         ArrayList<String> Resultado= new ArrayList<>();
         Filtrar=Filtrar.replace(" ","");
-        String Edit="/Grupo/Editar",Delete="#";
+        String Edit="/Grupo/Editar",Delete="/Grupo/PreEliminar";
 
         //inicio
         Resultado.add("  <tbody>");

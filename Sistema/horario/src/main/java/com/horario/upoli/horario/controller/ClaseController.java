@@ -5,6 +5,7 @@ import com.horario.upoli.horario.model.Clase;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.ClaseService;
+import com.horario.upoli.horario.service.ValidacionService;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.clase.Admin_clase;
 import com.horario.upoli.horario.view.clase.EditClase;
@@ -26,6 +27,9 @@ public class ClaseController {
 
     @Autowired
     private  ClaseService claseService;
+
+    @Autowired
+    private ValidacionService validacionService;
 
     @RequestMapping(value = "/Clase",method = RequestMethod.GET)
     public  String IndexClase(HttpServletRequest req, HttpServletResponse res)
@@ -88,6 +92,17 @@ public class ClaseController {
             return  new Login().Generar_login(false);
         }
         Clase muestra= claseService.BuscarUno(id);
+
+        if(validacionService.ValidarClase(muestra))
+        {
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No se puede eliminar la Clase por que está vinculada con un grupo por favor desvincule la clase.");
+            Respuesta.setBtn_cancelar(false);
+            Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
+            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
+
         claseService.EliminarClase(muestra.getId_clase());
         Mensaje Respuesta= new Mensaje();
         Respuesta.setCuerpo("Eliminacion  de clase exitosa");

@@ -72,10 +72,10 @@ public class Admin_clase extends Editor {
                     "                                <td>"+n.getNombre()+"</td>\n" +
                     "                                <td>"+n.getF_creacion()+"</td>\n" +
                     "                                <td>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light \" href=\""+Edit+"/"+n.getId_clase()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light  "+"edit"+n.getId_clase()+"\" href=\""+Edit+"/"+n.getId_clase()+"\">\n" +
                     "                                        <i class=\"material-icons\">mode_edit</i>\n" +
                     "                                    </a>\n" +
-                    "                                    <a class=\"btn-floating  waves-effect waves-light red\" href=\""+Delete+"/"+n.getId_clase()+"\">\n" +
+                    "                                    <a class=\"btn-floating  waves-effect waves-light  "+"delete"+n.getId_clase()+"  red\" href=\""+Delete+"/"+n.getId_clase()+"\">\n" +
                     "                                        <i class=\"material-icons\">delete</i>\n" +
                     "                                    </a>\n" +
                     "                                </td>\n" +

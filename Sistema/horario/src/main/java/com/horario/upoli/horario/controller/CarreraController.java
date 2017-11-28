@@ -99,7 +99,7 @@ public class CarreraController {
             Respuesta.setCuerpo("No se puede eliminar la carrera por que está vinculada con un alumno por favor desvincule la carrera.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
-            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -158,6 +158,16 @@ public class CarreraController {
             muestra= carreraService.BuscarUno(id);
         }
         muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
+        if (muestra.getNombre().equals("")){
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No puede registrar solo espacios en el campo nombre.");
+            Respuesta.setBtn_cancelar(true);
+            Respuesta.setBtn_rojo(new Permiso("/Carrera","Cancelar"));
+            Respuesta.setBtn_verde(new Permiso("/Carrera/Editar/"+id,"Reintentar"));
+            Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
+
         carreraService.GuardarCarrera(muestra);
 
 

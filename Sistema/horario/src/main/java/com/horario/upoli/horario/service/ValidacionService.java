@@ -12,6 +12,7 @@ public interface ValidacionService {
     boolean CarnetRepetido(String carnet,Long id);
     boolean ValidarUsuario(Usuario usuario);
     boolean ValidarCarrera(Carrera carrera);
-
-
+    boolean ValidarAlumno(Alumno alumno);
+    boolean ValidarClase(Clase clase);
+    boolean ValidarProfesor(Profesor profesor);
 }
