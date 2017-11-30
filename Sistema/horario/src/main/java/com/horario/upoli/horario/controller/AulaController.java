@@ -150,6 +150,19 @@ public class AulaController {
         else {
             muestra.setInd_mant(true);
         }
+/*==============================================================*/
+
+        if (muestra.getDesc_aula().equals("")){
+            Mensaje Respuesta= new Mensaje();
+            Respuesta.setCuerpo("No puede registrar solo espacios en el campo descripcion.");
+            Respuesta.setBtn_cancelar(true);
+            Respuesta.setBtn_rojo(new Permiso("/Aula","Cancelar"));
+            Respuesta.setBtn_verde(new Permiso("/Aula/Editar/"+id,"Reintentar"));
+            Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+            return  Respuesta.Generar_Mensaje(recupera);
+        }
+
+
 
         aulaService.GuardarAula(muestra);
         Mensaje Respuesta= new Mensaje();

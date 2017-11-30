@@ -1,15 +1,12 @@
 package com.horario.upoli.horario.bdd.testclass;
 
-import com.horario.upoli.horario.bdd.page.CarreraPage;
-import com.horario.upoli.horario.bdd.page.ClasePage;
-import com.horario.upoli.horario.bdd.page.MensajePage;
+import com.horario.upoli.horario.bdd.page.*;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
 import cucumber.runtime.java.StepDefAnnotation;
 import com.horario.upoli.horario.bdd.Context;
 import com.horario.upoli.horario.bdd.SeleniumBaseDriver;
-import com.horario.upoli.horario.bdd.page.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 @StepDefAnnotation
@@ -21,6 +18,7 @@ public class GeneralSteps  extends Context {
     CarreraPage carrera;
     MensajePage mensaje;
     ClasePage clasePage;
+    AulaPage aulaPage;
     int espera=1;
     private SeleniumBaseDriver selenium;
 
@@ -38,6 +36,7 @@ public class GeneralSteps  extends Context {
         carrera=new CarreraPage(driver);
         mensaje=new MensajePage(driver);
         clasePage=new ClasePage(driver);
+        aulaPage= new AulaPage(driver);
     }
     @Cuando("^yo espero por cada uno \"(\\d+)\"$")
     public void lleno_el_esperar(int valor) throws Throwable {
@@ -190,4 +189,53 @@ public class GeneralSteps  extends Context {
         clasePage.verificar(valor);
     }
 
+    /*Aula*/
+
+    @Cuando("^yo hago click al link Aula$")
+    public void hago_click_en_link_Aula$() {
+
+        login.esperar(espera);
+        aulaPage.hagoClickEnIngresar();
+    }
+
+    @Cuando("^yo hago click al link Agregar Aula$")
+    public void hago_click_en_link_Agregar_Aula() {
+        login.esperar(espera);
+        aulaPage.hagoClickEnAgregar();
+    }
+
+    @Cuando("^yo hago click al Grabar la Aula$")
+    public void hago_click_en_grabar_Aula() {
+        login.esperar(espera);
+        aulaPage.hagoClickEnGrabar();
+    }
+
+    @Cuando("^yo lleno el campo descripcion del aula con: \"(.+)\"$")
+    public void lleno_el_campo_aula_con(String valor) throws Throwable {
+        login.esperar(espera);
+        aulaPage.llenarCampoAula(valor);
+    }
+
+    @Cuando("^yo hago click al Mantenimiento")
+    public void hago_click_en_mantenimiento_Aula() {
+        login.esperar(espera);
+        aulaPage.hagoClickEnMantenimiento();
+    }
+
+
+    @Cuando("^yo hago click  en el boton editar la fila de aula: \"(.+)\"$")
+    public void click_editar_aula(Long valor) throws Throwable {
+        login.esperar(espera);
+        aulaPage.EditfilaAula(valor);
+    }
+    @Cuando("^yo hago click  en el boton eliminar  la fila  de la aula con codigo:\"(.+)\"$")
+    public void click_eliminar_aula(Long valor) throws Throwable {
+        login.esperar(espera);
+        aulaPage.DeletefilaAula(valor);
+    }
+    @Cuando("^yo verifico si existe  en aula:\"(.+)\"$")
+    public void verifico_el_campo_aula(String valor) throws Throwable {
+        login.esperar(espera);
+        aulaPage.verificar(valor);
+    }
 }

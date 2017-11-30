@@ -8,9 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CarreraPage extends  BasePage  {
 
-
-
-
     @FindBy(linkText = "Carreras")
     private WebElement link_Carrera;
 
