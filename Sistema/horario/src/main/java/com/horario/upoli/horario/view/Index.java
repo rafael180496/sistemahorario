@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.view;
 
-import com.horario.upoli.horario.constante.Estilos;
+import com.horario.upoli.horario.constante.EstilosK;
 import com.horario.upoli.horario.constante.Metodos;
 import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.view.componentes.Footer;
@@ -24,10 +24,11 @@ public class Index  {
                 "            $('.parallax').parallax();\n" +
                 "        });\n" +
                 "    </script>");
-        estilo.add(Estilos.Material_Icons.mostrar());
-        estilo.add(Estilos.materialize.mostrar());
-        estilo.add(Estilos.index.mostrar());
-        estilo.add(Estilos.general.mostrar());
+
+        estilo.add(EstilosK.Material_Icons.getMostrar());
+        estilo.add(EstilosK.materialize.getMostrar());
+        estilo.add(EstilosK.index.getMostrar());
+        estilo.add(EstilosK.general.getMostrar());
 
         ArrayList <String> scrip = new ArrayList<>();
         scrip.add(Scrips.jquery.mostrar());

@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
 import com.horario.upoli.horario.service.UsuarioService;
@@ -119,7 +119,7 @@ public class LoginController {
         if (usuarioService.Recuperacion(correo)){
             mensaje.setBtn_cancelar(false);
             mensaje.setBtn_verde(new Permiso("/login","Regresar"));
-            mensaje.setTipo(MensajeIco.Bien.mostrar());
+            mensaje.setTipo(MensajeIcoK.Bien.getMostrar());
             mensaje.setTit("Enviado");
             mensaje.setCuerpo("Se envió una clave de recuperación al correo por favor revise el correo.");
 
@@ -128,7 +128,7 @@ public class LoginController {
             mensaje.setBtn_cancelar(true);
             mensaje.setBtn_rojo(new Permiso("/login","Regresar"));
             mensaje.setBtn_verde(new Permiso("/login/recuperar","Intentar"));
-            mensaje.setTipo(MensajeIco.Error.mostrar());
+            mensaje.setTipo(MensajeIcoK.Error.getMostrar());
             mensaje.setTit("Error");
             mensaje.setCuerpo("Este correo que introdujo no está asociado a ningún usuario del sistema.");
 
@@ -165,7 +165,7 @@ public class LoginController {
             mensaje.setBtn_cancelar(true);
             mensaje.setBtn_rojo(new Permiso("/login","Regresar"));
             mensaje.setBtn_verde(new Permiso("/login/cambiar","Intentar"));
-            mensaje.setTipo(MensajeIco.Error.mostrar());
+            mensaje.setTipo(MensajeIcoK.Error.getMostrar());
             mensaje.setTit("Error");
             mensaje.setCuerpo("Las claves no son iguales por favor ingresar correctamente las claves.");
             return mensaje.Generar_Mensaje();

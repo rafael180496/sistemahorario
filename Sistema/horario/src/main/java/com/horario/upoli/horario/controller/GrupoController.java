@@ -1,7 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
-import com.horario.upoli.horario.model.Clase;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Det_grupo;
 import com.horario.upoli.horario.model.Grupo;
 import com.horario.upoli.horario.model.Usuario;
@@ -159,7 +158,7 @@ public class GrupoController {
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Grupo","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
@@ -179,7 +178,7 @@ public class GrupoController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Grupo","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Grupo/Eliminar/"+muestra.getId_grupo(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -208,7 +207,7 @@ public class GrupoController {
         Respuesta.setCuerpo("Eliminacion  de Grupo exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Grupo","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 

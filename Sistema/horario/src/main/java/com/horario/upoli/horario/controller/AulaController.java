@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Aula;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -74,7 +74,7 @@ public class AulaController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Aula","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Aula/Eliminar/"+muestra.getId_aula(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -93,7 +93,7 @@ public class AulaController {
         Respuesta.setCuerpo("Eliminacion  de aula exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Aula","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
@@ -158,7 +158,7 @@ public class AulaController {
             Respuesta.setBtn_cancelar(true);
             Respuesta.setBtn_rojo(new Permiso("/Aula","Cancelar"));
             Respuesta.setBtn_verde(new Permiso("/Aula/Editar/"+id,"Reintentar"));
-            Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -169,7 +169,7 @@ public class AulaController {
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Aula","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 }

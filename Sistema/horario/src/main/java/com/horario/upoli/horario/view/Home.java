@@ -1,6 +1,7 @@
 package com.horario.upoli.horario.view;
 
-import com.horario.upoli.horario.constante.Estilos;
+
+import com.horario.upoli.horario.constante.EstilosK;
 import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -79,10 +80,10 @@ public class Home {
 
     private ArrayList <String> Enviar_Estilo(){
         ArrayList <String> est= new ArrayList<>();
-        est.add(Estilos.Material_Icons.mostrar());
-        est.add(Estilos.materialize.mostrar());
-        est.add(Estilos.fonts.mostrar());
-        est.add(Estilos.general.mostrar());
+        est.add(EstilosK.Material_Icons.getMostrar());
+        est.add(EstilosK.materialize.getMostrar());
+        est.add(EstilosK.fonts.getMostrar());
+        est.add(EstilosK.general.getMostrar());
         return  est;
     }
 

@@ -1,7 +1,7 @@
 package com.horario.upoli.horario.view.componentes;
 
-import com.horario.upoli.horario.constante.Estilos;
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
+import com.horario.upoli.horario.constante.EstilosK;
 import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -14,7 +14,7 @@ public class Mensaje {
     private boolean btn_cancelar=false;
     private Permiso btn_verde= new Permiso();
     private Permiso btn_rojo= new Permiso();
-    private String tipo= MensajeIco.Advertencia.mostrar();
+    private String tipo= MensajeIcoK.Advertencia.getMostrar();
     private Html html = new Html();
 
 
@@ -158,10 +158,10 @@ public class Mensaje {
 
     private ArrayList <String> Enviar_Estilo(){
         ArrayList <String> est= new ArrayList<>();
-        est.add(Estilos.Material_Icons.mostrar());
-        est.add(Estilos.materialize.mostrar());
-        est.add(Estilos.general.mostrar());
-        est.add(Estilos.fonts.mostrar());
+        est.add(EstilosK.Material_Icons.getMostrar());
+        est.add(EstilosK.materialize.getMostrar());
+        est.add(EstilosK.general.getMostrar());
+        est.add(EstilosK.fonts.getMostrar());
         return  est;
     }
 

@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Clase;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -78,7 +78,7 @@ public class ClaseController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Clase","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Clase/Eliminar/"+muestra.getId_clase(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -99,7 +99,7 @@ public class ClaseController {
             Respuesta.setCuerpo("No se puede eliminar la Clase por que está vinculada con un grupo por favor desvincule la clase.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
-            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -108,7 +108,7 @@ public class ClaseController {
         Respuesta.setCuerpo("Eliminacion  de clase exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
@@ -165,7 +165,7 @@ public class ClaseController {
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 }

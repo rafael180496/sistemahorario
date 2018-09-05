@@ -1,7 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Alumno;
 import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.model.Usuario;
@@ -107,7 +106,7 @@ public class AlumnoController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Alumno","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Alumno/Eliminar/"+muestra.getId_alumno(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -128,7 +127,7 @@ public class AlumnoController {
             Respuesta.setCuerpo("No se puede eliminar el Alumno por que está vinculada con un grupo por favor desvincule la Alumno.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
-            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -137,7 +136,7 @@ public class AlumnoController {
         Respuesta.setCuerpo("Eliminacion  de Alumno exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
@@ -174,7 +173,7 @@ public class AlumnoController {
             Respuesta.setBtn_cancelar(true);
             Respuesta.setBtn_rojo(new Permiso("/Alumno","Regresar"));
             Respuesta.setBtn_verde(new Permiso("/Alumno/Editar/"+id,"Reintentar"));
-            Respuesta.setTipo(MensajeIco.Error.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Error.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }else
         {
@@ -183,7 +182,7 @@ public class AlumnoController {
             Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
-            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 

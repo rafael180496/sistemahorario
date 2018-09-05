@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Clave;
@@ -181,7 +181,7 @@ public class UsuarioController {
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
     @RequestMapping(value = "/Usuario/PreEliminar/{id}")
@@ -199,7 +199,7 @@ public class UsuarioController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Usuario","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Usuario/Eliminar/"+muestra.getId_usuario(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -220,7 +220,7 @@ public class UsuarioController {
             Respuesta.setCuerpo("No puedes eliminar el mismo usuario que estas iniciado.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
-            Respuesta.setTipo(MensajeIco.Error.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Error.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -230,7 +230,7 @@ public class UsuarioController {
         Respuesta.setCuerpo("Eliminacion  de Usuario exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 }

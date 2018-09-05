@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Carrera;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -78,7 +78,7 @@ public class CarreraController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Carrera","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Carrera/Eliminar/"+muestra.getId_carrera(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -99,7 +99,7 @@ public class CarreraController {
             Respuesta.setCuerpo("No se puede eliminar la carrera por que está vinculada con un alumno por favor desvincule la carrera.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
-            Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -108,7 +108,7 @@ public class CarreraController {
         Respuesta.setCuerpo("Eliminacion  de carrera exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
@@ -164,7 +164,7 @@ public class CarreraController {
             Respuesta.setBtn_cancelar(true);
             Respuesta.setBtn_rojo(new Permiso("/Carrera","Cancelar"));
             Respuesta.setBtn_verde(new Permiso("/Carrera/Editar/"+id,"Reintentar"));
-            Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
@@ -175,7 +175,7 @@ public class CarreraController {
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 }

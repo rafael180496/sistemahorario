@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.view.login;
 
-import com.horario.upoli.horario.constante.Estilos;
+import com.horario.upoli.horario.constante.EstilosK;
 import com.horario.upoli.horario.constante.Metodos;
 import com.horario.upoli.horario.constante.Scrips;
 import com.horario.upoli.horario.recursos.Link;
@@ -59,9 +59,9 @@ public class Login {
 
     private ArrayList <String> Enviar_Estilo(){
         ArrayList <String> est= new ArrayList<>();
-        est.add(Estilos.Material_Icons.mostrar());
-        est.add(Estilos.materialize.mostrar());
-        est.add(Estilos.logincss.mostrar());
+        est.add(EstilosK.Material_Icons.getMostrar());
+        est.add(EstilosK.materialize.getMostrar());
+        est.add(EstilosK.logincss.getMostrar());
         return  est;
     }
 

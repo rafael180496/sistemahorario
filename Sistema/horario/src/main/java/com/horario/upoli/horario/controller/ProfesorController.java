@@ -1,6 +1,6 @@
 package com.horario.upoli.horario.controller;
 
-import com.horario.upoli.horario.constante.MensajeIco;
+import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.Profesor;
 import com.horario.upoli.horario.model.Usuario;
 import com.horario.upoli.horario.recursos.Permiso;
@@ -11,7 +11,6 @@ import com.horario.upoli.horario.view.profesor.EditProfesor;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.componentes.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,7 +73,7 @@ public class ProfesorController {
         Respuesta.setBtn_cancelar(true);
         Respuesta.setBtn_rojo(new Permiso("/Profesor","Cancelar"));
         Respuesta.setBtn_verde(new Permiso("/Profesor/Eliminar/"+muestra.getId_profesor(),"Eliminar"));
-        Respuesta.setTipo(MensajeIco.Advertencia.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
     }
@@ -94,7 +93,7 @@ public class ProfesorController {
             Respuesta.setCuerpo("No se puede eliminar el Profesor por que está vinculada con un grupo por favor desvincule la Profesor.");
             Respuesta.setBtn_cancelar(false);
             Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
-            Respuesta.setTipo(MensajeIco.Bien.mostrar());
+            Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
         profesorService.EliminarProfesor(muestra.getId_profesor());
@@ -102,7 +101,7 @@ public class ProfesorController {
         Respuesta.setCuerpo("Eliminacion  de profesor exitosa");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
@@ -162,7 +161,7 @@ public class ProfesorController {
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
         Respuesta.setBtn_verde(new Permiso("/Profesor","Regresar"));
-        Respuesta.setTipo(MensajeIco.Bien.mostrar());
+        Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
 
