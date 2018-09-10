@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.profesor;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Profesor;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.ProfesorK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.*;
 
 import java.sql.Date;
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 public class EditProfesor extends Editor {
 
-    private Profesor profesor= new Profesor();
+    private ProfesorK profesor= new ProfesorK();
 
 
 
 
-    public EditProfesor(Usuario usuario, boolean nuevo) {
+    public EditProfesor(UsuarioK usuario, boolean nuevo) {
         super(usuario, nuevo);
     }
 
@@ -28,11 +28,11 @@ public class EditProfesor extends Editor {
         super(nuevo);
     }
 
-    public Profesor getProfesor() {
+    public ProfesorK getProfesor() {
         return profesor;
     }
 
-    public void setProfesor(Profesor profesor) {
+    public void setProfesor(ProfesorK profesor) {
         this.profesor = profesor;
     }
 
@@ -41,8 +41,8 @@ public class EditProfesor extends Editor {
 
     @Override
     public String Enviar_Formulario(){
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Profesor","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Profesor","Cancelar");
         Formulario formulario= new Formulario();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
@@ -53,17 +53,17 @@ public class EditProfesor extends Editor {
             profesor.setNombre("");
             java.util.Date  fecha = new java.util.Date();
             profesor.setF_creacion(new Date(fecha.getTime()));
-           btm_verde= new Permiso("/Profesor/Guardar/0","Guardar");
+           btm_verde= new PermisoK("/Profesor/Guardar/0","Guardar");
            titulo= "Agregar Profesor";
 
         }
         else {
-            btm_verde= new Permiso("/Profesor/Guardar/"+profesor.getId_profesor(),"Actualizar");
+            btm_verde= new PermisoK("/Profesor/Guardar/"+profesor.getId_profesor(),"Actualizar");
             titulo= "Editar Profesor";
         }
         //////////////////////////
          formulario.setAccion(btm_verde.getAccion());
-         formulario.setMetodo(Metodos.POST.mostrar());
+         formulario.setMetodo(MetodosK.POST.getMostrar());
          cuerpo.add("<div class=\"card-content \">\n" +
                  "                            <p class=\"card-title\">"+titulo+"</p>\n" +
                  "                           \n" +

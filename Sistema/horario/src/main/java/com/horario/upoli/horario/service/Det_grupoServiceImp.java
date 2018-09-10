@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Det_grupo;
+import com.horario.upoli.horario.model.Det_grupoK;
 import com.horario.upoli.horario.repo.Det_grupoRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +15,14 @@ public class Det_grupoServiceImp implements  Det_grupoService {
 
 
     @Override
-    public Iterable<Det_grupo> listarDet_grupo() {
+    public Iterable<Det_grupoK> listarDet_grupo() {
       return det_grupoRepo.findAll();
     }
 
     @Override
-    public ArrayList<Det_grupo> listaDet_grupo() {
-        Iterable<Det_grupo> source=det_grupoRepo.findAll();
-        ArrayList<Det_grupo> Listado= new ArrayList<>();
+    public ArrayList<Det_grupoK> listaDet_grupo() {
+        Iterable<Det_grupoK> source=det_grupoRepo.findAll();
+        ArrayList<Det_grupoK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
 
 
@@ -31,7 +31,7 @@ public class Det_grupoServiceImp implements  Det_grupoService {
     }
 
     @Override
-    public Det_grupo BuscarUno(Long id) {
+    public Det_grupoK BuscarUno(Long id) {
         return det_grupoRepo.findOne(id);
     }
 
@@ -41,22 +41,22 @@ public class Det_grupoServiceImp implements  Det_grupoService {
     }
 
     @Override
-    public void GuardarDet_grupo(Det_grupo det_grupo) {
+    public void GuardarDet_grupo(Det_grupoK det_grupo) {
         det_grupoRepo.save(det_grupo);
     }
 
     @Override
     public Long Secuencia() {
-        Iterable<Det_grupo> source=det_grupoRepo.findAll();
-        ArrayList<Det_grupo> Listado= new ArrayList<>();
+        Iterable<Det_grupoK> source=det_grupoRepo.findAll();
+        ArrayList<Det_grupoK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Det_grupo n:Listado
+        for (Det_grupoK n:Listado
                 ) {
             Listadoid.add(n.getId_det_grupo());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }

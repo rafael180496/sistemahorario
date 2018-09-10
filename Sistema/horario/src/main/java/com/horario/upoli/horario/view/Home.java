@@ -2,22 +2,22 @@ package com.horario.upoli.horario.view;
 
 
 import com.horario.upoli.horario.constante.EstilosK;
-import com.horario.upoli.horario.constante.Scrips;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
-import com.horario.upoli.horario.seguridad.Permisos;
-import com.horario.upoli.horario.view.componentes.Footer;
+import com.horario.upoli.horario.constante.ScripsK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
+import com.horario.upoli.horario.seguridad.PermisosK;
+import com.horario.upoli.horario.view.componentes.FooterK;
 import com.horario.upoli.horario.view.componentes.Html;
-import com.horario.upoli.horario.view.componentes.Navbar;
+import com.horario.upoli.horario.view.componentes.NavbarK;
 
 import java.util.ArrayList;
 
 public class Home {
     private Html html = new Html();
-    private Navbar navbar = new Navbar("SDH");
-    private Usuario usuario= new Usuario();
+    private NavbarK navbar = new NavbarK();
+    private UsuarioK usuario= new UsuarioK();
 
-    public Home(Usuario usuario) {
+    public Home(UsuarioK usuario) {
         this.usuario = usuario;
     }
 
@@ -63,7 +63,7 @@ public class Home {
                 "        </div>\n" +
                 "    </div>");
         /*=================================================*/
-        cuerpo.add(Footer.getFooter());
+        cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(cuerpo);
 
         return html.Generar_Html();
@@ -72,8 +72,8 @@ public class Home {
 
     private ArrayList<String> Enviar_scrip(){
         ArrayList <String> escr= new ArrayList<>();
-        escr.add(Scrips.jquery.mostrar());
-        escr.add(Scrips.materialize.mostrar());
+        escr.add(ScripsK.jquery.getMostrar());
+        escr.add(ScripsK.materialize.getMostrar());
 
         return escr;
     }
@@ -102,17 +102,18 @@ public class Home {
 
     private  String Generar_navBar()
     {
+        navbar.setProyecto("SDH");
 
         if (usuario.getInd_adm())
         {
-            for (Permiso n: Permisos.PermisosAdmin()
+            for (PermisoK n: PermisosK.Companion.PermisosAdmin()
                  ) {
                 navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
             }
         }
         else
         {
-            for (Permiso n: Permisos.PermisosProfesor()
+            for (PermisoK n: PermisosK.Companion.PermisosProfesor()
                     ) {
                 navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
             }

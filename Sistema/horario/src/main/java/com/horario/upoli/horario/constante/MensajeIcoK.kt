@@ -1,4 +1,4 @@
-@file:JvmName("MensajeIcoK")
+@file:JvmName("constante")
 
 package com.horario.upoli.horario.constante
 

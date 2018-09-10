@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Profesor;
+import com.horario.upoli.horario.model.ProfesorK;
 import com.horario.upoli.horario.repo.ProfesorRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,29 +15,29 @@ public class ProfesorServiceImp implements ProfesorService{
     private ProfesorRepo  profesorRepo;
 
     @Override
-    public Iterable<Profesor> listarProfesores() {
+    public Iterable<ProfesorK> listarProfesores() {
         return profesorRepo.findAll();
     }
 
     @Override
-    public ArrayList<Profesor> listaProfesores() {
-        Iterable<Profesor> source=profesorRepo.findAll();
-        ArrayList<Profesor> Listado= new ArrayList<>();
+    public ArrayList<ProfesorK> listaProfesores() {
+        Iterable<ProfesorK> source=profesorRepo.findAll();
+        ArrayList<ProfesorK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
 
         return Listado;
     }
 
     @Override
-    public ArrayList<Profesor> filtrarProfesores(String name) {
-        Iterable<Profesor> source=profesorRepo.findAll();
-        ArrayList<Profesor> Listado= new ArrayList<>();
-        ArrayList<Profesor> Listadoaux= new ArrayList<>();
+    public ArrayList<ProfesorK> filtrarProfesores(String name) {
+        Iterable<ProfesorK> source=profesorRepo.findAll();
+        ArrayList<ProfesorK> Listado= new ArrayList<>();
+        ArrayList<ProfesorK> Listadoaux= new ArrayList<>();
         source.forEach(Listadoaux::add);
 
         name=name.replace(" ","");
 
-        for (Profesor n:Listadoaux
+        for (ProfesorK n:Listadoaux
              ) {
             n.setNombre(n.getNombre().replace(" ",""));
             n.setApellido(n.getApellido().replace(" ",""));
@@ -51,7 +51,7 @@ public class ProfesorServiceImp implements ProfesorService{
     }
 
     @Override
-    public Profesor BuscarUno(Long id) {
+    public ProfesorK BuscarUno(Long id) {
         return profesorRepo.findOne(id);
     }
 
@@ -62,22 +62,22 @@ public class ProfesorServiceImp implements ProfesorService{
     }
 
     @Override
-    public void GuardarProfesor(Profesor profesor) {
+    public void GuardarProfesor(ProfesorK profesor) {
         profesorRepo.save(profesor);
     }
 
     @Override
     public Long Secuencia() {
-        Iterable<Profesor> source=profesorRepo.findAll();
-        ArrayList<Profesor> Listado= new ArrayList<>();
+        Iterable<ProfesorK> source=profesorRepo.findAll();
+        ArrayList<ProfesorK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Profesor n:Listado
+        for (ProfesorK n:Listado
                 ) {
             Listadoid.add(n.getId_profesor());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }

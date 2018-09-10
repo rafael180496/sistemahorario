@@ -1,16 +1,16 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Grupo;
+import com.horario.upoli.horario.model.GrupoK;
 
 import java.util.ArrayList;
 
 public interface GrupoService {
 
-    Iterable<Grupo> listarGrupo();
-    ArrayList<Grupo> listaGrupo();
-    ArrayList<Grupo> filtrarGrupo(String name);
-    Grupo BuscarUno(Long id);
+    Iterable<GrupoK> listarGrupo();
+    ArrayList<GrupoK> listaGrupo();
+    ArrayList<GrupoK> filtrarGrupo(String name);
+    GrupoK BuscarUno(Long id);
     void  EliminarGrupo(Long id);
-    void  GuardarGrupo(Grupo grupo);
+    void  GuardarGrupo(GrupoK grupo);
     Long  Secuencia();
 }

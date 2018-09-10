@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Aula;
+import com.horario.upoli.horario.model.AulaK;
 import com.horario.upoli.horario.repo.AulaRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,28 +14,28 @@ public class AulaServiceImp implements  AulaService{
     private AulaRepo aulaRepo;
 
     @Override
-    public Iterable<Aula> listarAula() {
+    public Iterable<AulaK> listarAula() {
         return  aulaRepo.findAll();
     }
 
     @Override
-    public ArrayList<Aula> listaAula() {
-        Iterable<Aula> source=aulaRepo.findAll();
-        ArrayList<Aula> Listado= new ArrayList<>();
+    public ArrayList<AulaK> listaAula() {
+        Iterable<AulaK> source=aulaRepo.findAll();
+        ArrayList<AulaK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
         return Listado;
     }
 
     @Override
-    public ArrayList<Aula> filtrarAula(String name) {
-        Iterable<Aula> source=aulaRepo.findAll();
-        ArrayList<Aula> Listado= new ArrayList<>();
-        ArrayList<Aula> Listadoaux= new ArrayList<>();
+    public ArrayList<AulaK> filtrarAula(String name) {
+        Iterable<AulaK> source=aulaRepo.findAll();
+        ArrayList<AulaK> Listado= new ArrayList<>();
+        ArrayList<AulaK> Listadoaux= new ArrayList<>();
         source.forEach(Listadoaux::add);
 
         name=name.replace(" ","");
 
-        for (Aula n:Listadoaux
+        for (AulaK n:Listadoaux
                 ) {
             n.setDesc_aula(n.getDesc_aula().replace(" ",""));
 
@@ -49,7 +49,7 @@ public class AulaServiceImp implements  AulaService{
     }
 
     @Override
-    public Aula BuscarUno(Long id) {
+    public AulaK BuscarUno(Long id) {
         return aulaRepo.findOne(id);
     }
 
@@ -59,23 +59,23 @@ public class AulaServiceImp implements  AulaService{
     }
 
     @Override
-    public void GuardarAula(Aula aula) {
+    public void GuardarAula(AulaK aula) {
         aulaRepo.save(aula);
     }
 
     @Override
     public Long Secuencia() {
 
-        Iterable<Aula> source=aulaRepo.findAll();
-        ArrayList<Aula> Listado= new ArrayList<>();
+        Iterable<AulaK> source=aulaRepo.findAll();
+        ArrayList<AulaK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Aula n:Listado
+        for (AulaK n:Listado
                 ) {
             Listadoid.add(n.getId_aula());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }

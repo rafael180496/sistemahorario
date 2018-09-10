@@ -1,17 +1,14 @@
 package com.horario.upoli.horario.view;
 
 import com.horario.upoli.horario.constante.EstilosK;
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.constante.Scrips;
-import com.horario.upoli.horario.view.componentes.Footer;
-import com.horario.upoli.horario.view.componentes.Formulario;
-import com.horario.upoli.horario.view.componentes.Html;
-import com.horario.upoli.horario.view.componentes.NavbarIndex;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.constante.ScripsK;
+import com.horario.upoli.horario.view.componentes.*;
 
 import java.util.ArrayList;
 
 public class Index  {
-    private NavbarIndex  navbarIndex = new NavbarIndex();
+    private NavbarIndexK navbarIndex = new NavbarIndexK();
     private Formulario formulario = new Formulario();
 
 
@@ -31,9 +28,9 @@ public class Index  {
         estilo.add(EstilosK.general.getMostrar());
 
         ArrayList <String> scrip = new ArrayList<>();
-        scrip.add(Scrips.jquery.mostrar());
-        scrip.add(Scrips.materialize.mostrar());
-        scrip.add(Scrips.app.mostrar());
+        scrip.add(ScripsK.jquery.getMostrar());
+        scrip.add(ScripsK.materialize.getMostrar());
+        scrip.add(ScripsK.app.getMostrar());
         ArrayList <String> cuerpoFormulario= new ArrayList<>();
         cuerpoFormulario.add("<h1 class=\"header  teal-text \">Sistema de Horario</h1>\n" +
                 "                            <div class=\"input-field\">\n" +
@@ -43,7 +40,7 @@ public class Index  {
                 "                            </div>\n" +
                 "                            <input type=\"submit\" value=\"Buscar\" class=\"btn-large waves-effect waves-light teal lighten-1 \">");
         formulario.setAccion("");
-        formulario.setMetodo(Metodos.dialog.mostrar());
+        formulario.setMetodo(MetodosK.dialog.getMostrar());
         formulario.setCuerpo_formulario(cuerpoFormulario);
         //////////////////
         html.setEstilos(estilo);
@@ -75,7 +72,7 @@ public class Index  {
                 "            </div>\n" +
                 "        </div>");
 
-        cuerpo_index.add(Footer.getFooter());
+        cuerpo_index.add(FooterK.Companion.getFooter());
 
         html.setCuerpo(cuerpo_index);
 

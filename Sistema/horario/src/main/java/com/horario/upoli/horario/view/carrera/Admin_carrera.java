@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.view.carrera;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Carrera;
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.CarreraK;
+import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.*;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class Admin_carrera extends Editor {
 
     private String Filtrar= "";
-    private ArrayList<Carrera> Aux= new ArrayList<>();
+    private ArrayList<CarreraK> Aux= new ArrayList<>();
 
-    public  Admin_carrera(Usuario usuario,ArrayList<Carrera> Aux)
+    public  Admin_carrera(UsuarioK usuario, ArrayList<CarreraK> Aux)
     {
         super(usuario);
         this.Aux=Aux;
@@ -59,7 +59,7 @@ public class Admin_carrera extends Editor {
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Carrera n:Aux
+        for (CarreraK n:Aux
                 ) {
             Resultado.add("<tr>\n" +
                     "                                <td>"+n.getId_carrera()+"</td>\n" +
@@ -88,7 +88,7 @@ public class Admin_carrera extends Editor {
 
         Formulario formulario = new Formulario();
         formulario.setAccion("/Carrera/filtrar");
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +
@@ -127,7 +127,7 @@ public class Admin_carrera extends Editor {
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
-        Cuerpo.add(Footer.getFooter());
+        Cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(Cuerpo);
 
         return html.Generar_Html();

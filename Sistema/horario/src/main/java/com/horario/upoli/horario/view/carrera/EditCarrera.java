@@ -1,21 +1,21 @@
 package com.horario.upoli.horario.view.carrera;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Carrera;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.CarreraK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class EditCarrera  extends Editor{
-private  Carrera carrera = new Carrera();
+private CarreraK carrera = new CarreraK();
 
     @Override
     public String Enviar_Formulario() {
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Carrera","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Carrera","Cancelar");
         Formulario formulario= new Formulario();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
@@ -25,17 +25,17 @@ private  Carrera carrera = new Carrera();
             carrera.setNombre("");
             java.util.Date  fecha = new java.util.Date();
             carrera.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("/Carrera/Guardar/0","Guardar");
+            btm_verde= new PermisoK("/Carrera/Guardar/0","Guardar");
             titulo= "Agregar Carrera";
 
         }
         else {
-            btm_verde= new Permiso("/Carrera/Guardar/"+carrera.getId_carrera(),"Actualizar");
+            btm_verde= new PermisoK("/Carrera/Guardar/"+carrera.getId_carrera(),"Actualizar");
             titulo= "Editar Carrera";
         }
         //////////////////////////
         formulario.setAccion(btm_verde.getAccion());
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         cuerpo.add("<div class=\"card-content \">\n" +
                 "                            <p class=\"card-title\">"+titulo+"</p>\n" +
                 "                           \n" +
@@ -52,7 +52,7 @@ private  Carrera carrera = new Carrera();
         return formulario.Generar_formulario();
     }
 
-    public EditCarrera(Usuario usuario, boolean nuevo) {
+    public EditCarrera(UsuarioK usuario, boolean nuevo) {
         super(usuario, nuevo);
     }
 
@@ -63,11 +63,11 @@ private  Carrera carrera = new Carrera();
     public EditCarrera() {
     }
 
-    public Carrera getCarrera() {
+    public CarreraK getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(Carrera carrera) {
+    public void setCarrera(CarreraK carrera) {
         this.carrera = carrera;
     }
 }

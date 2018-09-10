@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.login;
 
 import com.horario.upoli.horario.constante.EstilosK;
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.constante.Scrips;
-import com.horario.upoli.horario.recursos.Link;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.constante.ScripsK;
+import com.horario.upoli.horario.recursos.LinkK;
 import com.horario.upoli.horario.view.componentes.Formulario;
 import com.horario.upoli.horario.view.componentes.Html;
 
@@ -51,9 +51,9 @@ public class Login {
 
     private ArrayList <String> Enviar_scrip(){
         ArrayList <String> escr= new ArrayList<>();
-        escr.add(Scrips.jquery.mostrar());
-        escr.add(Scrips.materialize.mostrar());
-        escr.add(Scrips.init.mostrar());
+        escr.add(ScripsK.jquery.getMostrar());
+        escr.add(ScripsK.materialize.getMostrar());
+        escr.add(ScripsK.initK.getMostrar());
         return escr;
     }
 
@@ -68,10 +68,10 @@ public class Login {
     private String Enviar_Formulario(boolean Error){
         String MensajeError="<h6 class=\"red-text\">Usuario o Clavé Incorrecta</h6>";
 
-        Link recupera=new Link("Olvidaste tu contraseña?","/login/recuperar");
-        Link regresar=new Link("Regresar","/");
+        LinkK recupera=new LinkK("Olvidaste tu contraseña?","/login/recuperar");
+        LinkK regresar=new LinkK("Regresar","/");
         Formulario formulario= new Formulario();
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         formulario.setId_f("");
         formulario.setAccion("/login/ingresar");
         ArrayList <String> cuerpo_f= new ArrayList<>();

@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.view.aula;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Aula;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.AulaK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.Editor;
 import com.horario.upoli.horario.view.componentes.Formulario;
 
@@ -10,12 +10,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class EditAula extends Editor {
-    private Aula aula  = new Aula();
+    private AulaK aula  = new AulaK();
 
     @Override
     public String Enviar_Formulario() {
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Aula","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Aula","Cancelar");
         Formulario formulario= new Formulario();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
@@ -25,14 +25,14 @@ public class EditAula extends Editor {
             aula.setDesc_aula("");
             java.util.Date  fecha = new java.util.Date();
             aula.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("/Aula/Guardar/0","Guardar");
+            btm_verde= new PermisoK("/Aula/Guardar/0","Guardar");
             titulo= "Agregar Aula";
             check="";
         }
         else {
-            btm_verde= new Permiso("/Aula/Guardar/"+aula.getId_aula(),"Actualizar");
+            btm_verde= new PermisoK("/Aula/Guardar/"+aula.getId_aula(),"Actualizar");
             titulo= "Editar Aula";
-            if (aula.isInd_mant())
+            if (aula.getInd_mant())
             {
                 check="checked=\"true\"";
             }
@@ -44,7 +44,7 @@ public class EditAula extends Editor {
         }
         //////////////////////////
         formulario.setAccion(btm_verde.getAccion());
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         cuerpo.add("<div class=\"card-content \">\n" +
                 "                            <p class=\"card-title\">"+titulo+"</p>\n" +
                 "                           \n" +
@@ -65,11 +65,11 @@ public class EditAula extends Editor {
         return formulario.Generar_formulario();
     }
 
-    public Aula getAula() {
+    public AulaK getAula() {
         return aula;
     }
 
-    public void setAula(Aula aula) {
+    public void setAula(AulaK aula) {
         this.aula = aula;
     }
 }

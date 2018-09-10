@@ -2,16 +2,16 @@ package com.horario.upoli.horario.view.componentes;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.constante.EstilosK;
-import com.horario.upoli.horario.constante.Scrips;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.ScripsK;
+import com.horario.upoli.horario.recursos.PermisoK;
 
 import java.util.ArrayList;
 
 public class MensajeLogin {
     private String Cuerpo="";
     private boolean btn_cancelar=false;
-    private Permiso btn_verde= new Permiso();
-    private Permiso btn_rojo= new Permiso();
+    private PermisoK btn_verde= new PermisoK();
+    private PermisoK btn_rojo= new PermisoK();
     private String tipo= MensajeIcoK.Advertencia.getMostrar();
     private Html html = new Html();
     private  String tit= "";
@@ -19,13 +19,13 @@ public class MensajeLogin {
     public MensajeLogin() {
     }
 
-    public MensajeLogin(String cuerpo, Permiso btn_verde, String tipo) {
+    public MensajeLogin(String cuerpo, PermisoK btn_verde, String tipo) {
         Cuerpo = cuerpo;
         this.btn_verde = btn_verde;
         this.tipo = tipo;
     }
 
-    public MensajeLogin(String cuerpo, boolean btn_cancelar, Permiso btn_verde, Permiso btn_rojo, String tipo) {
+    public MensajeLogin(String cuerpo, boolean btn_cancelar, PermisoK btn_verde, PermisoK btn_rojo, String tipo) {
         Cuerpo = cuerpo;
         this.btn_cancelar = btn_cancelar;
         this.btn_verde = btn_verde;
@@ -57,19 +57,19 @@ public class MensajeLogin {
         this.btn_cancelar = btn_cancelar;
     }
 
-    public Permiso getBtn_verde() {
+    public PermisoK getBtn_verde() {
         return btn_verde;
     }
 
-    public void setBtn_verde(Permiso btn_verde) {
+    public void setBtn_verde(PermisoK btn_verde) {
         this.btn_verde = btn_verde;
     }
 
-    public Permiso getBtn_rojo() {
+    public PermisoK getBtn_rojo() {
         return btn_rojo;
     }
 
-    public void setBtn_rojo(Permiso btn_rojo) {
+    public void setBtn_rojo(PermisoK btn_rojo) {
         this.btn_rojo = btn_rojo;
     }
 
@@ -145,9 +145,9 @@ public class MensajeLogin {
 
     private ArrayList<String> Enviar_scrip(){
         ArrayList <String> escr= new ArrayList<>();
-        escr.add(Scrips.jquery.mostrar());
-        escr.add(Scrips.materialize.mostrar());
-        escr.add(Scrips.init.mostrar());
+        escr.add(ScripsK.jquery.getMostrar());
+        escr.add(ScripsK.materialize.getMostrar());
+        escr.add(ScripsK.initK.getMostrar());
         return escr;
     }
 

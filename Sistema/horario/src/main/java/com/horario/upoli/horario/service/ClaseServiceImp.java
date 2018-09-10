@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Clase;
+import com.horario.upoli.horario.model.ClaseK;
 import com.horario.upoli.horario.repo.ClaseRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,29 +15,29 @@ public class ClaseServiceImp  implements  ClaseService{
     private ClaseRepo claseRepo;
 
     @Override
-    public Iterable<Clase> listarClases() {
+    public Iterable<ClaseK> listarClases() {
         return claseRepo.findAll();
     }
 
     @Override
-    public ArrayList<Clase> listaClase() {
-        Iterable<Clase> source=claseRepo.findAll();
-        ArrayList<Clase> Listado= new ArrayList<>();
+    public ArrayList<ClaseK> listaClase() {
+        Iterable<ClaseK> source=claseRepo.findAll();
+        ArrayList<ClaseK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
 
         return Listado;
     }
 
     @Override
-    public ArrayList<Clase> filtrarClase(String name) {
-        Iterable<Clase> source=claseRepo.findAll();
-        ArrayList<Clase> Listado= new ArrayList<>();
-        ArrayList<Clase> Listadoaux= new ArrayList<>();
+    public ArrayList<ClaseK> filtrarClase(String name) {
+        Iterable<ClaseK> source=claseRepo.findAll();
+        ArrayList<ClaseK> Listado= new ArrayList<>();
+        ArrayList<ClaseK> Listadoaux= new ArrayList<>();
         source.forEach(Listadoaux::add);
 
         name=name.replace(" ","");
 
-        for (Clase n:Listadoaux
+        for (ClaseK n:Listadoaux
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
             if((n.getNombre().toLowerCase().matches(name+"(.*)")))
@@ -50,7 +50,7 @@ public class ClaseServiceImp  implements  ClaseService{
     }
 
     @Override
-    public Clase BuscarUno(Long id) {
+    public ClaseK BuscarUno(Long id) {
         return claseRepo.findOne(id);
     }
 
@@ -60,22 +60,22 @@ public class ClaseServiceImp  implements  ClaseService{
     }
 
     @Override
-    public void GuardarClase(Clase clase) {
+    public void GuardarClase(ClaseK clase) {
         claseRepo.save(clase);
     }
 
     @Override
     public Long Secuencia() {
-        Iterable<Clase> source=claseRepo.findAll();
-        ArrayList<Clase> Listado= new ArrayList<>();
+        Iterable<ClaseK> source=claseRepo.findAll();
+        ArrayList<ClaseK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Clase n:Listado
+        for (ClaseK n:Listado
                 ) {
             Listadoid.add(n.getId_clase());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }

@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.usuario;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.Editor;
-import com.horario.upoli.horario.view.componentes.Footer;
+import com.horario.upoli.horario.view.componentes.FooterK;
 import com.horario.upoli.horario.view.componentes.Formulario;
 
 
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class Admi_Usuario extends Editor {
     private String Filtrar= "";
-    private ArrayList<Usuario> Aux= new ArrayList<>();
+    private ArrayList<UsuarioK> Aux= new ArrayList<>();
 
 
-    public  Admi_Usuario(Usuario usuario,ArrayList<Usuario> Aux)
+    public  Admi_Usuario(UsuarioK usuario,ArrayList<UsuarioK> Aux)
     {
         super(usuario);
         this.Aux=Aux;
@@ -70,7 +70,7 @@ public class Admi_Usuario extends Editor {
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Usuario n:Aux
+        for (UsuarioK n:Aux
                 ) {
             String target="";
             if(n.getInd_rest())
@@ -128,7 +128,7 @@ public class Admi_Usuario extends Editor {
     {
         Formulario formulario = new Formulario();
         formulario.setAccion("/Usuario/filtrar");
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +
@@ -165,7 +165,7 @@ public class Admi_Usuario extends Editor {
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
-        Cuerpo.add(Footer.getFooter());
+        Cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(Cuerpo);
 
         return html.Generar_Html();

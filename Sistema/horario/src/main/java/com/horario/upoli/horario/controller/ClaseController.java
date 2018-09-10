@@ -1,15 +1,15 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
-import com.horario.upoli.horario.model.Clase;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.model.ClaseK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.ClaseService;
 import com.horario.upoli.horario.service.ValidacionService;
+import com.horario.upoli.horario.view.componentes.MensajeK;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.clase.Admin_clase;
 import com.horario.upoli.horario.view.clase.EditClase;
-import com.horario.upoli.horario.view.componentes.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +35,7 @@ public class ClaseController {
     public  String IndexClase(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
 
         if(recupera==null)
@@ -51,7 +51,7 @@ public class ClaseController {
     public  String Filtrar(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         String filtro=req.getParameter("txt_buscar").toLowerCase();
 
@@ -66,18 +66,18 @@ public class ClaseController {
     @RequestMapping(value = "/Clase/PreEliminar/{id}")
     public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Clase muestra= claseService.BuscarUno(id);
-        Mensaje Respuesta= new Mensaje();
+        ClaseK muestra= claseService.BuscarUno(id);
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("¿Desea Eliminar esta Clase?");
         Respuesta.setBtn_cancelar(true);
-        Respuesta.setBtn_rojo(new Permiso("/Clase","Cancelar"));
-        Respuesta.setBtn_verde(new Permiso("/Clase/Eliminar/"+muestra.getId_clase(),"Eliminar"));
+        Respuesta.setBtn_rojo(new PermisoK("/Clase","Cancelar"));
+        Respuesta.setBtn_verde(new PermisoK("/Clase/Eliminar/"+muestra.getId_clase(),"Eliminar"));
         Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
@@ -85,29 +85,29 @@ public class ClaseController {
     @RequestMapping(value = "/Clase/Eliminar/{id}")
     public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Clase muestra= claseService.BuscarUno(id);
+        ClaseK muestra= claseService.BuscarUno(id);
 
         if(validacionService.ValidarClase(muestra))
         {
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("No se puede eliminar la Clase por que está vinculada con un grupo por favor desvincule la clase.");
             Respuesta.setBtn_cancelar(false);
-            Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
+            Respuesta.setBtn_verde(new PermisoK("/Clase","Regresar"));
             Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
         claseService.EliminarClase(muestra.getId_clase());
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Eliminacion  de clase exitosa");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Clase","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
@@ -117,7 +117,7 @@ public class ClaseController {
     @RequestMapping(value = "/Clase/Editar/{id}")
     public  String Editar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
@@ -132,7 +132,7 @@ public class ClaseController {
         }
 
 
-        Clase muestra= claseService.BuscarUno(id);
+        ClaseK muestra= claseService.BuscarUno(id);
         nuevo.setUsuario(recupera);
         nuevo.setNuevo(false);
         nuevo.setClase(muestra);
@@ -142,13 +142,13 @@ public class ClaseController {
     @RequestMapping(value = "/Clase/Guardar/{id}")
     public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Clase muestra= new Clase();
+        ClaseK muestra= new ClaseK();
         if(id==0){
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
@@ -161,10 +161,10 @@ public class ClaseController {
         muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         claseService.GuardarClase(muestra);
 
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Clase","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Clase","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }

@@ -1,20 +1,20 @@
 package com.horario.upoli.horario.view.Alumno;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Alumno;
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.AlumnoK;
+import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.Editor;
-import com.horario.upoli.horario.view.componentes.Footer;
+import com.horario.upoli.horario.view.componentes.FooterK;
 import com.horario.upoli.horario.view.componentes.Formulario;
 
 import java.util.ArrayList;
 
 public class Admi_Alumno extends Editor{
     private String Filtrar= "";
-    private ArrayList<Alumno> Aux= new ArrayList<>();
+    private ArrayList<AlumnoK> Aux= new ArrayList<>();
 
 
-    public Admi_Alumno(Usuario usuario, ArrayList<Alumno> Aux)
+    public Admi_Alumno(UsuarioK usuario, ArrayList<AlumnoK> Aux)
     {
         super(usuario);
         this.Aux=Aux;
@@ -68,7 +68,7 @@ public class Admi_Alumno extends Editor{
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Alumno n:Aux
+        for (AlumnoK n:Aux
                 ) {
             String target="";
             target="<div class=\"chip green \">\n" +
@@ -123,7 +123,7 @@ public class Admi_Alumno extends Editor{
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
-        Cuerpo.add(Footer.getFooter());
+        Cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(Cuerpo);
 
         return html.Generar_Html();
@@ -134,7 +134,7 @@ public class Admi_Alumno extends Editor{
     public String Enviar_Formulario() {
         Formulario formulario = new Formulario();
         formulario.setAccion("/Usuario/filtrar");
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +

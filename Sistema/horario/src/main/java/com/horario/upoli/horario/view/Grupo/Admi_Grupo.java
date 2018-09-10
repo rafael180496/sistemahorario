@@ -1,20 +1,20 @@
 package com.horario.upoli.horario.view.Grupo;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Grupo;
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.GrupoK;
+import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.Editor;
-import com.horario.upoli.horario.view.componentes.Footer;
+import com.horario.upoli.horario.view.componentes.FooterK;
 import com.horario.upoli.horario.view.componentes.Formulario;
 
 import java.util.ArrayList;
 
 public class Admi_Grupo  extends Editor{
     private String Filtrar= "";
-    private ArrayList<Grupo> Aux= new ArrayList<>();
+    private ArrayList<GrupoK> Aux= new ArrayList<>();
 
 
-    public Admi_Grupo(Usuario usuario, ArrayList<Grupo> Aux)
+    public Admi_Grupo(UsuarioK usuario, ArrayList<GrupoK> Aux)
     {
         super(usuario);
         this.Aux=Aux;
@@ -24,7 +24,7 @@ public class Admi_Grupo  extends Editor{
     public String Enviar_Formulario() {
         Formulario formulario = new Formulario();
         formulario.setAccion("/Grupo/filtrar");
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +
@@ -86,7 +86,7 @@ public class Admi_Grupo  extends Editor{
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Grupo n:Aux
+        for (GrupoK n:Aux
                 ) {
 
 
@@ -140,7 +140,7 @@ public class Admi_Grupo  extends Editor{
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
-        Cuerpo.add(Footer.getFooter());
+        Cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(Cuerpo);
 
         return html.Generar_Html();

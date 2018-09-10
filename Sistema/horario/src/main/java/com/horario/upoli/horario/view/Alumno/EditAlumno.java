@@ -1,17 +1,17 @@
 package com.horario.upoli.horario.view.Alumno;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Alumno;
-import com.horario.upoli.horario.model.Carrera;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.AlumnoK;
+import com.horario.upoli.horario.model.CarreraK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.Editor;
 import com.horario.upoli.horario.view.componentes.Formulario;
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class EditAlumno extends Editor {
-    private Alumno alumno= new Alumno();
-    private ArrayList<Carrera> carreras= new ArrayList<>();
+    private AlumnoK alumno= new AlumnoK();
+    private ArrayList<CarreraK> carreras= new ArrayList<>();
 
 
     @Override
@@ -32,8 +32,8 @@ public class EditAlumno extends Editor {
                 "    </script>");
 
         /*----------------------------------------------*/
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Alumno","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Alumno","Cancelar");
         Formulario formulario= new Formulario();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
@@ -46,12 +46,12 @@ public class EditAlumno extends Editor {
             alumno.setCarnet("");
             java.util.Date  fecha = new java.util.Date();
             alumno.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("/Alumno/Guardar/0","Guardar");
+            btm_verde= new PermisoK("/Alumno/Guardar/0","Guardar");
             titulo= "Agregar Alumno";
 
         }
         else {
-            btm_verde= new Permiso("/Alumno/Guardar/"+alumno.getId_alumno(),"Actualizar");
+            btm_verde= new PermisoK("/Alumno/Guardar/"+alumno.getId_alumno(),"Actualizar");
             titulo= "Editar Alumno";
 
 
@@ -59,7 +59,7 @@ public class EditAlumno extends Editor {
         }
         //////////////////////////
         formulario.setAccion(btm_verde.getAccion());
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         cuerpo.add("<div class=\"card-content \">\n" +
                 "                                <p class=\"card-title\">"+titulo+"</p>");
         cuerpo.add("<div class=\"input-field \">\n" +
@@ -100,19 +100,19 @@ public class EditAlumno extends Editor {
 
     }
 
-    public Alumno getAlumno() {
+    public AlumnoK getAlumno() {
         return alumno;
     }
 
-    public void setAlumno(Alumno alumno) {
+    public void setAlumno(AlumnoK alumno) {
         this.alumno = alumno;
     }
 
-    public ArrayList<Carrera> getCarreras() {
+    public ArrayList<CarreraK> getCarreras() {
         return carreras;
     }
 
-    public void setCarreras(ArrayList<Carrera> carreras) {
+    public void setCarreras(ArrayList<CarreraK> carreras) {
         this.carreras = carreras;
     }
 
@@ -125,7 +125,7 @@ public class EditAlumno extends Editor {
         if(isNuevo())
         {
             resulatado+="<option value=\"\" disabled selected >Seleccione</option>";
-            for (Carrera n:carreras
+            for (CarreraK n:carreras
                     ) {
                 resulatado+="<option value=\""+n.getId_carrera()+"\" >"+n.getNombre()+"</option>";
             }
@@ -134,9 +134,10 @@ public class EditAlumno extends Editor {
                     "                            </div>";
         }else {
             resulatado+="<option value=\"\" disabled  >Seleccione</option>";
-            for (Carrera n:carreras
+            for (CarreraK n:carreras
                     ) {
-                if(n.getId_carrera().equals(alumno.getCarrera().getId_carrera()))
+                //if(n.getId_carrera().equals(alumno.getCarrera().getId_carrera()))
+                if(n.getId_carrera()==alumno.getCarrera().getId_carrera())
                 {
                     resulatado+="<option value=\""+n.getId_carrera()+"\" selected>"+n.getNombre()+"</option>";
                 }

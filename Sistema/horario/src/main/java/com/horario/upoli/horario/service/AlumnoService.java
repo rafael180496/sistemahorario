@@ -1,15 +1,15 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Alumno;
+import com.horario.upoli.horario.model.AlumnoK;
 
 import java.util.ArrayList;
 
 public interface AlumnoService {
-    Iterable<Alumno> listarAlumno();
-    ArrayList<Alumno> listaAlumno();
-    ArrayList<Alumno> filtrarAlumno(String name);
-    Alumno BuscarUno(Long id);
+    Iterable<AlumnoK> listarAlumno();
+    ArrayList<AlumnoK> listaAlumno();
+    ArrayList<AlumnoK> filtrarAlumno(String name);
+    AlumnoK BuscarUno(Long id);
     void  EliminarAlumno(Long id);
-    void  GuardarAlumno(Alumno alumno);
+    void  GuardarAlumno(AlumnoK alumno);
     Long  Secuencia();
 }

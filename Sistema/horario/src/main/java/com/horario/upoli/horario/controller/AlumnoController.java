@@ -1,16 +1,16 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
-import com.horario.upoli.horario.model.Alumno;
-import com.horario.upoli.horario.model.Carrera;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.model.AlumnoK;
+import com.horario.upoli.horario.model.CarreraK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.AlumnoService;
 import com.horario.upoli.horario.service.CarreraService;
 import com.horario.upoli.horario.service.ValidacionService;
 import com.horario.upoli.horario.view.Alumno.Admi_Alumno;
 import com.horario.upoli.horario.view.Alumno.EditAlumno;
-import com.horario.upoli.horario.view.componentes.Mensaje;
+import com.horario.upoli.horario.view.componentes.MensajeK;
 import com.horario.upoli.horario.view.login.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +39,7 @@ public class AlumnoController {
     public  String IndexAlumno(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
 
         if(recupera==null)
@@ -54,7 +54,7 @@ public class AlumnoController {
     public  String Filtrar(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         String filtro=req.getParameter("txt_buscar").toLowerCase();
 
@@ -68,7 +68,7 @@ public class AlumnoController {
     @RequestMapping(value = "/Alumno/Editar/{id}")
     public  String Editar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
@@ -82,7 +82,7 @@ public class AlumnoController {
             return nuevo.GenerarEditar();
         }
 
-        Alumno muestra= alumnoService.BuscarUno(id);
+        AlumnoK muestra= alumnoService.BuscarUno(id);
         nuevo.setUsuario(recupera);
         nuevo.setNuevo(false);
         nuevo.setCarreras(carreraService.listaCarrera());
@@ -94,18 +94,18 @@ public class AlumnoController {
     @RequestMapping(value = "/Alumno/PreEliminar/{id}")
     public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Alumno muestra= alumnoService.BuscarUno(id);
-        Mensaje Respuesta= new Mensaje();
+        AlumnoK muestra= alumnoService.BuscarUno(id);
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("¿Desea Eliminar esta Alumno?");
         Respuesta.setBtn_cancelar(true);
-        Respuesta.setBtn_rojo(new Permiso("/Alumno","Cancelar"));
-        Respuesta.setBtn_verde(new Permiso("/Alumno/Eliminar/"+muestra.getId_alumno(),"Eliminar"));
+        Respuesta.setBtn_rojo(new PermisoK("/Alumno","Cancelar"));
+        Respuesta.setBtn_verde(new PermisoK("/Alumno/Eliminar/"+muestra.getId_alumno(),"Eliminar"));
         Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
@@ -114,28 +114,28 @@ public class AlumnoController {
     @RequestMapping(value = "/Alumno/Eliminar/{id}")
     public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Alumno muestra= alumnoService.BuscarUno(id);
+        AlumnoK muestra= alumnoService.BuscarUno(id);
         if(validacionService.ValidarAlumno(muestra))
         {
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("No se puede eliminar el Alumno por que está vinculada con un grupo por favor desvincule la Alumno.");
             Respuesta.setBtn_cancelar(false);
-            Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
+            Respuesta.setBtn_verde(new PermisoK("/Alumno","Regresar"));
             Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
         alumnoService.EliminarAlumno(muestra.getId_alumno());
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Eliminacion  de Alumno exitosa");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Alumno","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
@@ -143,13 +143,13 @@ public class AlumnoController {
     @RequestMapping(value = "/Alumno/Guardar/{id}")
     public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Alumno muestra= new Alumno();
+        AlumnoK muestra= new AlumnoK();
         if(id==0){
             muestra.setId_alumno(alumnoService.Secuencia());
             java.util.Date  fecha = new java.util.Date();
@@ -163,25 +163,25 @@ public class AlumnoController {
         muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         muestra.setApellido((String) req.getParameter("txt_apellido").replace(" ","").toUpperCase());
         Long idc=Long.parseLong((String)req.getParameter("dp_carrera"));
-        Carrera carrera =carreraService.BuscarUno(idc);
+        CarreraK carrera =carreraService.BuscarUno(idc);
         muestra.setCarrera(carrera);
 
         if((validacionService.CarnetRepetido(muestra.getCarnet(),id) ))
         {
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("El numero de carnet no puede ser repetido.");
             Respuesta.setBtn_cancelar(true);
-            Respuesta.setBtn_rojo(new Permiso("/Alumno","Regresar"));
-            Respuesta.setBtn_verde(new Permiso("/Alumno/Editar/"+id,"Reintentar"));
+            Respuesta.setBtn_rojo(new PermisoK("/Alumno","Regresar"));
+            Respuesta.setBtn_verde(new PermisoK("/Alumno/Editar/"+id,"Reintentar"));
             Respuesta.setTipo(MensajeIcoK.Error.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }else
         {
             alumnoService.GuardarAlumno(muestra);
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
             Respuesta.setBtn_cancelar(false);
-            Respuesta.setBtn_verde(new Permiso("/Alumno","Regresar"));
+            Respuesta.setBtn_verde(new PermisoK("/Alumno","Regresar"));
             Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }

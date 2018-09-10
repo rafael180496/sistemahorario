@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.service;
 
 
-import com.horario.upoli.horario.model.Grupo;
+import com.horario.upoli.horario.model.GrupoK;
 import com.horario.upoli.horario.repo.GrupoRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +16,14 @@ public class GrupoServiceImp implements GrupoService {
     private GrupoRepo grupoRepo;
 
     @Override
-    public Iterable<Grupo> listarGrupo() {
+    public Iterable<GrupoK> listarGrupo() {
         return grupoRepo.findAll();
     }
 
     @Override
-    public ArrayList<Grupo> listaGrupo() {
-        Iterable<Grupo> source=grupoRepo.findAll();
-        ArrayList<Grupo> Listado= new ArrayList<>();
+    public ArrayList<GrupoK> listaGrupo() {
+        Iterable<GrupoK> source=grupoRepo.findAll();
+        ArrayList<GrupoK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
 
 
@@ -32,15 +32,15 @@ public class GrupoServiceImp implements GrupoService {
     }
 
     @Override
-    public ArrayList<Grupo> filtrarGrupo(String name) {
-        Iterable<Grupo> source=grupoRepo.findAll();
-        ArrayList<Grupo> Listado= new ArrayList<>();
-        ArrayList<Grupo> Listadoaux= new ArrayList<>();
+    public ArrayList<GrupoK> filtrarGrupo(String name) {
+        Iterable<GrupoK> source=grupoRepo.findAll();
+        ArrayList<GrupoK> Listado= new ArrayList<>();
+        ArrayList<GrupoK> Listadoaux= new ArrayList<>();
         source.forEach(Listadoaux::add);
 
         name=name.replace(" ","");
 
-        for (Grupo n:Listadoaux
+        for (GrupoK n:Listadoaux
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
             if((n.getNombre().toLowerCase().matches(name+"(.*)")))
@@ -53,7 +53,7 @@ public class GrupoServiceImp implements GrupoService {
     }
 
     @Override
-    public Grupo BuscarUno(Long id) {
+    public GrupoK BuscarUno(Long id) {
         return grupoRepo.findOne(id);
     }
 
@@ -63,22 +63,22 @@ public class GrupoServiceImp implements GrupoService {
     }
 
     @Override
-    public void GuardarGrupo(Grupo grupo) {
+    public void GuardarGrupo(GrupoK grupo) {
         grupoRepo.save(grupo);
     }
 
     @Override
     public Long Secuencia() {
-        Iterable<Grupo> source=grupoRepo.findAll();
-        ArrayList<Grupo> Listado= new ArrayList<>();
+        Iterable<GrupoK> source=grupoRepo.findAll();
+        ArrayList<GrupoK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Grupo n:Listado
+        for (GrupoK n:Listado
                 ) {
             Listadoid.add(n.getId_grupo());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }

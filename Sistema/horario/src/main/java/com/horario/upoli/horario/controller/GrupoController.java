@@ -1,14 +1,14 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
-import com.horario.upoli.horario.model.Det_grupo;
-import com.horario.upoli.horario.model.Grupo;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.model.Det_grupoK;
+import com.horario.upoli.horario.model.GrupoK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.*;
 import com.horario.upoli.horario.view.Grupo.Admi_Grupo;
 import com.horario.upoli.horario.view.Grupo.EditGrupo;
-import com.horario.upoli.horario.view.componentes.Mensaje;
+import com.horario.upoli.horario.view.componentes.MensajeK;
 import com.horario.upoli.horario.view.login.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +43,7 @@ public class GrupoController {
     public  String IndexGrupo(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
 
         if(recupera==null)
@@ -60,7 +60,7 @@ public class GrupoController {
     public  String Filtrar(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         String filtro=req.getParameter("txt_buscar").toLowerCase();
 
@@ -76,7 +76,7 @@ public class GrupoController {
     @RequestMapping(value = "/Grupo/Editar/{id}")
     public  String Editar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
@@ -106,14 +106,14 @@ public class GrupoController {
     @RequestMapping(value = "/Grupo/Guardar/{id}")
     public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Grupo nuevo = new Grupo();
-        ArrayList<Det_grupo> nuevo2= new ArrayList<>();
+        GrupoK nuevo = new GrupoK();
+        ArrayList<Det_grupoK> nuevo2= new ArrayList<>();
         if(id==0){
             nuevo.setId_grupo(grupoService.Secuencia());
             java.util.Date  fecha = new java.util.Date();
@@ -129,7 +129,7 @@ public class GrupoController {
         try {
             grupoService.GuardarGrupo(nuevo);
             if(id!=0){
-                for (Det_grupo n:validacionService.DetalleFiltrado(nuevo)
+                for (Det_grupoK n:validacionService.DetalleFiltrado(nuevo)
                      ) {
                         det_grupoService.EliminarDet_grupo(n.getId_det_grupo());
                     }
@@ -137,7 +137,7 @@ public class GrupoController {
 
             for (String n:req.getParameterValues("dp_grupos")
                     ) {
-                Det_grupo aux= new Det_grupo();
+                Det_grupoK aux= new Det_grupoK();
                 java.util.Date  fecha = new java.util.Date();
                 aux.setF_creacion(new Date(fecha.getTime()));
                 aux.setGrupo(nuevo);
@@ -154,10 +154,10 @@ public class GrupoController {
 
 
 
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Grupo","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Grupo","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
@@ -166,18 +166,18 @@ public class GrupoController {
     @RequestMapping(value = "/Grupo/PreEliminar/{id}")
     public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Grupo muestra= grupoService.BuscarUno(id);
-        Mensaje Respuesta= new Mensaje();
+        GrupoK muestra= grupoService.BuscarUno(id);
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("¿Desea Eliminar este Grupo?");
         Respuesta.setBtn_cancelar(true);
-        Respuesta.setBtn_rojo(new Permiso("/Grupo","Cancelar"));
-        Respuesta.setBtn_verde(new Permiso("/Grupo/Eliminar/"+muestra.getId_grupo(),"Eliminar"));
+        Respuesta.setBtn_rojo(new PermisoK("/Grupo","Cancelar"));
+        Respuesta.setBtn_verde(new PermisoK("/Grupo/Eliminar/"+muestra.getId_grupo(),"Eliminar"));
         Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
@@ -186,27 +186,27 @@ public class GrupoController {
     @RequestMapping(value = "/Grupo/Eliminar/{id}")
     public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Grupo muestra= grupoService.BuscarUno(id);
+        GrupoK muestra= grupoService.BuscarUno(id);
 
 
 
-        for (Det_grupo n:validacionService.DetalleFiltrado(muestra)
+        for (Det_grupoK n:validacionService.DetalleFiltrado(muestra)
                 ) {
             det_grupoService.EliminarDet_grupo(n.getId_det_grupo());
         }
 
         grupoService.EliminarGrupo(muestra.getId_grupo());
 
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Eliminacion  de Grupo exitosa");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Grupo","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Grupo","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }

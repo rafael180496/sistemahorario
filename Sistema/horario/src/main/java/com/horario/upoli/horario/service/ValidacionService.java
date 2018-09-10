@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 public interface ValidacionService {
 
-    ArrayList<Profesor> ProfesoresSinUsuario();
-    ArrayList<Det_grupo> DetalleFiltrado(Grupo grupo);
-    ArrayList<Carrera> CarrerasConAlumnos();
+    ArrayList<ProfesorK> ProfesoresSinUsuario();
+    ArrayList<Det_grupoK> DetalleFiltrado(GrupoK grupo);
+    ArrayList<CarreraK> CarrerasConAlumnos();
     boolean CarnetRepetido(String carnet,Long id);
-    boolean ValidarUsuario(Usuario usuario);
-    boolean ValidarCarrera(Carrera carrera);
-    boolean ValidarAlumno(Alumno alumno);
-    boolean ValidarClase(Clase clase);
-    boolean ValidarProfesor(Profesor profesor);
+    boolean ValidarUsuario(UsuarioK usuario);
+    boolean ValidarCarrera(CarreraK carrera);
+    boolean ValidarAlumno(AlumnoK alumno);
+    boolean ValidarClase(ClaseK clase);
+    boolean ValidarProfesor(ProfesorK profesor);
 }

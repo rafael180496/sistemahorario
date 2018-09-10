@@ -1,16 +1,16 @@
 package com.horario.upoli.horario.view.componentes;
 
 import com.horario.upoli.horario.constante.EstilosK;
-import com.horario.upoli.horario.constante.Scrips;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.constante.ScripsK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
+import com.horario.upoli.horario.seguridad.PermisosK;
 
 import java.util.ArrayList;
 
 public abstract class Editor {
     protected Html html = new Html();
-    private Usuario usuario = new Usuario();
+    private UsuarioK usuario = new UsuarioK();
     private boolean nuevo=false;
     private String scrip_m="";
 
@@ -38,21 +38,21 @@ public abstract class Editor {
                 "        </div>\n" +
                 "    </div>");
 
-        cuerpo.add(Footer.getFooter());
+        cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(cuerpo);
         html.setScrip_manual(scrip_m);
         return html.Generar_Html();
     }
 
-    public Editor(Usuario usuario) {
+    public Editor(UsuarioK usuario) {
         this.usuario = usuario;
     }
 
     protected ArrayList<String> Enviar_scrip(){
         ArrayList <String> escr= new ArrayList<>();
-        escr.add(Scrips.jquery.mostrar());
-        escr.add(Scrips.materialize.mostrar());
-        escr.add(Scrips.app.mostrar());
+        escr.add(ScripsK.jquery.getMostrar());
+        escr.add(ScripsK.materialize.getMostrar());
+        escr.add(ScripsK.app.getMostrar());
         return escr;
     }
 
@@ -68,17 +68,18 @@ public abstract class Editor {
 
     protected  String Generar_navBar()
     {
-        Navbar navbar= new Navbar("SDH");
+        NavbarK navbar= new NavbarK();
+        navbar.setProyecto("SDH");
         if (usuario.getInd_adm())
         {
-            for (Permiso n: Permisos.PermisosAdmin()
+            for (PermisoK n: PermisosK.Companion.PermisosAdmin()
                     ) {
                 navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
             }
         }
         else
         {
-            for (Permiso n: Permisos.PermisosProfesor()
+            for (PermisoK n: PermisosK.Companion.PermisosProfesor()
                     ) {
                 navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
             }
@@ -87,7 +88,7 @@ public abstract class Editor {
         return navbar.Generar_Navbar();
     }
 
-    public Editor(Usuario usuario, boolean nuevo) {
+    public Editor(UsuarioK usuario, boolean nuevo) {
         this.usuario = usuario;
         this.nuevo = nuevo;
     }
@@ -99,10 +100,10 @@ public abstract class Editor {
     public Editor() {
     }
 
-    public Usuario getUsuario() {
+    public UsuarioK getUsuario() {
         return usuario;
     }
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioK usuario) {
         this.usuario = usuario;
     }
     public boolean isNuevo() {

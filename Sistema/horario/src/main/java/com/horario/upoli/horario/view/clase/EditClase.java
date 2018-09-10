@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.clase;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Clase;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.ClaseK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.*;
 
 import java.sql.Date;
@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class EditClase  extends Editor{
 
-    private Clase clase= new Clase();
+    private ClaseK clase= new ClaseK();
 
-    public EditClase(Usuario usuario, boolean nuevo) {
+    public EditClase(UsuarioK usuario, boolean nuevo) {
         super(usuario, nuevo);
     }
 
@@ -26,18 +26,18 @@ public class EditClase  extends Editor{
     }
 
 
-    public Clase getClase() {
+    public ClaseK getClase() {
         return clase;
     }
 
-    public void setClase(Clase clase) {
+    public void setClase(ClaseK clase) {
         this.clase = clase;
     }
 
     @Override
     public String Enviar_Formulario(){
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Clase","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Clase","Cancelar");
         Formulario formulario= new Formulario();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
@@ -47,17 +47,17 @@ public class EditClase  extends Editor{
             clase.setNombre("");
             java.util.Date  fecha = new java.util.Date();
             clase.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("/Clase/Guardar/0","Guardar");
+            btm_verde= new PermisoK("/Clase/Guardar/0","Guardar");
             titulo= "Agregar Clase";
 
         }
         else {
-            btm_verde= new Permiso("/Clase/Guardar/"+clase.getId_clase(),"Actualizar");
+            btm_verde= new PermisoK("/Clase/Guardar/"+clase.getId_clase(),"Actualizar");
             titulo= "Editar Clase";
         }
         //////////////////////////
         formulario.setAccion(btm_verde.getAccion());
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         cuerpo.add("<div class=\"card-content \">\n" +
                 "                            <p class=\"card-title\">"+titulo+"</p>\n" +
                 "                           \n" +

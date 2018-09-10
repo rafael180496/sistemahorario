@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.view.Grupo;
 
-import com.horario.upoli.horario.constante.Metodos;
+import com.horario.upoli.horario.constante.MetodosK;
 import com.horario.upoli.horario.model.*;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.Editor;
 import com.horario.upoli.horario.view.componentes.Formulario;
 
@@ -10,12 +10,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class EditGrupo extends Editor {
-    private Grupo grupo= new Grupo();
-    private ArrayList<Clase> clases= new ArrayList<>();
-    private ArrayList<Profesor> profesors= new ArrayList<>();
-    private ArrayList<Alumno> alumnos= new ArrayList<>();
-    private ArrayList<Carrera> carreras= new ArrayList<>();
-    private ArrayList<Det_grupo> det_grupos= new ArrayList<>();
+    private GrupoK grupo= new GrupoK();
+    private ArrayList<ClaseK> clases= new ArrayList<>();
+    private ArrayList<ProfesorK> profesors= new ArrayList<>();
+    private ArrayList<AlumnoK> alumnos= new ArrayList<>();
+    private ArrayList<CarreraK> carreras= new ArrayList<>();
+    private ArrayList<Det_grupoK> det_grupos= new ArrayList<>();
 
     @Override
     public String Enviar_Formulario() {
@@ -37,8 +37,8 @@ public class EditGrupo extends Editor {
 
 
         /*----------------------------------------------*/
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Grupo","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Grupo","Cancelar");
         Formulario formulario= new Formulario();
         formulario.setId_f("f_grupos");
         ArrayList<String> cuerpo= new ArrayList();
@@ -51,12 +51,12 @@ public class EditGrupo extends Editor {
             grupo.setNombre("");
             java.util.Date  fecha = new java.util.Date();
             grupo.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("/Grupo/Guardar/0","Guardar");
+            btm_verde= new PermisoK("/Grupo/Guardar/0","Guardar");
             titulo= "Agregar Grupo";
 
         }
         else {
-            btm_verde= new Permiso("/Grupo/Guardar/"+grupo.getId_grupo(),"Actualizar");
+            btm_verde= new PermisoK("/Grupo/Guardar/"+grupo.getId_grupo(),"Actualizar");
             titulo= "Editar Grupo";
 
 
@@ -64,7 +64,7 @@ public class EditGrupo extends Editor {
         }
         //////////////////////////
         formulario.setAccion(btm_verde.getAccion());
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         cuerpo.add("<div class=\"card-content \">\n" +
                 "                                <p class=\"card-title\">"+titulo+"</p>");
         cuerpo.add("<div class=\"input-field \">\n" +
@@ -89,51 +89,51 @@ public class EditGrupo extends Editor {
         return formulario.Generar_formulario();
     }
 
-    public Grupo getGrupo() {
+    public GrupoK getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(Grupo grupo) {
+    public void setGrupo(GrupoK grupo) {
         this.grupo = grupo;
     }
 
-    public ArrayList<Clase> getClases() {
+    public ArrayList<ClaseK> getClases() {
         return clases;
     }
 
-    public void setClases(ArrayList<Clase> clases) {
+    public void setClases(ArrayList<ClaseK> clases) {
         this.clases = clases;
     }
 
-    public ArrayList<Profesor> getProfesors() {
+    public ArrayList<ProfesorK> getProfesors() {
         return profesors;
     }
 
-    public void setProfesors(ArrayList<Profesor> profesors) {
+    public void setProfesors(ArrayList<ProfesorK> profesors) {
         this.profesors = profesors;
     }
 
-    public ArrayList<Alumno> getAlumnos() {
+    public ArrayList<AlumnoK> getAlumnos() {
         return alumnos;
     }
 
-    public void setAlumnos(ArrayList<Alumno> alumnos) {
+    public void setAlumnos(ArrayList<AlumnoK> alumnos) {
         this.alumnos = alumnos;
     }
 
-    public ArrayList<Carrera> getCarreras() {
+    public ArrayList<CarreraK> getCarreras() {
         return carreras;
     }
 
-    public void setCarreras(ArrayList<Carrera> carreras) {
+    public void setCarreras(ArrayList<CarreraK> carreras) {
         this.carreras = carreras;
     }
 
-    public ArrayList<Det_grupo> getDet_grupos() {
+    public ArrayList<Det_grupoK> getDet_grupos() {
         return det_grupos;
     }
 
-    public void setDet_grupos(ArrayList<Det_grupo> det_grupos) {
+    public void setDet_grupos(ArrayList<Det_grupoK> det_grupos) {
         this.det_grupos = det_grupos;
     }
 
@@ -145,7 +145,7 @@ public class EditGrupo extends Editor {
         if(isNuevo())
         {
             resulatado+="<option value=\"\" disabled selected >Seleccione</option>";
-            for (Clase n:clases
+            for (ClaseK n:clases
                     ) {
                 resulatado+="<option value=\""+n.getId_clase()+"\" >"+n.getNombre()+"</option>";
             }
@@ -154,9 +154,10 @@ public class EditGrupo extends Editor {
                     "                            </div>";
         }else {
             resulatado+="<option value=\"\" disabled  >Seleccione</option>";
-            for (Clase n:clases
+            for (ClaseK n:clases
                     ) {
-                if(n.getId_clase().equals(grupo.getClase().getId_clase()))
+                //if(n.getId_clase().equals(grupo.getClase().getId_clase()))
+                if(n.getId_clase()==grupo.getClase().getId_clase())
                 {
                     resulatado+="<option value=\""+n.getId_clase()+"\" selected>"+n.getNombre()+"</option>";
                 }
@@ -185,7 +186,7 @@ public class EditGrupo extends Editor {
         if(isNuevo())
         {
             resulatado+="<option value=\"\" disabled selected >Seleccione</option>";
-            for (Profesor n:profesors
+            for (ProfesorK n:profesors
                     ) {
                 resulatado+="<option value=\""+n.getId_profesor()+"\" >"+n.getNombre()+"</option>";
             }
@@ -194,7 +195,7 @@ public class EditGrupo extends Editor {
                     "                            </div>";
         }else {
             resulatado+="<option value=\"\" disabled  >Seleccione</option>";
-            for (Profesor n:profesors
+            for (ProfesorK n:profesors
                     ) {
                 if(n.getId_profesor()==grupo.getProfesor().getId_profesor())
                 {
@@ -228,10 +229,10 @@ public class EditGrupo extends Editor {
 
 
 
-            for (Carrera n:carreras
+            for (CarreraK n:carreras
                  ) {
                 resulatado+="<optgroup label=\""+n.getNombre()+"\">";
-                for (Alumno j:alumnos
+                for (AlumnoK j:alumnos
                      ) {
                     if(n.getId_carrera()==j.getCarrera().getId_carrera())
                     {
@@ -251,15 +252,15 @@ public class EditGrupo extends Editor {
                     "                                  </optgroup>";
 
 
-            for (Carrera n:carreras
+            for (CarreraK n:carreras
                     ) {
                 resulatado+="<optgroup label=\""+n.getNombre()+"\">";
-                for (Alumno j:alumnos
+                for (AlumnoK j:alumnos
                         ) {
                     if(n.getId_carrera()==j.getCarrera().getId_carrera())
                     {
                         boolean seleccion = false;
-                        for (Det_grupo g:det_grupos
+                        for (Det_grupoK g:det_grupos
                              ) {
                             if(g.getAlumno().getId_alumno()==j.getId_alumno())
                             {

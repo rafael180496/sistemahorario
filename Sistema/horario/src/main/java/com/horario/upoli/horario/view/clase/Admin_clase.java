@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.view.clase;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Clase;
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.ClaseK;
+import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.*;
 
 import java.util.ArrayList;
@@ -11,10 +11,10 @@ public class Admin_clase extends Editor {
 
 
     private String Filtrar= "";
-    private ArrayList<Clase> Aux= new ArrayList<>();
+    private ArrayList<ClaseK> Aux= new ArrayList<>();
 
 
-    public  Admin_clase(Usuario usuario,ArrayList<Clase> Aux)
+    public  Admin_clase(UsuarioK usuario, ArrayList<ClaseK> Aux)
     {
         super(usuario);
         this.Aux=Aux;
@@ -65,7 +65,7 @@ public class Admin_clase extends Editor {
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Clase n:Aux
+        for (ClaseK n:Aux
                 ) {
             Resultado.add("<tr>\n" +
                     "                                <td>"+n.getId_clase()+"</td>\n" +
@@ -94,7 +94,7 @@ public class Admin_clase extends Editor {
     {
         Formulario formulario = new Formulario();
         formulario.setAccion("/Clase/filtrar");
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +
@@ -133,7 +133,7 @@ public class Admin_clase extends Editor {
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
-        Cuerpo.add(Footer.getFooter());
+        Cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(Cuerpo);
 
         return html.Generar_Html();

@@ -1,17 +1,17 @@
 package com.horario.upoli.horario.view.usuario;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Profesor;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.ProfesorK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.Editor;
 import com.horario.upoli.horario.view.componentes.Formulario;
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class EditUsuario extends Editor {
-    private Usuario usuario2= new Usuario();
-    private ArrayList<Profesor> profesores= new ArrayList<>();
+    private UsuarioK usuario2= new UsuarioK();
+    private ArrayList<ProfesorK> profesores= new ArrayList<>();
 
     @Override
     public String Enviar_Formulario() {
@@ -31,8 +31,8 @@ public class EditUsuario extends Editor {
                 "    </script>");
 
         /*----------------------------------------------*/
-        Permiso btm_verde= new Permiso("","");
-        Permiso btm_rojo= new Permiso("/Usuario","Cancelar");
+        PermisoK btm_verde= new PermisoK("","");
+        PermisoK btm_rojo= new PermisoK("/Usuario","Cancelar");
         Formulario formulario= new Formulario();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
@@ -44,13 +44,13 @@ public class EditUsuario extends Editor {
             usuario2.setCorreo("");
             java.util.Date  fecha = new java.util.Date();
             usuario2.setF_creacion(new Date(fecha.getTime()));
-            btm_verde= new Permiso("/Usuario/Guardar/0","Guardar");
+            btm_verde= new PermisoK("/Usuario/Guardar/0","Guardar");
             titulo= "Agregar Usuario";
             check="";
             check2="";
         }
         else {
-            btm_verde= new Permiso("/Usuario/Guardar/"+usuario2.getId_usuario(),"Actualizar");
+            btm_verde= new PermisoK("/Usuario/Guardar/"+usuario2.getId_usuario(),"Actualizar");
             titulo= "Editar Usuario";
 
             if (usuario2.getInd_adm())
@@ -73,7 +73,7 @@ public class EditUsuario extends Editor {
         }
         //////////////////////////
         formulario.setAccion(btm_verde.getAccion());
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         cuerpo.add("<div class=\"card-content \">\n" +
                 "                                <p class=\"card-title\">"+titulo+"</p>");
 
@@ -121,19 +121,19 @@ public class EditUsuario extends Editor {
     }
 
 
-    public Usuario getUsuario2() {
+    public UsuarioK getUsuario2() {
         return usuario2;
     }
 
-    public void setUsuario2(Usuario usuario2) {
+    public void setUsuario2(UsuarioK usuario2) {
         this.usuario2 = usuario2;
     }
 
-    public ArrayList<Profesor> getProfesores() {
+    public ArrayList<ProfesorK> getProfesores() {
         return profesores;
     }
 
-    public void setProfesores(ArrayList<Profesor> profesores) {
+    public void setProfesores(ArrayList<ProfesorK> profesores) {
         this.profesores = profesores;
     }
 
@@ -145,7 +145,7 @@ public class EditUsuario extends Editor {
         if(isNuevo())
         {
             resulatado+="<option value=\"\" disabled selected >Seleccione</option>";
-            for (Profesor n:profesores
+            for (ProfesorK n:profesores
                  ) {
                 resulatado+="<option value=\""+n.getId_profesor()+"\" >"+n.getNombre()+" "+n.getApellido()+"</option>";
             }
@@ -154,9 +154,10 @@ public class EditUsuario extends Editor {
                     "                            </div>";
         }else {
             resulatado+="<option value=\"\" disabled  >Seleccione</option>";
-            for (Profesor n:profesores
+            for (ProfesorK n:profesores
                     ) {
-                if(n.getId_profesor().equals(usuario2.getProfesor().getId_profesor()))
+               // if(n.getId_profesor().equals(usuario2.getProfesor().getId_profesor()))
+                if(n.getId_profesor()==usuario2.getProfesor().getId_profesor())
                 {
                     resulatado+="<option value=\""+n.getId_profesor()+"\" selected>"+n.getNombre()+" "+n.getApellido()+"</option>";
                 }

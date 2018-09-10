@@ -1,18 +1,18 @@
 package com.horario.upoli.horario.view.profesor;
 
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.model.Profesor;
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.model.ProfesorK;
+import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.*;
 import java.util.ArrayList;
 
 public class Admi_Profesor extends Editor {
 
     private String Filtrar= "";
-    private ArrayList<Profesor> Aux= new ArrayList<>();
+    private ArrayList<ProfesorK> Aux= new ArrayList<>();
 
 
-   public  Admi_Profesor(Usuario usuario,ArrayList<Profesor> Aux)
+   public  Admi_Profesor(UsuarioK usuario, ArrayList<ProfesorK> Aux)
    {
        super(usuario);
        this.Aux=Aux;
@@ -65,7 +65,7 @@ public class Admi_Profesor extends Editor {
         //inicio
         Resultado.add("  <tbody>");
         //cuerpo
-        for (Profesor n:Aux
+        for (ProfesorK n:Aux
              ) {
             Resultado.add("<tr>\n" +
                     "                                <td>"+n.getId_profesor()+"</td>\n" +
@@ -94,7 +94,7 @@ public class Admi_Profesor extends Editor {
     {
         Formulario formulario = new Formulario();
         formulario.setAccion("/Profesor/filtrar");
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
         cuerpo_f.add(" <div class=\"input-field col s6\">\n" +
                 "                            <input id=\"buscar\" type=\"text\" class=\"validate\" name=\"txt_buscar\">\n" +
@@ -131,7 +131,7 @@ public class Admi_Profesor extends Editor {
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>");
-        Cuerpo.add(Footer.getFooter());
+        Cuerpo.add(FooterK.Companion.getFooter());
         html.setCuerpo(Cuerpo);
         
         return html.Generar_Html();

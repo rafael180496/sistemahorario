@@ -1,15 +1,15 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
-import com.horario.upoli.horario.model.Carrera;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.model.CarreraK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.CarreraService;
 import com.horario.upoli.horario.service.ValidacionService;
+import com.horario.upoli.horario.view.componentes.MensajeK;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.carrera.Admin_carrera;
 import com.horario.upoli.horario.view.carrera.EditCarrera;
-import com.horario.upoli.horario.view.componentes.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +35,7 @@ public class CarreraController {
     public  String IndexClase(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
 
         if(recupera==null)
@@ -51,7 +51,7 @@ public class CarreraController {
     public  String Filtrar(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         String filtro=req.getParameter("txt_buscar").toLowerCase();
 
@@ -66,18 +66,18 @@ public class CarreraController {
     @RequestMapping(value = "/Carrera/PreEliminar/{id}")
     public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Carrera muestra= carreraService.BuscarUno(id);
-        Mensaje Respuesta= new Mensaje();
+        CarreraK muestra= carreraService.BuscarUno(id);
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("¿Desea Eliminar esta Carrera?");
         Respuesta.setBtn_cancelar(true);
-        Respuesta.setBtn_rojo(new Permiso("/Carrera","Cancelar"));
-        Respuesta.setBtn_verde(new Permiso("/Carrera/Eliminar/"+muestra.getId_carrera(),"Eliminar"));
+        Respuesta.setBtn_rojo(new PermisoK("/Carrera","Cancelar"));
+        Respuesta.setBtn_verde(new PermisoK("/Carrera/Eliminar/"+muestra.getId_carrera(),"Eliminar"));
         Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
@@ -85,29 +85,29 @@ public class CarreraController {
     @RequestMapping(value = "/Carrera/Eliminar/{id}")
     public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Carrera muestra= carreraService.BuscarUno(id);
+        CarreraK muestra= carreraService.BuscarUno(id);
 
         if(validacionService.ValidarCarrera(muestra))
         {
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("No se puede eliminar la carrera por que está vinculada con un alumno por favor desvincule la carrera.");
             Respuesta.setBtn_cancelar(false);
-            Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
+            Respuesta.setBtn_verde(new PermisoK("/Carrera","Regresar"));
             Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
         carreraService.EliminarCarrera(muestra.getId_carrera());
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Eliminacion  de carrera exitosa");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Carrera","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
@@ -117,7 +117,7 @@ public class CarreraController {
     @RequestMapping(value = "/Carrera/Editar/{id}")
     public  String Editar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
@@ -132,7 +132,7 @@ public class CarreraController {
         }
 
 
-        Carrera muestra= carreraService.BuscarUno(id);
+        CarreraK muestra= carreraService.BuscarUno(id);
         nuevo.setUsuario(recupera);
         nuevo.setNuevo(false);
         nuevo.setCarrera(muestra);
@@ -142,13 +142,13 @@ public class CarreraController {
     @RequestMapping(value = "/Carrera/Guardar/{id}")
     public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Carrera muestra= new Carrera();
+        CarreraK muestra= new CarreraK();
         if(id==0){
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
@@ -159,11 +159,11 @@ public class CarreraController {
         }
         muestra.setNombre((String) req.getParameter("txt_nombre").replace(" ","").toUpperCase());
         if (muestra.getNombre().equals("")){
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("No puede registrar solo espacios en el campo nombre.");
             Respuesta.setBtn_cancelar(true);
-            Respuesta.setBtn_rojo(new Permiso("/Carrera","Cancelar"));
-            Respuesta.setBtn_verde(new Permiso("/Carrera/Editar/"+id,"Reintentar"));
+            Respuesta.setBtn_rojo(new PermisoK("/Carrera","Cancelar"));
+            Respuesta.setBtn_verde(new PermisoK("/Carrera/Editar/"+id,"Reintentar"));
             Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
@@ -171,10 +171,10 @@ public class CarreraController {
         carreraService.GuardarCarrera(muestra);
 
 
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Carrera","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Carrera","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }

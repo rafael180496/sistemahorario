@@ -1,9 +1,9 @@
 package com.horario.upoli.horario.view.login;
 
 import com.horario.upoli.horario.constante.EstilosK;
-import com.horario.upoli.horario.constante.Metodos;
-import com.horario.upoli.horario.constante.Scrips;
-import com.horario.upoli.horario.recursos.Link;
+import com.horario.upoli.horario.constante.MetodosK;
+import com.horario.upoli.horario.constante.ScripsK;
+import com.horario.upoli.horario.recursos.LinkK;
 import com.horario.upoli.horario.view.componentes.Formulario;
 import com.horario.upoli.horario.view.componentes.Html;
 
@@ -53,9 +53,9 @@ public class LoginResta {
 
     private ArrayList <String> Enviar_scrip(){
         ArrayList <String> escr= new ArrayList<>();
-        escr.add(Scrips.jquery.mostrar());
-        escr.add(Scrips.materialize.mostrar());
-        escr.add(Scrips.init.mostrar());
+        escr.add(ScripsK.jquery.getMostrar());
+        escr.add(ScripsK.materialize.getMostrar());
+        escr.add(ScripsK.initK.getMostrar());
         return escr;
     }
 
@@ -69,9 +69,9 @@ public class LoginResta {
 
     private String Enviar_Formulario(){
 
-        Link regresar=new Link("Regresar","/login");
+        LinkK regresar=new LinkK("Regresar","/login");
         Formulario formulario= new Formulario();
-        formulario.setMetodo(Metodos.POST.mostrar());
+        formulario.setMetodo(MetodosK.POST.getMostrar());
         formulario.setId_f("");
         formulario.setAccion("/login/cambiar/guardar");
         ArrayList <String> cuerpo_f= new ArrayList<>();

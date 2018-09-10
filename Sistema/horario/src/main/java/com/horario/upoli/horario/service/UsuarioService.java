@@ -1,18 +1,18 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Usuario;
+import com.horario.upoli.horario.model.UsuarioK;
 
 import java.util.ArrayList;
 
 public interface UsuarioService {
-    Iterable<Usuario> listarUsuarios();
-    public Usuario getUsuarioById(Long id);
-    ArrayList<Usuario> listaUsuarios();
-    public Usuario Ingresar(String usuario,String Clave);
+    Iterable<UsuarioK> listarUsuarios();
+    public UsuarioK getUsuarioById(Long id);
+    ArrayList<UsuarioK> listaUsuarios();
+    public UsuarioK Ingresar(String usuario,String Clave);
     public  boolean Recuperacion(String correo);
     public boolean Cambiar_clave(Long id,String clave);
     void  EliminarUsuario(Long id);
-    void  GuardarUsuario(Usuario usuario);
+    void  GuardarUsuario(UsuarioK usuario);
     Long  Secuencia();
-    ArrayList<Usuario> filtrarUsuario(String name);
+    ArrayList<UsuarioK> filtrarUsuario(String name);
 }

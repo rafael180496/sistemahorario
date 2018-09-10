@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Carrera;
+import com.horario.upoli.horario.model.CarreraK;
 import com.horario.upoli.horario.repo.CarreraRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,29 +17,29 @@ public class CarreraServiceImp implements CarreraService{
     private CarreraRepo carreraRepo;
 
     @Override
-    public Iterable<Carrera> listarCarrera() {
+    public Iterable<CarreraK> listarCarrera() {
         return carreraRepo.findAll();
     }
 
     @Override
-    public ArrayList<Carrera> listaCarrera() {
-        Iterable<Carrera> source=carreraRepo.findAll();
-        ArrayList<Carrera> Listado= new ArrayList<>();
+    public ArrayList<CarreraK> listaCarrera() {
+        Iterable<CarreraK> source=carreraRepo.findAll();
+        ArrayList<CarreraK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
 
         return Listado;
     }
 
     @Override
-    public ArrayList<Carrera> filtrarCarrera(String name) {
-        Iterable<Carrera> source=carreraRepo.findAll();
-        ArrayList<Carrera> Listado= new ArrayList<>();
-        ArrayList<Carrera> Listadoaux= new ArrayList<>();
+    public ArrayList<CarreraK> filtrarCarrera(String name) {
+        Iterable<CarreraK> source=carreraRepo.findAll();
+        ArrayList<CarreraK> Listado= new ArrayList<>();
+        ArrayList<CarreraK> Listadoaux= new ArrayList<>();
         source.forEach(Listadoaux::add);
 
         name=name.replace(" ","");
 
-        for (Carrera n:Listadoaux
+        for (CarreraK n:Listadoaux
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
 
@@ -53,7 +53,7 @@ public class CarreraServiceImp implements CarreraService{
     }
 
     @Override
-    public Carrera BuscarUno(Long id) {
+    public CarreraK BuscarUno(Long id) {
             return carreraRepo.findOne(id);
     }
 
@@ -63,22 +63,22 @@ public class CarreraServiceImp implements CarreraService{
     }
 
     @Override
-    public void GuardarCarrera(Carrera carrera) {
+    public void GuardarCarrera(CarreraK carrera) {
         carreraRepo.save(carrera);
     }
 
     @Override
     public Long Secuencia() {
-        Iterable<Carrera> source=carreraRepo.findAll();
-        ArrayList<Carrera> Listado= new ArrayList<>();
+        Iterable<CarreraK> source=carreraRepo.findAll();
+        ArrayList<CarreraK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Carrera n:Listado
+        for (CarreraK n:Listado
                 ) {
             Listadoid.add(n.getId_carrera());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }

@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.UsuarioService;
 import com.horario.upoli.horario.view.Home;
 import com.horario.upoli.horario.view.componentes.MensajeLogin;
@@ -23,7 +23,7 @@ public class LoginController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     String Inicio(HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",null);
 
         Login nuevo = new Login();
@@ -33,7 +33,7 @@ public class LoginController {
     @RequestMapping(value = "/inicio",method = RequestMethod.GET)
     String Index(HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera =(Usuario) session.getAttribute("usuario");
+        UsuarioK recupera =(UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
 
         if(recupera==null)
@@ -52,7 +52,7 @@ public class LoginController {
     {
         String usuario=req.getParameter("txt_usuario");
         String clave=req.getParameter("txt_clave");
-        Usuario recupera=usuarioService.Ingresar(usuario,clave);
+        UsuarioK recupera=usuarioService.Ingresar(usuario,clave);
 
         if(recupera==null)
         {
@@ -79,7 +79,7 @@ public class LoginController {
     {
 
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",null);
         LoginRecuperar nuevo = new LoginRecuperar();
         return nuevo.Generar_login_r();
@@ -92,7 +92,7 @@ public class LoginController {
     {
 
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         if(recupera==null)
         {
 
@@ -109,7 +109,7 @@ public class LoginController {
     {
 
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",null);
 
         String correo="";
@@ -118,7 +118,7 @@ public class LoginController {
         correo= correo.replace(" ","");
         if (usuarioService.Recuperacion(correo)){
             mensaje.setBtn_cancelar(false);
-            mensaje.setBtn_verde(new Permiso("/login","Regresar"));
+            mensaje.setBtn_verde(new PermisoK("/login","Regresar"));
             mensaje.setTipo(MensajeIcoK.Bien.getMostrar());
             mensaje.setTit("Enviado");
             mensaje.setCuerpo("Se envió una clave de recuperación al correo por favor revise el correo.");
@@ -126,8 +126,8 @@ public class LoginController {
         }
         else {
             mensaje.setBtn_cancelar(true);
-            mensaje.setBtn_rojo(new Permiso("/login","Regresar"));
-            mensaje.setBtn_verde(new Permiso("/login/recuperar","Intentar"));
+            mensaje.setBtn_rojo(new PermisoK("/login","Regresar"));
+            mensaje.setBtn_verde(new PermisoK("/login/recuperar","Intentar"));
             mensaje.setTipo(MensajeIcoK.Error.getMostrar());
             mensaje.setTit("Error");
             mensaje.setCuerpo("Este correo que introdujo no está asociado a ningún usuario del sistema.");
@@ -143,7 +143,7 @@ public class LoginController {
     {
 
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         if(recupera==null)
         {
 
@@ -163,8 +163,8 @@ public class LoginController {
         }
         else {
             mensaje.setBtn_cancelar(true);
-            mensaje.setBtn_rojo(new Permiso("/login","Regresar"));
-            mensaje.setBtn_verde(new Permiso("/login/cambiar","Intentar"));
+            mensaje.setBtn_rojo(new PermisoK("/login","Regresar"));
+            mensaje.setBtn_verde(new PermisoK("/login/cambiar","Intentar"));
             mensaje.setTipo(MensajeIcoK.Error.getMostrar());
             mensaje.setTit("Error");
             mensaje.setCuerpo("Las claves no son iguales por favor ingresar correctamente las claves.");

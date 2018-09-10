@@ -24,20 +24,20 @@ public class ValidacionServiceImp implements ValidacionService {
 
 
     @Override
-    public ArrayList<Profesor> ProfesoresSinUsuario() {
-        Iterable<Profesor> source=profesorRepo.findAll();
-        ArrayList<Profesor> ListadoP= new ArrayList<>();
+    public ArrayList<ProfesorK> ProfesoresSinUsuario() {
+        Iterable<ProfesorK> source=profesorRepo.findAll();
+        ArrayList<ProfesorK> ListadoP= new ArrayList<>();
         source.forEach(ListadoP::add);
 
 
-        Iterable<Usuario> source2=usuarioRepo.findAll();
-        ArrayList<Usuario> ListadoU= new ArrayList<>();
+        Iterable<UsuarioK> source2=usuarioRepo.findAll();
+        ArrayList<UsuarioK> ListadoU= new ArrayList<>();
         source2.forEach(ListadoU::add);
 
-        ArrayList<Profesor> Resultado= new ArrayList<>();
+        ArrayList<ProfesorK> Resultado= new ArrayList<>();
 
 
-        for (Profesor p:ListadoP
+        for (ProfesorK p:ListadoP
              ) {
 
                 Resultado.add(p);
@@ -49,12 +49,12 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public ArrayList<Det_grupo> DetalleFiltrado(Grupo grupo) {
-        Iterable<Det_grupo> source=det_grupoRepo.findAll();
-        ArrayList<Det_grupo> ListadoA= new ArrayList<>();
-        ArrayList<Det_grupo> ListadoB= new ArrayList<>();
+    public ArrayList<Det_grupoK> DetalleFiltrado(GrupoK grupo) {
+        Iterable<Det_grupoK> source=det_grupoRepo.findAll();
+        ArrayList<Det_grupoK> ListadoA= new ArrayList<>();
+        ArrayList<Det_grupoK> ListadoB= new ArrayList<>();
         source.forEach(ListadoA::add);
-        for (Det_grupo n:ListadoA
+        for (Det_grupoK n:ListadoA
              ) {
             if (n.getGrupo().getId_grupo()==grupo.getId_grupo())
             {
@@ -68,21 +68,21 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public ArrayList<Carrera> CarrerasConAlumnos() {
-        Iterable<Carrera> sourceC=carreraRepo.findAll();
-        Iterable<Alumno> sourceA=alumnoRepo.findAll();
+    public ArrayList<CarreraK> CarrerasConAlumnos() {
+        Iterable<CarreraK> sourceC=carreraRepo.findAll();
+        Iterable<AlumnoK> sourceA=alumnoRepo.findAll();
 
-        ArrayList<Carrera> ListC= new ArrayList<>();
-        ArrayList<Carrera> ListCO= new ArrayList<>();
-        ArrayList<Alumno> ListAl= new ArrayList<>();
+        ArrayList<CarreraK> ListC= new ArrayList<>();
+        ArrayList<CarreraK> ListCO= new ArrayList<>();
+        ArrayList<AlumnoK> ListAl= new ArrayList<>();
 
         sourceC.forEach(ListC::add);
         sourceA.forEach(ListAl::add);
 
-        for (Carrera carrera:ListC
+        for (CarreraK carrera:ListC
              ) {
 
-            for (Alumno alumno:ListAl
+            for (AlumnoK alumno:ListAl
                  ) {
                 if(alumno.getCarrera().getId_carrera()==carrera.getId_carrera())
                 {
@@ -98,13 +98,13 @@ public class ValidacionServiceImp implements ValidacionService {
     @Override
     public boolean CarnetRepetido(String carnet,Long id) {
 
-        Iterable<Alumno> source=alumnoRepo.findAll();
-        ArrayList<Alumno> ListadoA= new ArrayList<>();
+        Iterable<AlumnoK> source=alumnoRepo.findAll();
+        ArrayList<AlumnoK> ListadoA= new ArrayList<>();
         source.forEach(ListadoA::add);
 
         if(id==0)
         {
-            for (Alumno n:ListadoA
+            for (AlumnoK n:ListadoA
                     ) {
                 String carnetA=n.getCarnet().replace(" ","");
 
@@ -118,7 +118,7 @@ public class ValidacionServiceImp implements ValidacionService {
         }
         else
         {
-            for (Alumno n:ListadoA
+            for (AlumnoK n:ListadoA
                     ) {
                 String carnetA=n.getCarnet().replace(" ","");
 
@@ -137,13 +137,13 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public boolean ValidarUsuario(Usuario usuario) {
+    public boolean ValidarUsuario(UsuarioK usuario) {
 
-        Iterable<Usuario> source=usuarioRepo.findAll();
-        ArrayList<Usuario> ListadoU= new ArrayList<>();
+        Iterable<UsuarioK> source=usuarioRepo.findAll();
+        ArrayList<UsuarioK> ListadoU= new ArrayList<>();
         source.forEach(ListadoU::add);
 
-        for (Usuario n:ListadoU
+        for (UsuarioK n:ListadoU
              ) {
             if(n.equals(usuario))
             {
@@ -155,12 +155,12 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public boolean ValidarCarrera(Carrera carrera) {
-        Iterable<Alumno> source=alumnoRepo.findAll();
-        ArrayList<Alumno> ListadoA= new ArrayList<>();
+    public boolean ValidarCarrera(CarreraK carrera) {
+        Iterable<AlumnoK> source=alumnoRepo.findAll();
+        ArrayList<AlumnoK> ListadoA= new ArrayList<>();
         source.forEach(ListadoA::add);
 
-        for (Alumno n:ListadoA
+        for (AlumnoK n:ListadoA
                 ) {
             if(n.getCarrera().getId_carrera()==carrera.getId_carrera())
             {
@@ -174,12 +174,12 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public boolean ValidarAlumno(Alumno alumno) {
-        Iterable<Det_grupo> source=det_grupoRepo.findAll();
-        ArrayList<Det_grupo> ListadoA= new ArrayList<>();
+    public boolean ValidarAlumno(AlumnoK alumno) {
+        Iterable<Det_grupoK> source=det_grupoRepo.findAll();
+        ArrayList<Det_grupoK> ListadoA= new ArrayList<>();
         source.forEach(ListadoA::add);
 
-        for (Det_grupo n:ListadoA
+        for (Det_grupoK n:ListadoA
                 ) {
             if(n.getAlumno().getId_alumno()==alumno.getId_alumno())
             {
@@ -190,12 +190,12 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public boolean ValidarClase(Clase clase) {
-        Iterable<Grupo> source=grupoRepo.findAll();
-        ArrayList<Grupo> ListadoA= new ArrayList<>();
+    public boolean ValidarClase(ClaseK clase) {
+        Iterable<GrupoK> source=grupoRepo.findAll();
+        ArrayList<GrupoK> ListadoA= new ArrayList<>();
         source.forEach(ListadoA::add);
 
-        for (Grupo n:ListadoA
+        for (GrupoK n:ListadoA
                 ) {
             if(n.getClase().getId_clase()==clase.getId_clase())
             {
@@ -206,12 +206,12 @@ public class ValidacionServiceImp implements ValidacionService {
     }
 
     @Override
-    public boolean ValidarProfesor(Profesor profesor) {
-        Iterable<Grupo> source=grupoRepo.findAll();
-        ArrayList<Grupo> ListadoA= new ArrayList<>();
+    public boolean ValidarProfesor(ProfesorK profesor) {
+        Iterable<GrupoK> source=grupoRepo.findAll();
+        ArrayList<GrupoK> ListadoA= new ArrayList<>();
         source.forEach(ListadoA::add);
 
-        for (Grupo n:ListadoA
+        for (GrupoK n:ListadoA
                 ) {
             if(n.getProfesor().getId_profesor()==profesor.getId_profesor())
             {

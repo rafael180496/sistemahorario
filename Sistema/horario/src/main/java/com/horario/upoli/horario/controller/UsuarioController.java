@@ -1,15 +1,15 @@
 package com.horario.upoli.horario.controller;
 
 import com.horario.upoli.horario.constante.MensajeIcoK;
-import com.horario.upoli.horario.model.Profesor;
-import com.horario.upoli.horario.model.Usuario;
-import com.horario.upoli.horario.recursos.Clave;
-import com.horario.upoli.horario.recursos.Correo;
-import com.horario.upoli.horario.recursos.Permiso;
+import com.horario.upoli.horario.model.ProfesorK;
+import com.horario.upoli.horario.model.UsuarioK;
+import com.horario.upoli.horario.recursos.ClaveK;
+import com.horario.upoli.horario.recursos.CorreoK;
+import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.ProfesorService;
 import com.horario.upoli.horario.service.UsuarioService;
 import com.horario.upoli.horario.service.ValidacionService;
-import com.horario.upoli.horario.view.componentes.Mensaje;
+import com.horario.upoli.horario.view.componentes.MensajeK;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.usuario.Admi_Usuario;
 import com.horario.upoli.horario.view.usuario.EditUsuario;
@@ -39,7 +39,7 @@ public class UsuarioController {
     public  String IndexClase(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
 
         if(recupera==null)
@@ -56,7 +56,7 @@ public class UsuarioController {
     public  String Filtrar(HttpServletRequest req, HttpServletResponse res)
     {
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         String filtro=req.getParameter("txt_buscar").toLowerCase();
 
@@ -72,7 +72,7 @@ public class UsuarioController {
     @RequestMapping(value = "/Usuario/Editar/{id}")
     public  String Editar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
@@ -86,7 +86,7 @@ public class UsuarioController {
             return nuevo.GenerarEditar();
         }
 
-        Usuario muestra= usuarioService.getUsuarioById(id);
+        UsuarioK muestra= usuarioService.getUsuarioById(id);
         nuevo.setUsuario(recupera);
         nuevo.setNuevo(false);
         nuevo.setProfesores(validacionService.ProfesoresSinUsuario());
@@ -99,13 +99,13 @@ public class UsuarioController {
     @RequestMapping(value = "/Usuario/Guardar/{id}")
     public  String Guardar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Usuario muestra= new Usuario();
+        UsuarioK muestra= new UsuarioK();
         if(id==0){
             muestra.setNom_usr((String) req.getParameter("txt_nombre").replace(" ",""));
             muestra.setCorreo((String) req.getParameter("txt_correo").replace(" ",""));
@@ -122,14 +122,14 @@ public class UsuarioController {
             java.util.Date  fecha = new java.util.Date();
             muestra.setF_creacion(new Date(fecha.getTime()));
             Long idp=Long.parseLong((String)req.getParameter("dp_profesor"));
-            Profesor profesor =profesorService.BuscarUno(idp);
+            ProfesorK profesor =profesorService.BuscarUno(idp);
             muestra.setProfesor(profesor);
-            String rec= Clave.getClave(Clave.MINUSCULAS+
-                    Clave.MAYUSCULAS+
-                    Clave.ESPECIALES,10);
+            String rec= ClaveK.Companion.getClave(ClaveK.Companion.getMINUSCULAS()+
+                    ClaveK.Companion.getMAYUSCULAS()+
+                    ClaveK.Companion.getESPECIALES(),10);
             rec=rec.replace(" ","");
             muestra.setClave(rec);
-            Correo Enviar= new Correo();
+            CorreoK Enviar= new CorreoK();
             Enviar.setAsunto("Recuperación de contraseña ");
             Enviar.setPara(muestra.getCorreo());
             Enviar.setMensage("Esta clave es de recuperación cuando la introduzca debe de cambiar la contraseña:"+muestra.getClave());
@@ -157,19 +157,19 @@ public class UsuarioController {
             }
             else {
                 muestra.setInd_rest(true);
-                String rec= Clave.getClave(Clave.MINUSCULAS+
-                        Clave.MAYUSCULAS+
-                        Clave.ESPECIALES,10);
+                String rec= ClaveK.Companion.getClave(ClaveK.Companion.getMINUSCULAS()+
+                        ClaveK.Companion.getMAYUSCULAS()+
+                        ClaveK.Companion.getESPECIALES(),10);
                 rec=rec.replace(" ","");
                 muestra.setClave(rec);
-                Correo Enviar= new Correo();
+                CorreoK Enviar= new CorreoK();
                 Enviar.setAsunto("Recuperación de contraseña ");
                 Enviar.setPara(muestra.getCorreo());
                 Enviar.setMensage("Esta clave es de recuperación cuando la introduzca debe de cambiar la contraseña:"+muestra.getClave());
                 Enviar.SendMail();
             }
             Long idp=Long.parseLong((String)req.getParameter("dp_profesor"));
-            Profesor profesor =profesorService.BuscarUno(idp);
+            ProfesorK profesor =profesorService.BuscarUno(idp);
             muestra.setProfesor(profesor);
 
         }
@@ -177,28 +177,28 @@ public class UsuarioController {
         usuarioService.GuardarUsuario(muestra);
 
 
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Se guardaron los cambios exitosamente.");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Usuario","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }
     @RequestMapping(value = "/Usuario/PreEliminar/{id}")
     public  String PreEliminar(@PathVariable("id") Long id, HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Usuario muestra= usuarioService.getUsuarioById(id);
-        Mensaje Respuesta= new Mensaje();
+        UsuarioK muestra= usuarioService.getUsuarioById(id);
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("¿Desea Eliminar esta Usuario?");
         Respuesta.setBtn_cancelar(true);
-        Respuesta.setBtn_rojo(new Permiso("/Usuario","Cancelar"));
-        Respuesta.setBtn_verde(new Permiso("/Usuario/Eliminar/"+muestra.getId_usuario(),"Eliminar"));
+        Respuesta.setBtn_rojo(new PermisoK("/Usuario","Cancelar"));
+        Respuesta.setBtn_verde(new PermisoK("/Usuario/Eliminar/"+muestra.getId_usuario(),"Eliminar"));
         Respuesta.setTipo(MensajeIcoK.Advertencia.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
 
@@ -207,29 +207,29 @@ public class UsuarioController {
     @RequestMapping(value = "/Usuario/Eliminar/{id}")
     public  String Eliminar(@PathVariable("id") Long id,HttpServletRequest req, HttpServletResponse res){
         HttpSession session = req.getSession(true);
-        Usuario recupera = (Usuario) session.getAttribute("usuario");
+        UsuarioK recupera = (UsuarioK) session.getAttribute("usuario");
         session.setAttribute("usuario",recupera);
         if(recupera==null)
         {
             return  new Login().Generar_login(false);
         }
-        Usuario muestra= usuarioService.getUsuarioById(id);
+        UsuarioK muestra= usuarioService.getUsuarioById(id);
         if(recupera.getId_usuario()==muestra.getId_usuario())
         {
-            Mensaje Respuesta= new Mensaje();
+            MensajeK Respuesta= new MensajeK();
             Respuesta.setCuerpo("No puedes eliminar el mismo usuario que estas iniciado.");
             Respuesta.setBtn_cancelar(false);
-            Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
+            Respuesta.setBtn_verde(new PermisoK("/Usuario","Regresar"));
             Respuesta.setTipo(MensajeIcoK.Error.getMostrar());
             return  Respuesta.Generar_Mensaje(recupera);
         }
 
 
         usuarioService.EliminarUsuario(muestra.getId_usuario());
-        Mensaje Respuesta= new Mensaje();
+        MensajeK Respuesta= new MensajeK();
         Respuesta.setCuerpo("Eliminacion  de Usuario exitosa");
         Respuesta.setBtn_cancelar(false);
-        Respuesta.setBtn_verde(new Permiso("/Usuario","Regresar"));
+        Respuesta.setBtn_verde(new PermisoK("/Usuario","Regresar"));
         Respuesta.setTipo(MensajeIcoK.Bien.getMostrar());
         return  Respuesta.Generar_Mensaje(recupera);
     }

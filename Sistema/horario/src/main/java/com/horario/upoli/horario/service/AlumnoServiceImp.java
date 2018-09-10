@@ -1,8 +1,8 @@
 package com.horario.upoli.horario.service;
 
-import com.horario.upoli.horario.model.Alumno;
+import com.horario.upoli.horario.model.AlumnoK;
 import com.horario.upoli.horario.repo.AlumnoRepo;
-import com.horario.upoli.horario.seguridad.Permisos;
+import com.horario.upoli.horario.seguridad.PermisosK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +15,14 @@ public class AlumnoServiceImp implements AlumnoService {
     AlumnoRepo alumnoRepo;
 
     @Override
-    public Iterable<Alumno> listarAlumno() {
+    public Iterable<AlumnoK> listarAlumno() {
         return alumnoRepo.findAll();
     }
 
     @Override
-    public ArrayList<Alumno> listaAlumno() {
-        Iterable<Alumno> source=alumnoRepo.findAll();
-        ArrayList<Alumno> Listado= new ArrayList<>();
+    public ArrayList<AlumnoK> listaAlumno() {
+        Iterable<AlumnoK> source=alumnoRepo.findAll();
+        ArrayList<AlumnoK> Listado= new ArrayList<>();
         source.forEach(Listado::add);
 
 
@@ -31,15 +31,15 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public ArrayList<Alumno> filtrarAlumno(String name) {
-        Iterable<Alumno> source=alumnoRepo.findAll();
-        ArrayList<Alumno> Listado= new ArrayList<>();
-        ArrayList<Alumno> Listadoaux= new ArrayList<>();
+    public ArrayList<AlumnoK> filtrarAlumno(String name) {
+        Iterable<AlumnoK> source=alumnoRepo.findAll();
+        ArrayList<AlumnoK> Listado= new ArrayList<>();
+        ArrayList<AlumnoK> Listadoaux= new ArrayList<>();
         source.forEach(Listadoaux::add);
 
         name=name.replace(" ","");
 
-        for (Alumno n:Listadoaux
+        for (AlumnoK n:Listadoaux
                 ) {
             n.setNombre(n.getNombre().replace(" ",""));
             n.setApellido(n.getApellido().replace(" ",""));
@@ -53,7 +53,7 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public Alumno BuscarUno(Long id) {
+    public AlumnoK BuscarUno(Long id) {
         return alumnoRepo.findOne(id);
     }
 
@@ -63,23 +63,23 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public void GuardarAlumno(Alumno alumno) {
+    public void GuardarAlumno(AlumnoK alumno) {
         alumnoRepo.save(alumno);
     }
 
     @Override
     public Long Secuencia() {
 
-        Iterable<Alumno> source=alumnoRepo.findAll();
-        ArrayList<Alumno> Listado= new ArrayList<>();
+        Iterable<AlumnoK> source=alumnoRepo.findAll();
+        ArrayList<AlumnoK> Listado= new ArrayList<>();
         ArrayList<Long> Listadoid= new ArrayList<>();
         source.forEach(Listado::add);
 
-        for (Alumno n:Listado
+        for (AlumnoK n:Listado
              ) {
             Listadoid.add(n.getId_alumno());
         }
 
-        return Permisos.maximoSecuencial(Listadoid)+1;
+        return PermisosK.Companion.maximoSecuencial(Listadoid)+1;
     }
 }
