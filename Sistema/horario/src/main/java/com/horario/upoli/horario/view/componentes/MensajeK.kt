@@ -6,7 +6,6 @@ import com.horario.upoli.horario.constante.MensajeIcoK
 import com.horario.upoli.horario.constante.ScripsK
 import com.horario.upoli.horario.model.UsuarioK
 import com.horario.upoli.horario.recursos.PermisoK
-import com.horario.upoli.horario.seguridad.PermisosK
 
 data class MensajeK(
         var Cuerpo:String="",
