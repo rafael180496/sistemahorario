@@ -1,7 +1,9 @@
 @file:JvmName("componentes")
 package com.horario.upoli.horario.view.componentes
 
+import com.horario.upoli.horario.model.UsuarioK
 import com.horario.upoli.horario.recursos.NavK
+import com.horario.upoli.horario.seguridad.PermisosK
 
 data class NavbarK(
       var proyecto:String="",
@@ -37,5 +39,19 @@ data class NavbarK(
                 </nav>
             </div>
         """
+    }
+
+    companion object {
+        fun Generar_navBar(usuario: UsuarioK,nombpr:String):String{
+            var navbar=NavbarK()
+            navbar.proyecto="$nombpr"
+
+            if (usuario.ind_adm){
+                for (n in PermisosK.PermisosAdmin())navbar.Agregar_propiedad(n.nombre,n.accion)
+            }else{
+                for (n in PermisosK.PermisosProfesor())navbar.Agregar_propiedad(n.nombre,n.accion)
+            }
+            return navbar.Generar_Navbar()
+        }
     }
 }

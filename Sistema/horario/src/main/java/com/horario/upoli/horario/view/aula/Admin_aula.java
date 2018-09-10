@@ -5,7 +5,8 @@ import com.horario.upoli.horario.model.AulaK;
 import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.view.componentes.Editor;
 import com.horario.upoli.horario.view.componentes.FooterK;
-import com.horario.upoli.horario.view.componentes.Formulario;
+import com.horario.upoli.horario.view.componentes.FormularioK;
+import com.horario.upoli.horario.view.componentes.NavbarK;
 
 
 import java.util.ArrayList;
@@ -104,7 +105,7 @@ public class Admin_aula extends Editor {
     public String Enviar_Formulario()
     {
 
-        Formulario formulario = new Formulario();
+        FormularioK formulario = new FormularioK();
         formulario.setAccion("/Aula/filtrar");
         formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
@@ -127,7 +128,7 @@ public class Admin_aula extends Editor {
         ArrayList<String > Cuerpo= new ArrayList<>();
 
 
-        Cuerpo.add(Generar_navBar());
+        Cuerpo.add(NavbarK.Companion.Generar_navBar(super.getUsuario(),"SDH"));
         Cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"row\">\n" +
                 "            <div class=\"col s12 \">\n" +

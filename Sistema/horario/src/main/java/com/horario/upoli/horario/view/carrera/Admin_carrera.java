@@ -86,7 +86,7 @@ public class Admin_carrera extends Editor {
     public String Enviar_Formulario()
     {
 
-        Formulario formulario = new Formulario();
+        FormularioK formulario = new FormularioK();
         formulario.setAccion("/Carrera/filtrar");
         formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
@@ -111,7 +111,7 @@ public class Admin_carrera extends Editor {
         ArrayList<String > Cuerpo= new ArrayList<>();
 
 
-        Cuerpo.add(Generar_navBar());
+        Cuerpo.add(NavbarK.Companion.Generar_navBar(super.getUsuario(),"SDH"));
         Cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"row\">\n" +
                 "            <div class=\"col s12 \">\n" +

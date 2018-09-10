@@ -4,13 +4,13 @@ import com.horario.upoli.horario.constante.EstilosK;
 import com.horario.upoli.horario.constante.MetodosK;
 import com.horario.upoli.horario.constante.ScripsK;
 import com.horario.upoli.horario.recursos.LinkK;
-import com.horario.upoli.horario.view.componentes.Formulario;
-import com.horario.upoli.horario.view.componentes.Html;
+import com.horario.upoli.horario.view.componentes.FormularioK;
+import com.horario.upoli.horario.view.componentes.HtmlK;
 
 import java.util.ArrayList;
 
 public class Login {
-    private Html html = new Html();
+    private HtmlK html = new HtmlK();
 
 
     public String Generar_login(boolean Error){
@@ -70,7 +70,7 @@ public class Login {
 
         LinkK recupera=new LinkK("Olvidaste tu contraseña?","/login/recuperar");
         LinkK regresar=new LinkK("Regresar","/");
-        Formulario formulario= new Formulario();
+        FormularioK formulario= new FormularioK();
         formulario.setMetodo(MetodosK.POST.getMostrar());
         formulario.setId_f("");
         formulario.setAccion("/login/ingresar");

@@ -40,11 +40,12 @@ data class HtmlK(
         $head_fin
         $body_ini
         ${cuerpo.mostrarList()}
-        $scrip
+        ${scrip.mostrarList()}
         $scrip_manual
         $body_fin
     """
 }
+
 
 fun ArrayList<String>.mostrarList():String{
     var rel:String=""

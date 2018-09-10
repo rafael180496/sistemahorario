@@ -92,7 +92,7 @@ public class Admi_Profesor extends Editor {
     @Override
     public String Enviar_Formulario()
     {
-        Formulario formulario = new Formulario();
+        FormularioK formulario = new FormularioK();
         formulario.setAccion("/Profesor/filtrar");
         formulario.setMetodo(MetodosK.POST.getMostrar());
         ArrayList<String> cuerpo_f= new ArrayList<>();
@@ -115,7 +115,7 @@ public class Admi_Profesor extends Editor {
         ArrayList<String > Cuerpo= new ArrayList<>();
 
 
-        Cuerpo.add(Generar_navBar());
+        Cuerpo.add(NavbarK.Companion.Generar_navBar(super.getUsuario(),"SDH"));
         Cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"row\">\n" +
                 "            <div class=\"col s12  \">\n" +

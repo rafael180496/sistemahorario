@@ -4,7 +4,7 @@ import com.horario.upoli.horario.constante.MetodosK;
 import com.horario.upoli.horario.model.*;
 import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.Editor;
-import com.horario.upoli.horario.view.componentes.Formulario;
+import com.horario.upoli.horario.view.componentes.FormularioK;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class EditGrupo extends Editor {
         /*----------------------------------------------*/
         PermisoK btm_verde= new PermisoK("","");
         PermisoK btm_rojo= new PermisoK("/Grupo","Cancelar");
-        Formulario formulario= new Formulario();
+        FormularioK formulario= new FormularioK();
         formulario.setId_f("f_grupos");
         ArrayList<String> cuerpo= new ArrayList();
 

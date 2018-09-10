@@ -30,23 +30,13 @@ data class MensajeK(
                 EstilosK.fonts.mostrar
         )
     }
-    fun Generar_navBar(usuario:UsuarioK):String{
-        var navbar=NavbarK()
-        navbar.proyecto="SDH"
 
-        if (usuario.ind_adm){
-            for (n in PermisosK.PermisosAdmin())navbar.Agregar_propiedad(n.nombre,n.accion)
-        }else{
-            for (n in PermisosK.PermisosProfesor())navbar.Agregar_propiedad(n.nombre,n.accion)
-        }
-        return navbar.Generar_Navbar()
-    }
     fun Generar_Mensaje(user: UsuarioK):String{
         html.titulo="SDH"
         html.estilos=Enviar_Estilo()
         html.scrip=Enviar_scrip()
         var cuerpo:ArrayList<String> = arrayListOf()
-        cuerpo.add(Generar_navBar(user))
+        cuerpo.add(NavbarK.Generar_navBar(user,"SDH"))
         cuerpo.add("""
            <div class="container">
                 <div class="section"></div>

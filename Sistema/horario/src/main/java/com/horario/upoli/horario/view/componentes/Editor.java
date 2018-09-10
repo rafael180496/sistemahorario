@@ -9,7 +9,7 @@ import com.horario.upoli.horario.seguridad.PermisosK;
 import java.util.ArrayList;
 
 public abstract class Editor {
-    protected Html html = new Html();
+    protected HtmlK html = new HtmlK();
     private UsuarioK usuario = new UsuarioK();
     private boolean nuevo=false;
     private String scrip_m="";
@@ -24,7 +24,7 @@ public abstract class Editor {
 
 
 
-        cuerpo.add(Generar_navBar());
+        cuerpo.add(NavbarK.Companion.Generar_navBar(usuario,"SDH"));
         cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"section\"></div>\n" +
                 "        <div class=\"row\">\n" +
@@ -66,27 +66,7 @@ public abstract class Editor {
         return  est;
     }
 
-    protected  String Generar_navBar()
-    {
-        NavbarK navbar= new NavbarK();
-        navbar.setProyecto("SDH");
-        if (usuario.getInd_adm())
-        {
-            for (PermisoK n: PermisosK.Companion.PermisosAdmin()
-                    ) {
-                navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
-            }
-        }
-        else
-        {
-            for (PermisoK n: PermisosK.Companion.PermisosProfesor()
-                    ) {
-                navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
-            }
-        }
 
-        return navbar.Generar_Navbar();
-    }
 
     public Editor(UsuarioK usuario, boolean nuevo) {
         this.usuario = usuario;

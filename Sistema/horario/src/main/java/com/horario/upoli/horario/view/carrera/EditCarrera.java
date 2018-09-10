@@ -16,7 +16,7 @@ private CarreraK carrera = new CarreraK();
     public String Enviar_Formulario() {
         PermisoK btm_verde= new PermisoK("","");
         PermisoK btm_rojo= new PermisoK("/Carrera","Cancelar");
-        Formulario formulario= new Formulario();
+        FormularioK formulario= new FormularioK();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
 

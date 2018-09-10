@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class Index  {
     private NavbarIndexK navbarIndex = new NavbarIndexK();
-    private Formulario formulario = new Formulario();
+    private FormularioK formulario = new FormularioK();
 
 
     public String Generar_Index(){
 
-        Html html= new Html();
+        HtmlK html= new HtmlK();
         ArrayList <String> estilo= new ArrayList<>();
         html.setScrip_manual("<script>\n" +
                 "        $(document).ready(function() {\n" +

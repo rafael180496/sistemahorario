@@ -13,7 +13,7 @@ public class MensajeLogin {
     private PermisoK btn_verde= new PermisoK();
     private PermisoK btn_rojo= new PermisoK();
     private String tipo= MensajeIcoK.Advertencia.getMostrar();
-    private Html html = new Html();
+    private HtmlK html = new HtmlK();
     private  String tit= "";
 
     public MensajeLogin() {

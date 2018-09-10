@@ -38,7 +38,7 @@ public class EditClase  extends Editor{
     public String Enviar_Formulario(){
         PermisoK btm_verde= new PermisoK("","");
         PermisoK btm_rojo= new PermisoK("/Clase","Cancelar");
-        Formulario formulario= new Formulario();
+        FormularioK formulario= new FormularioK();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
 

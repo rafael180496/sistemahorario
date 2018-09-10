@@ -5,7 +5,8 @@ import com.horario.upoli.horario.model.ProfesorK;
 import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.view.componentes.Editor;
-import com.horario.upoli.horario.view.componentes.Formulario;
+import com.horario.upoli.horario.view.componentes.FormularioK;
+
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class EditUsuario extends Editor {
         /*----------------------------------------------*/
         PermisoK btm_verde= new PermisoK("","");
         PermisoK btm_rojo= new PermisoK("/Usuario","Cancelar");
-        Formulario formulario= new Formulario();
+        FormularioK formulario= new FormularioK();
         ArrayList<String> cuerpo= new ArrayList();
         String titulo= "";
         String check="";

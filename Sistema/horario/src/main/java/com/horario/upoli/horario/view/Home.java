@@ -7,13 +7,13 @@ import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.seguridad.PermisosK;
 import com.horario.upoli.horario.view.componentes.FooterK;
-import com.horario.upoli.horario.view.componentes.Html;
+import com.horario.upoli.horario.view.componentes.HtmlK;
 import com.horario.upoli.horario.view.componentes.NavbarK;
 
 import java.util.ArrayList;
 
 public class Home {
-    private Html html = new Html();
+    private HtmlK html = new HtmlK();
     private NavbarK navbar = new NavbarK();
     private UsuarioK usuario= new UsuarioK();
 
@@ -33,7 +33,7 @@ public class Home {
         ArrayList<String >cuerpo = new ArrayList<>();
 
         /*=================================================*/
-        cuerpo.add(Generar_navBar());
+        cuerpo.add(NavbarK.Companion.Generar_navBar(usuario,"SDH"));
          /*=================================================*/
         cuerpo.add("<div class=\"container\">\n" +
                 "        <div class=\"row\">\n" +
@@ -100,27 +100,6 @@ public class Home {
     }
 
 
-    private  String Generar_navBar()
-    {
-        navbar.setProyecto("SDH");
 
-        if (usuario.getInd_adm())
-        {
-            for (PermisoK n: PermisosK.Companion.PermisosAdmin()
-                 ) {
-                navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
-            }
-        }
-        else
-        {
-            for (PermisoK n: PermisosK.Companion.PermisosProfesor()
-                    ) {
-                navbar.Agregar_propiedad(n.getNombre(),n.getAccion());
-            }
-        }
-
-
-        return navbar.Generar_Navbar();
-    }
 
 }
