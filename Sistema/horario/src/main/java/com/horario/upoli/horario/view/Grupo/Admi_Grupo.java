@@ -135,7 +135,7 @@ public class Admi_Grupo  extends Editor{
                 "                    <h4>Administracion de Grupos:</h4>");
         Cuerpo.add(Enviar_Formulario());
         Cuerpo.add(Generar_table());
-        Cuerpo.add("</table>\n" +
+        Cuerpo.add("" +
                 "\n" +
                 "                </div>\n" +
                 "            </div>\n" +

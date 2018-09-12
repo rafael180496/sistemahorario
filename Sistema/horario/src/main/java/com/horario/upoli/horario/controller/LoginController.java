@@ -4,7 +4,7 @@ import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.UsuarioK;
 import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.UsuarioService;
-import com.horario.upoli.horario.view.Home;
+import com.horario.upoli.horario.view.HomeK;
 import com.horario.upoli.horario.view.componentes.MensajeLogin;
 import com.horario.upoli.horario.view.login.Login;
 import com.horario.upoli.horario.view.login.LoginRecuperar;
@@ -41,7 +41,7 @@ public class LoginController {
             return  new Login().Generar_login(false);
         }
 
-            return  new Home(recupera).Generar_Home();
+            return  new HomeK(recupera).Generar_Home();
 
 
 
@@ -69,7 +69,7 @@ public class LoginController {
             HttpSession session = req.getSession(true);
             session.setAttribute("usuario",recupera);
 
-            return  new Home(recupera).Generar_Home();
+            return  new HomeK(recupera).Generar_Home();
 
 
     }
@@ -159,7 +159,7 @@ public class LoginController {
             usuarioService.Cambiar_clave(recupera.getId_usuario(),clave_n);
             session = req.getSession(true);
             session.setAttribute("usuario",recupera);
-            return  new Home(recupera).Generar_Home();
+            return  new HomeK(recupera).Generar_Home();
         }
         else {
             mensaje.setBtn_cancelar(true);
