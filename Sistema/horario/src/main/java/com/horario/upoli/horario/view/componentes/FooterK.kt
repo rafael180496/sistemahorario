@@ -1,4 +1,4 @@
-@file:JvmName("componentes")
+
 package com.horario.upoli.horario.view.componentes
 
 class FooterK{

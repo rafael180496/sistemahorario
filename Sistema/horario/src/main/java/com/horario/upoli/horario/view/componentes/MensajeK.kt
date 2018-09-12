@@ -1,4 +1,4 @@
-@file:JvmName("componentes")
+
 package com.horario.upoli.horario.view.componentes
 
 import com.horario.upoli.horario.constante.EstilosK

@@ -1,4 +1,4 @@
-@file:JvmName("model")
+
 package com.horario.upoli.horario.model
 
 import java.sql.Date

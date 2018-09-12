@@ -1,5 +1,3 @@
-@file:JvmName("constante")
-
 package com.horario.upoli.horario.constante
 
 enum class MensajeIcoK(val mostrar:String){

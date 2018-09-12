@@ -1,4 +1,3 @@
-@file:JvmName("constante")
 package com.horario.upoli.horario.constante
 
 enum class EstilosK(val mostrar:String,val id:Int){

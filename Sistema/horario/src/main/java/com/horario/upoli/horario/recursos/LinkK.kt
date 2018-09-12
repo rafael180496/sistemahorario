@@ -1,4 +1,4 @@
-@file:JvmName("recursos")
+
 package com.horario.upoli.horario.recursos
 
 data class LinkK(private var titulo:String="",private var navegacion:String=""){

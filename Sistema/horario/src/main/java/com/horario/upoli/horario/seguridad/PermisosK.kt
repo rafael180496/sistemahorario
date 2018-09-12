@@ -1,4 +1,4 @@
-@file:JvmName("seguridad")
+
 package com.horario.upoli.horario.seguridad
 
 import com.horario.upoli.horario.recursos.PermisoK

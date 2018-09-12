@@ -1,4 +1,4 @@
-@file:JvmName("view")
+
 package com.horario.upoli.horario.view
 
 import com.horario.upoli.horario.constante.EstilosK

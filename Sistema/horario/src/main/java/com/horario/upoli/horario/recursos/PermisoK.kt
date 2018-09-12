@@ -1,4 +1,4 @@
-@file:JvmName("recursos")
+
 package com.horario.upoli.horario.recursos
 
 data class PermisoK(

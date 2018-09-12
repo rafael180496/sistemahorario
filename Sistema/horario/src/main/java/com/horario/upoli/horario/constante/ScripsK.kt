@@ -1,4 +1,4 @@
-@file:JvmName("constante")
+
 package com.horario.upoli.horario.constante
 
 enum class ScripsK(val mostrar:String,val id:Int){
