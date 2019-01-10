@@ -1,5 +1,5 @@
 
-package com.horario.upoli.horario.recursos
+package com.horario.upoli.horario.repo
 
 /*ejemplo*/
 /*PasswordGenerator.getPassword(
@@ -12,9 +12,9 @@ class ClaveK{
         val MAYUSCULAS:String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         val MINUSCULAS:String = "abcdefghijklmnopqrstuvwxyz"
         val ESPECIALES:String = "ñÑ"
-        fun getPinNumber()=getClave("$NUMEROS",4)
-        fun getClave()=getClave(8)
-        fun getClave(len:Int)=getClave("$NUMEROS$MAYUSCULAS$MINUSCULAS",len)
+        fun getPinNumber()= getClave("$NUMEROS", 4)
+        fun getClave()= getClave(8)
+        fun getClave(len:Int)= getClave("$NUMEROS$MAYUSCULAS$MINUSCULAS", len)
         fun getClave(serial:String,len:Int):String{
             var pswd:String=""
             for(i:Int in 0..len){

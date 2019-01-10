@@ -1,7 +1,7 @@
 package com.horario.upoli.horario.service;
 
 import com.horario.upoli.horario.model.UsuarioK;
-import com.horario.upoli.horario.recursos.ClaveK;
+import com.horario.upoli.horario.repo.ClaveK;
 import com.horario.upoli.horario.recursos.CorreoK;
 import com.horario.upoli.horario.repo.UsuarioRepo;
 import com.horario.upoli.horario.seguridad.PermisosK;

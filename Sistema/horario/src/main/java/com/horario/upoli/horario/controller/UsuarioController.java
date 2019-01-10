@@ -3,7 +3,7 @@ package com.horario.upoli.horario.controller;
 import com.horario.upoli.horario.constante.MensajeIcoK;
 import com.horario.upoli.horario.model.ProfesorK;
 import com.horario.upoli.horario.model.UsuarioK;
-import com.horario.upoli.horario.recursos.ClaveK;
+import com.horario.upoli.horario.repo.ClaveK;
 import com.horario.upoli.horario.recursos.CorreoK;
 import com.horario.upoli.horario.recursos.PermisoK;
 import com.horario.upoli.horario.service.ProfesorService;
